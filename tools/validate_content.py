@@ -31,7 +31,8 @@ STRUCTURAL = {
 }
 
 
-def check_scene_semantics(n, scene, saadi_text, err):
+def check_scene_semantics(n, scene, tafsir, err):
+    by_id = {t['id']: t for t in tafsir}
     sid = scene['id']
     actors = {a['id']: a for a in scene.get('actors', [])}
     state = {i: dict(a.get('init', {})) for i, a in actors.items()}
@@ -52,8 +53,11 @@ def check_scene_semantics(n, scene, saadi_text, err):
         for f in ('meaning', 'visualEvent', 'rationale', 'tafsirQuote'):
             if not str(b.get(f, '')).strip():
                 err(f'{sid} آية {ay}: الحقل {f} فارغ — لا يُعتمد مشهد بلا ربط بالمعنى')
-        if b.get('tafsirQuote') and b['tafsirQuote'] not in saadi_text:
-            err(f'{sid} آية {ay}: الاقتباس ليس حرفيًا من التفسير')
+        rec = by_id.get(b.get('tafsirRecord', ''))
+        if rec is None:
+            err(f'{sid} آية {ay}: سجل التفسير المرجعي غير موجود ({b.get("tafsirRecord")})')
+        elif ay not in rec.get('ayahs', []) or (b.get('tafsirQuote') and b['tafsirQuote'] not in rec['text']):
+            err(f'{sid} آية {ay}: الاقتباس ليس حرفيًا من سجل التفسير المرجعي أو السجل لا يخص الآية')
         before = {i: dict(v) for i, v in state.items()}
         last_t = -1
         changes = set()
@@ -114,7 +118,7 @@ for m in catalog['modules']:
         if not a['text'].strip():
             err(f'سورة {n} آية {a["number"]}: نص فارغ')
     for sc in scenes.values():
-        check_scene_semantics(n, sc, tafsir[0]['text'] if tafsir else '', err)
+        check_scene_semantics(n, sc, tafsir, err)
     covered = {x for s in scenes.values() for x in s['ayahs']}
     if covered != set(nums):
         err(f'سورة {n}: المشاهد لا تغطي كل الآيات بالضبط')

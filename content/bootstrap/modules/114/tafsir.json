@@ -3,6 +3,102 @@
  "surah": 114,
  "records": [
   {
+   "id": "muyassar-1",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    1
+   ],
+   "text": "تسمية السورة\n\n• سميت الناس؛ لذكر لفظ الناس فيها وتكرُّرِه خمس مرّات.\n\nمن مقاصد السورة\n\n• تقرير توحيدَي الربوبية والألوهية؛ بتعليم النبي وأُمَّتِه وتربيتهم على الالتجاء إلى الله، والاستعاذةِ به ليكفيَهم شرَّ شياطين الإنس والجنِّ، الموسوسين لهم بتزيين طريقِ الشَّرِّ.\n\n[التفسير]\n\nقل -أيها الرسول-: أعوذ وأعتصم برب الناس، القادر وحده على ردِّ شر الوسواس.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
+   "id": "muyassar-2",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    2
+   ],
+   "text": "ملك الناس المتصرف في كل شؤونهم، الغنيِّ عنهم.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
+   "id": "muyassar-3",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    3
+   ],
+   "text": "إله الناس الذي لا معبود بحق سواه.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
+   "id": "muyassar-4",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    4
+   ],
+   "text": "من أذى الشيطان الذي يوسوس عند الغفلة، ويختفي عند ذكر الله.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
+   "id": "muyassar-5",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    5
+   ],
+   "text": "الذي يبثُّ الشر والشكوك في صدور الناس.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
+   "id": "muyassar-6",
+   "bookAr": "التفسير الميسّر",
+   "authorAr": "نخبة من العلماء (مجمع الملك فهد لطباعة المصحف الشريف)",
+   "scope": "ayah",
+   "ayahs": [
+    6
+   ],
+   "text": "من شياطين الجن والإنس.",
+   "dataset": "spa5k/tafsir_api",
+   "origin": "https://qul.tarteel.ai/resources/tafsir/38",
+   "attribution": "النص منقول حرفيًا من النسخة الرقمية دون تعديل (وتتضمن آية 1 تمهيدًا عن اسم السورة ومقاصدها).",
+   "sourceNotes": [],
+   "licenseStatus": "unverified",
+   "attributionReview": "pending"
+  },
+  {
    "id": "saadi",
    "bookAr": "تفسير السعدي (تيسير الكريم الرحمن)",
    "authorAr": "عبد الرحمن بن ناصر السعدي",

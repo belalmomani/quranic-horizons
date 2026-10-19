@@ -138,6 +138,7 @@ data class BeatKey(val t: Float, val set: Map<String, Map<String, Float>> = empt
 @Serializable
 data class Beat(
     val ayah: Int,
+    val tafsirRecord: String = "",
     val tafsirQuote: String,
     val meaning: String,
     val visualEvent: String,

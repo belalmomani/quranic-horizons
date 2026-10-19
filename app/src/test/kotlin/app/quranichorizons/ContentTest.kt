@@ -68,4 +68,14 @@ class ContentTest {
         val broken = scenes - scenes.keys.first()
         assertTrue(ContentVerifier.structureProblems(info, module, broken).isNotEmpty())
     }
+
+    @Test fun beatQuotesAreVerbatimFromTheirTafsirRecord() {
+        val m = catalog.modules.first { it.surah == 114 }
+        val tafsir = json.decodeFromString(TafsirFile.serializer(), read("${m.dir}/tafsir.json")).records.associateBy { it.id }
+        val scenes = json.decodeFromString(SceneFile.serializer(), read("${m.dir}/scenes.json")).scenes
+        for (sc in scenes) for (b in sc.beats) {
+            val rec = tafsir.getValue(b.tafsirRecord)
+            assertTrue("آية ${b.ayah}", b.ayah in rec.ayahs && rec.text.contains(b.tafsirQuote))
+        }
+    }
 }

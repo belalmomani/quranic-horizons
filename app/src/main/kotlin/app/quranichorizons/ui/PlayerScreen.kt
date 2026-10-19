@@ -259,7 +259,7 @@ fun PlayerScreen(
     if (showTafsir) {
         ModalBottomSheet(onDismissRequest = { showTafsir = false }, containerColor = QhColors.NavyCard) {
             var tab by remember { mutableStateOf(0) }
-            val recs = mod.tafsir
+            val recs = mod.tafsir.filter { it.ayahs.isEmpty() || ayah.number in it.ayahs }
             Column(Modifier.padding(16.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 if (beat != null) {
                     Text("معنى الآية (خلاصة تحريرية)", color = QhColors.Gold, fontSize = 16.sp)
@@ -271,7 +271,8 @@ fun PlayerScreen(
                     if (beat.symbolic) {
                         Text("تمثيل رمزي: ${beat.symbolicNote}", color = QhColors.Muted, fontSize = 13.sp)
                     }
-                    Text("المقطع المعتمد عليه (نقل حرفي من تفسير السعدي — النسبة قيد المراجعة)", color = QhColors.Gold, fontSize = 14.sp)
+                    val src = mod.tafsir.firstOrNull { it.id == beat.tafsirRecord }?.bookAr ?: "التفسير"
+                    Text("المقطع المعتمد عليه (نقل حرفي من $src — النسبة قيد المراجعة)", color = QhColors.Gold, fontSize = 14.sp)
                     Text(beat.tafsirQuote, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }
                 if (recs.isNotEmpty()) {
