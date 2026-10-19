@@ -1,0 +1,30 @@
+{
+ "formatVersion": 1,
+ "appMinVersion": 1,
+ "modules": [
+  {
+   "surah": 114,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/114",
+   "files": [
+    {
+     "path": "modules/114/module.json",
+     "sha256": "74aa2adb9bab77d9a4fe4d5a6ff418f9aba2bc88b5664375f921a6c4491a39f2",
+     "bytes": 2711
+    },
+    {
+     "path": "modules/114/tafsir.json",
+     "sha256": "7a6132e630ee8820424f442e723429e9312ae456fcf3bd908caa53215a972c73",
+     "bytes": 31558
+    },
+    {
+     "path": "modules/114/scenes.json",
+     "sha256": "4ae88c49abb9e796af19127caf51cda1d138590955f15f4408098fac257defea",
+     "bytes": 4695
+    }
+   ],
+   "totalBytes": 38964
+  }
+ ]
+}

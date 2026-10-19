@@ -1,0 +1,85 @@
+{
+ "formatVersion": 1,
+ "surah": 114,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الناس",
+ "ayahCount": 6,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "ترخيص تسجيلات الشيخ ياسر الدوسري (EveryAyah لا يذكر ترخيصًا) غير موثّق",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعتك للمشاهد الستة (review.status = draft)",
+   "هل ملف الآية الأولى في التسجيل يتضمن البسملة؟ يلزم الاستماع والتحقق قبل ضبط البداية",
+   "التوقيت: يعتمد على حدود ملف كل آية، ولم تُقَس مدد الملفات بعد (durationMs = null)"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "941b3251d4af30576e981d083bf48aa5743dee0b06550ba20bbe61f864a8510c",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
+   "sceneId": "n1",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114001.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  },
+  {
+   "number": 2,
+   "text": "مَلِكِ ٱلنَّاسِ",
+   "sceneId": "n2",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114002.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  },
+  {
+   "number": 3,
+   "text": "إِلَٰهِ ٱلنَّاسِ",
+   "sceneId": "n3",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114003.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  },
+  {
+   "number": 4,
+   "text": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
+   "sceneId": "n4",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114004.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  },
+  {
+   "number": 5,
+   "text": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
+   "sceneId": "n5",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114005.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  },
+  {
+   "number": 6,
+   "text": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
+   "sceneId": "n6",
+   "audio": {
+    "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114006.mp3",
+    "durationMs": null,
+    "status": "license_unverified"
+   }
+  }
+ ]
+}

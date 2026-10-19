@@ -1,0 +1,39 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  content:
+    name: تحقق المحتوى
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: تحقق من سلامة وحدات المحتوى والبصمات
+        run: python3 tools/validate_content.py
+
+  apk:
+    name: بناء APK تجريبي
+    runs-on: ubuntu-latest
+    needs: content
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: اختبارات الوحدة
+        run: gradle --no-daemon :app:testDebugUnitTest
+      - name: بناء APK (debug)
+        run: gradle --no-daemon :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quranic-horizons-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

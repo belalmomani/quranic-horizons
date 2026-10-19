@@ -1,0 +1,245 @@
+{
+ "formatVersion": 1,
+ "surah": 114,
+ "scenes": [
+  {
+   "id": "n1",
+   "ayahs": [
+    1
+   ],
+   "kind": "procedural",
+   "title": "الالتجاء",
+   "tafsirQuote": "الاستعاذة برب الناس",
+   "spec": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#0F2A5C",
+    "stars": 70,
+    "twinkle": 0.35,
+    "glow": {
+     "x": 0.5,
+     "y": 0.62,
+     "r": 0.55,
+     "color": "#D9A84F",
+     "alpha": 0.34
+    },
+    "ridges": [
+     {
+      "h": 0.2,
+      "color": "#07122B"
+     }
+    ],
+    "mist": 0.0,
+    "shadowEdge": 0.0,
+    "drift": 0.2
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  },
+  {
+   "id": "n2",
+   "ayahs": [
+    2
+   ],
+   "kind": "procedural",
+   "title": "الملك",
+   "tafsirQuote": "ومالكهم",
+   "spec": {
+    "skyTop": "#040918",
+    "skyBottom": "#14316B",
+    "stars": 150,
+    "twinkle": 0.4,
+    "glow": {
+     "x": 0.5,
+     "y": 0.5,
+     "r": 0.8,
+     "color": "#E3BE6C",
+     "alpha": 0.22
+    },
+    "ridges": [
+     {
+      "h": 0.16,
+      "color": "#07122B"
+     }
+    ],
+    "mist": 0.0,
+    "shadowEdge": 0.0,
+    "drift": 0.15
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  },
+  {
+   "id": "n3",
+   "ayahs": [
+    3
+   ],
+   "kind": "procedural",
+   "title": "الإله",
+   "tafsirQuote": "وإلههم",
+   "spec": {
+    "skyTop": "#060D25",
+    "skyBottom": "#1B3A7A",
+    "stars": 110,
+    "twinkle": 0.3,
+    "glow": {
+     "x": 0.5,
+     "y": 0.35,
+     "r": 0.7,
+     "color": "#F0D28A",
+     "alpha": 0.4
+    },
+    "ridges": [
+     {
+      "h": 0.14,
+      "color": "#08142F"
+     }
+    ],
+    "mist": 0.0,
+    "shadowEdge": 0.0,
+    "drift": 0.1
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  },
+  {
+   "id": "n4",
+   "ayahs": [
+    4
+   ],
+   "kind": "procedural",
+   "title": "الاستعاذة من الوسواس الخنّاس",
+   "tafsirQuote": "يخنس أي: يتأخر إذا ذكر العبد ربه",
+   "spec": {
+    "skyTop": "#04081A",
+    "skyBottom": "#10224D",
+    "stars": 60,
+    "twinkle": 0.25,
+    "glow": {
+     "x": 0.5,
+     "y": 0.6,
+     "r": 0.5,
+     "color": "#D9A84F",
+     "alpha": 0.3
+    },
+    "ridges": [
+     {
+      "h": 0.18,
+      "color": "#050E24"
+     }
+    ],
+    "mist": 0.2,
+    "shadowEdge": 0.55,
+    "drift": 0.3,
+    "shadowRetreat": true
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  },
+  {
+   "id": "n5",
+   "ayahs": [
+    5
+   ],
+   "kind": "procedural",
+   "title": "يوسوس في الصدور",
+   "tafsirQuote": "يوسوس في صدور الناس",
+   "spec": {
+    "skyTop": "#050A1C",
+    "skyBottom": "#0D1C45",
+    "stars": 45,
+    "twinkle": 0.5,
+    "glow": {
+     "x": 0.5,
+     "y": 0.7,
+     "r": 0.4,
+     "color": "#C9A24B",
+     "alpha": 0.22
+    },
+    "ridges": [
+     {
+      "h": 0.2,
+      "color": "#040C20"
+     }
+    ],
+    "mist": 0.55,
+    "shadowEdge": 0.3,
+    "drift": 0.4
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  },
+  {
+   "id": "n6",
+   "ayahs": [
+    6
+   ],
+   "kind": "procedural",
+   "title": "من الجنّة والناس",
+   "tafsirQuote": "والوسواس كما يكون من الجن يكون من الإنس",
+   "spec": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#14306A",
+    "stars": 90,
+    "twinkle": 0.3,
+    "glow": {
+     "x": 0.5,
+     "y": 0.58,
+     "r": 0.65,
+     "color": "#E3BE6C",
+     "alpha": 0.36
+    },
+    "ridges": [
+     {
+      "h": 0.22,
+      "color": "#07122B"
+     },
+     {
+      "h": 0.12,
+      "color": "#040C20"
+     }
+    ],
+    "mist": 0.25,
+    "shadowEdge": 0.0,
+    "drift": 0.2
+   },
+   "review": {
+    "status": "draft",
+    "note": "مشهد رمزي مجرّد مرسوم بالكود؛ ينتظر موافقتك قبل الاعتماد."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  }
+ ]
+}
