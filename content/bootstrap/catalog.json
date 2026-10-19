@@ -10,8 +10,8 @@
    "files": [
     {
      "path": "modules/114/module.json",
-     "sha256": "ae1b4e41e0169bc6d661e33976b5b18257a9964a62de2cdd8ac651848bd38e61",
-     "bytes": 2786
+     "sha256": "6561ebf183a4fc6deaaab42b2f35c91b576e5ccdb45db2a703ef192169332f47",
+     "bytes": 3140
     },
     {
      "path": "modules/114/tafsir.json",
@@ -24,7 +24,7 @@
      "bytes": 11290
     }
    ],
-   "totalBytes": 50381
+   "totalBytes": 50735
   }
  ]
 }

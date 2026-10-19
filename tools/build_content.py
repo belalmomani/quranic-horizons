@@ -199,11 +199,11 @@ ayahs = [{'number': v['verse'], 'text': text_lines[v['verse'] - 1],
 module = {'formatVersion': 1, 'surah': SURAH, 'moduleVersion': '0.1.0',
           'nameAr': ch['name'], 'ayahCount': ch['total_verses'],
           'review': {'status': 'draft', 'blockers': [
-              'ترخيص تسجيلات الشيخ ياسر الدوسري (EveryAyah لا يذكر ترخيصًا) غير موثّق',
+              'ترخيص التلاوة غير موثّق: روابط EveryAyah بلا ترخيص معلن، وملف m4a الذي أرسلته بلا بيانات قارئ أو ترخيص (وسوم الملف تدل على تنزيل من منصة بث)؛ لا يُعاد توزيعه قبل التحقق كتابيًا',
               'مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)',
               'مراجعتك البصرية للمشهدين وأحداثهما الستة (review.status = draft)',
               'هل ملف الآية الأولى في التسجيل يتضمن البسملة؟ يلزم الاستماع والتحقق قبل ضبط البداية',
-              'التوقيت: يعتمد على حدود ملف كل آية، ولم تُقَس مدد الملفات بعد (durationMs = null)']},
+              'التوقيت: اقتُرحت نقاط تقسيم آلية لملف m4a (7 مقاطع) في docs/audio/an-nas-cues.draft.json، لكن لا يُعرف أي مقطع هو أي آية (وهل الأول بسملة) قبل استماعك؛ ومدد الملفات في module.json ما زالت null']},
           'basmala': BASMALA if basmala_prefixed else None,
           'text': {'source': 'Tanzil Uthmani', 'sha256OfSourceLines': sha('\n'.join(raw_lines).encode('utf-8')), 'note': 'سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط'},
           'ayahs': ayahs}

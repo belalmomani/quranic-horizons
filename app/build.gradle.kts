@@ -18,6 +18,10 @@ android {
 
         // التلاوة معطّلة حتى يُوثَّق ترخيص التسجيلات (انظر docs/EXTERNAL_DEPENDENCIES.md)
         buildConfigField("boolean", "AUDIO_ENABLED", "false")
+        // الإعلانات (Start.io): المعرّف ليس سرًا، لكن الحزمة غير مدمجة والإعلانات معطّلة حتى تُراجَع قواعد العرض
+        // (لا إعلان فوق نص القرآن ولا أثناء التلاوة ولا يعطّل التشغيل). انظر docs/EXTERNAL_DEPENDENCIES.md
+        buildConfigField("String", "START_IO_APP_ID", "\"209749236\"")
+        buildConfigField("boolean", "ADS_ENABLED", "false")
         // عنوان مستودع المحتوى البعيد (Supabase Storage). فارغ = المحتوى المضمَّن فقط
         buildConfigField("String", "CONTENT_BASE_URL", "\"\"")
     }
