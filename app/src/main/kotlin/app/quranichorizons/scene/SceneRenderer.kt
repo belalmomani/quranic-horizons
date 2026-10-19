@@ -128,7 +128,20 @@ private fun DrawScope.drawCrowd(a: ActorDef, st: Map<String, Float>, master: Flo
         val y = lerpF(lerpF(sy, gy, gather), ry, rows)
         pts.add(Triple(x, y, 0f))
     }
-    for (p in pts.sortedBy { it.second }) {
+    val sorted = pts.sortedBy { it.second }
+    val bind = (st["bind"] ?: 0f).coerceIn(0f, 1f)
+    if (bind > 0.02f) {
+        // خيوط تنزل من نقطة واحدة خارج الإطار إلى كل إنسان (التدبير والسلطان)
+        val apex = sg.px(0.5f, -0.35f)
+        for (p in sorted) {
+            val foot = sg.px(p.first, p.second)
+            val head = Offset(foot.x, foot.y - sg.h * 0.34f * 0.56f * (0.7f + 0.3f * p.second) * 0.95f)
+            val end = Offset(lerpF(apex.x, head.x, bind), lerpF(apex.y, head.y, bind))
+            drawLine(Color(0xFFF3D98F).copy(alpha = 0.45f * alpha), apex, end, strokeWidth = 1.6f)
+            if (bind > 0.95f) drawCircle(Color(0xFFFFF1C2).copy(alpha = 0.9f * alpha), sg.w * 0.007f, head)
+        }
+    }
+    for (p in sorted) {
         val foot = sg.px(p.first, p.second)
         val hgt = sg.h * 0.34f * 0.56f * (0.7f + 0.3f * p.second)
         drawHuman(foot, hgt, alpha)
@@ -173,14 +186,14 @@ private fun DrawScope.drawLantern(a: ActorDef, st: Map<String, Float>, master: F
     drawCircle(Color(0xFFFFF3C8).copy(alpha = alpha), sg.w * 0.013f, c)
 }
 
-private fun DrawScope.drawDome(st: Map<String, Float>, master: Float) {
+private fun DrawScope.drawDome(a: ActorDef, st: Map<String, Float>, master: Float) {
     val sg = stage()
     val alpha = (st["a"] ?: 0f) * master
     val draw = (st["draw"] ?: 0f).coerceIn(0f, 1f)
     if (alpha <= 0.01f || draw <= 0.01f) return
-    val c = sg.px(0.5f, 0.97f)
-    val rx = sg.w * 0.42f
-    val ry = sg.h * 0.88f
+    val c = sg.px(a.x, a.y)
+    val rx = sg.w * 0.42f * a.s
+    val ry = sg.h * 0.88f * a.s
     val tl = Offset(c.x - rx, c.y - ry)
     val sz = Size(rx * 2f, ry * 2f)
     drawArc(Color(0xFFD9A84F).copy(alpha = 0.06f * alpha * draw), 180f, 180f * draw, true, tl, sz)
@@ -313,12 +326,53 @@ private fun DrawScope.drawSmoke(a: ActorDef, st: Map<String, Float>, master: Flo
     }
 }
 
+private fun DrawScope.drawShade(st: Map<String, Float>, master: Float, t: Float) {
+    val sg = stage()
+    val alpha = (st["a"] ?: 0f) * master
+    val r = (st["r"] ?: 0f).coerceIn(0f, 1f)
+    if (alpha <= 0.01f) return
+    // ظلال داكنة تزحف من جانبي الإطار نحو المركز (الشرور)
+    for (side in intArrayOf(-1, 1)) {
+        for (k in 0 until 4) {
+            val edge = if (side < 0) -0.12f else 1.12f
+            val nx = lerpF(edge, 0.5f, r * 0.72f) + sin(t * 0.8f + k * 1.7f + side) * 0.012f
+            val ny = 0.58f + k * 0.1f
+            val c = sg.px(nx, ny)
+            val rad = sg.w * (0.15f + 0.02f * sin(t + k))
+            drawCircle(
+                brush = Brush.radialGradient(
+                    listOf(Color(0xFF5A1F44).copy(alpha = 0.85f * alpha), Color.Transparent),
+                    center = c, radius = rad,
+                ),
+                radius = rad, center = c,
+            )
+        }
+    }
+}
+
+private fun DrawScope.drawDimLights(a: ActorDef, st: Map<String, Float>, master: Float) {
+    val sg = stage()
+    val alpha = (st["a"] ?: 0f) * master
+    if (alpha <= 0.01f) return
+    val n = a.n.coerceAtLeast(2)
+    for (i in 0 until n) {
+        val c = sg.px(0.08f + 0.84f * i / (n - 1), 0.64f + 0.06f * sin(i * 2.1f))
+        drawCircle(
+            brush = Brush.radialGradient(listOf(Color(0xFFB4C2E8).copy(alpha = 0.5f * alpha), Color.Transparent), center = c, radius = sg.w * 0.04f),
+            radius = sg.w * 0.04f, center = c,
+        )
+        drawCircle(Color(0xFFD8E0F5).copy(alpha = 0.7f * alpha), sg.w * 0.005f, c)
+    }
+}
+
 fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: Float) {
     for (a in scene.actors) {
         val st = state[a.id] ?: continue
         when (a.kind) {
             "starOrder" -> drawStarOrder(a, st, master, t)
-            "dome" -> drawDome(st, master)
+            "dome" -> drawDome(a, st, master)
+            "shade" -> drawShade(st, master, t)
+            "dimlights" -> drawDimLights(a, st, master)
             "beam" -> drawBeam(a, st, master)
             "crowd" -> drawCrowd(a, st, master)
             "smoke" -> drawSmoke(a, st, master, t)

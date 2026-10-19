@@ -20,14 +20,14 @@ def err(m):
 # معاملات كل نوع عنصر؛ والبنيوية منها هي التي تُحسب تغيّرًا دلاليًا (ظهور/حركة/تشكّل).
 # الإضاءة (مثل g في القنديل) ليست بنيوية ولا تكفي لتبرير مشهد.
 KIND_PARAMS = {
-    'crowd': {'a', 'gather', 'rows'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
+    'crowd': {'a', 'gather', 'rows', 'bind'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
     'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a', 'g'},
-    'wisps': {'a', 'r'}, 'smoke': {'a'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'},
 }
 STRUCTURAL = {
-    'crowd': {'a', 'gather', 'rows'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
+    'crowd': {'a', 'gather', 'rows', 'bind'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
     'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a'},
-    'wisps': {'a', 'r'}, 'smoke': {'a'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'},
 }
 
 

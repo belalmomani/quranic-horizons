@@ -19,29 +19,35 @@ class TimelineTest {
 
     private fun v(st: Map<String, Map<String, Float>>, id: String, k: String) = st.getValue(id).getValue(k)
 
-    @Test fun ayah1PeopleAppearGatherAndDomeCloses() {
-        assertEquals(0f, v(SceneTimeline.resolve(refuge, 1, 0f), "crowd", "a"), 0.001f)
-        assertEquals(1f, v(SceneTimeline.resolve(refuge, 1, 1f), "crowd", "a"), 0.001f)
-        assertEquals(1f, v(SceneTimeline.resolve(refuge, 1, 1f), "crowd", "gather"), 0.001f)
-        assertEquals(1f, v(SceneTimeline.resolve(refuge, 1, 1f), "dome", "draw"), 0.001f)
+    @Test fun ayah1EvilsApproachThenAreRepelledByProtectiveDome() {
+        val mid = SceneTimeline.resolve(refuge, 1, 0.45f)
+        assertTrue(v(mid, "shade", "r") > 0.5f)
+        val end = SceneTimeline.resolve(refuge, 1, 1f)
+        assertEquals(1f, v(end, "dome", "draw"), 0.001f)
+        assertEquals(0f, v(end, "shade", "r"), 0.001f)
+        assertEquals(1f, v(end, "man", "a"), 0.001f)
+        assertEquals(0f, v(end, "crowd", "a"), 0.001f)
     }
 
-    @Test fun stateCarriesOverBetweenAyahs() {
-        // بداية الآية 2 = نهاية الآية 1: الناس مجتمعون والقبّة مكتملة، والنجوم لم تنتظم بعد
-        val st = SceneTimeline.resolve(refuge, 2, 0f)
-        assertEquals(1f, v(st, "crowd", "gather"), 0.001f)
-        assertEquals(1f, v(st, "dome", "draw"), 0.001f)
-        assertEquals(0f, v(st, "stars", "order"), 0.001f)
-        assertEquals(1f, v(SceneTimeline.resolve(refuge, 2, 1f), "stars", "order"), 0.001f)
+    @Test fun ayah2OnePersonBecomesAllPeopleBoundToOneSource() {
+        val s0 = SceneTimeline.resolve(refuge, 2, 0f)
+        assertEquals(1f, v(s0, "man", "a"), 0.001f)       // الحالة تُحمَل من الآية 1
+        val end = SceneTimeline.resolve(refuge, 2, 1f)
+        assertEquals(0f, v(end, "man", "a"), 0.001f)
+        assertEquals(1f, v(end, "crowd", "a"), 0.001f)
+        assertEquals(1f, v(end, "crowd", "bind"), 0.001f)
     }
 
-    @Test fun ayah3RaisesBeamAndRearrangesCrowd() {
+    @Test fun ayah3OtherLightsGoOutOneBeamRemainsPeopleFaceIt() {
         val s0 = SceneTimeline.resolve(refuge, 3, 0f)
-        val s1 = SceneTimeline.resolve(refuge, 3, 1f)
-        assertEquals(0f, v(s0, "beam", "a"), 0.001f)
-        assertEquals(1f, v(s1, "beam", "h"), 0.001f)
-        assertEquals(0f, v(s0, "crowd", "rows"), 0.001f)
-        assertEquals(1f, v(s1, "crowd", "rows"), 0.001f)
+        assertEquals(1f, v(s0, "crowd", "bind"), 0.001f)
+        val mid = SceneTimeline.resolve(refuge, 3, 0.45f)
+        assertTrue(v(mid, "dim", "a") > 0.9f)
+        val end = SceneTimeline.resolve(refuge, 3, 1f)
+        assertEquals(0f, v(end, "dim", "a"), 0.001f)
+        assertEquals(1f, v(end, "beam", "h"), 0.001f)
+        assertEquals(1f, v(end, "crowd", "rows"), 0.001f)
+        assertEquals(0f, v(end, "crowd", "bind"), 0.001f)
     }
 
     @Test fun ayah4WispsApproachThenRetreatWhenLanternFlares() {
