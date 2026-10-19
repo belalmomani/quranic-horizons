@@ -1,6 +1,9 @@
 package app.quranichorizons.data
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import app.quranichorizons.BuildConfig
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -48,6 +51,20 @@ class ContentRepository(private val context: Context) {
         val problems = ContentVerifier.structureProblems(info, module, scenes)
         check(problems.isEmpty()) { "وحدة السورة ${info.number} غير سليمة: " + problems.joinToString("، ") }
         return SurahModule(info, entry, module, tafsir, scenes)
+    }
+
+    /** صور عناصر المشهد (kind = image): تُحمَّل بعد التحقق من بصمة كل ملف؛ المفتاح هو معرّف العنصر. */
+    fun loadImages(module: SurahModule): Map<String, ImageBitmap> {
+        val out = HashMap<String, ImageBitmap>()
+        for (scene in module.scenes.values) for (a in scene.actors) {
+            if (a.kind != "image" || a.file.isBlank()) continue
+            val fe = module.catalog.files.firstOrNull { it.path == a.file } ?: continue
+            val b = downloaded(module.catalog, a.file) ?: asset(a.file)
+            if (!ContentVerifier.fileMatches(fe, b)) continue   // صورة تالفة: لا تُعرض
+            val bmp = BitmapFactory.decodeByteArray(b, 0, b.size) ?: continue
+            out[a.id] = bmp.asImageBitmap()
+        }
+        return out
     }
 
     // ---------- التنزيل من خادم المحتوى (يعمل فقط حين يُضبط CONTENT_BASE_URL) ----------

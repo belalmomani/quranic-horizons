@@ -127,6 +127,8 @@ data class ActorDef(
     val sy: Float = 0f,
     val tx: Float = 0f,
     val ty: Float = 0f,
+    /** لعنصر الصورة: مسار الملف داخل الوحدة (يُتحقق من بصمته من الكتالوج) */
+    val file: String = "",
     val init: Map<String, Float> = emptyMap(),
 )
 
@@ -146,6 +148,8 @@ data class Beat(
     val symbolic: Boolean = false,
     val symbolicNote: String = "",
     val continuity: String = "",
+    /** ما لا تُظهره الصورة/المشهد من معنى الآية (يلزم لقطة إضافية) */
+    val gap: String = "",
     val keys: List<BeatKey> = emptyList(),
 )
 

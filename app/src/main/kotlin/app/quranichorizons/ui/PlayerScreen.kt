@@ -73,6 +73,7 @@ fun PlayerScreen(
         return
     }
     val ayahs = mod.module.ayahs
+    val images = remember(mod) { repo.loadImages(mod) }
     var index by remember { mutableStateOf((startAyah - 1).coerceIn(0, ayahs.size - 1)) }
     var playing by remember { mutableStateOf(true) }
     var finished by remember { mutableStateOf(false) }
@@ -167,7 +168,7 @@ fun PlayerScreen(
     Box(Modifier.fillMaxSize().background(QhColors.NavyDeep)) {
         SceneCanvas(
             from = fromFrame, to = frame, transition = fade.value,
-            timeMs = timeMs, animate = active && !reduce, modifier = Modifier.fillMaxSize(),
+            timeMs = timeMs, animate = active && !reduce, modifier = Modifier.fillMaxSize(), images = images,
         )
         // غلالة خفيفة أسفل الشاشة فقط لحماية وضوح النص؛ منطقة الحدث في الأعلى تبقى صافية
         Box(
@@ -268,6 +269,9 @@ fun PlayerScreen(
                     Text(beat.visualEvent, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     Text("سبب الملاءمة", color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.rationale, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    if (beat.gap.isNotBlank()) {
+                        Text("ما لا تُظهره هذه اللقطة: ${beat.gap}", color = QhColors.GoldSoft, fontSize = 13.sp)
+                    }
                     if (beat.symbolic) {
                         Text("تمثيل رمزي: ${beat.symbolicNote}", color = QhColors.Muted, fontSize = 13.sp)
                     }

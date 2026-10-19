@@ -6,8 +6,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -365,7 +369,49 @@ private fun DrawScope.drawDimLights(a: ActorDef, st: Map<String, Float>, master:
     }
 }
 
-fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: Float) {
+private fun DrawScope.drawImageActor(a: ActorDef, st: Map<String, Float>, master: Float, images: Map<String, ImageBitmap>) {
+    val alpha = (st["a"] ?: 0f) * master
+    if (alpha <= 0.01f) return
+    val bmp = images[a.id] ?: return
+    val z = (st["z"] ?: 0f).coerceIn(0f, 1f)
+    // تُعرض الصورة بعرض الشاشة في منطقة المشهد العليا (دون قصّ جانبيها)، وتكبر ببطء شديد (حركة تجميلية فقط)
+    val w = size.width
+    val h0 = w * bmp.height / bmp.width
+    val k = 1f + 0.04f * z
+    val dw = w * k
+    val dh = h0 * k
+    val top = size.height * 0.07f
+    drawImage(
+        image = bmp,
+        dstOffset = IntOffset(((w - dw) / 2f).toInt(), (top - (dh - h0) / 2f).toInt()),
+        dstSize = IntSize(dw.toInt(), dh.toInt()),
+        alpha = alpha.coerceIn(0f, 1f),
+        filterQuality = FilterQuality.High,
+    )
+}
+
+/** يذيب الحافة السفلية للصورة في خلفية الشاشة فلا يظهر حدّ قاطع فوق النص. */
+private fun DrawScope.drawImageFeather(scene: SceneDef, state: SceneState, images: Map<String, ImageBitmap>) {
+    var bottom = 0f
+    var any = false
+    for (a in scene.actors) {
+        if (a.kind != "image") continue
+        val bmp = images[a.id] ?: continue
+        if ((state[a.id]?.get("a") ?: 0f) > 0.01f) {
+            any = true
+            bottom = maxOf(bottom, size.height * 0.07f + size.width * bmp.height / bmp.width)
+        }
+    }
+    if (!any) return
+    val bg = hex(scene.env.skyBottom)
+    drawRect(
+        brush = Brush.verticalGradient(listOf(Color.Transparent, bg), startY = bottom - size.height * 0.10f, endY = bottom + 1f),
+        topLeft = Offset(0f, bottom - size.height * 0.10f), size = Size(size.width, size.height * 0.10f + 1f),
+    )
+    drawRect(bg, topLeft = Offset(0f, bottom), size = Size(size.width, size.height - bottom))
+}
+
+fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: Float, images: Map<String, ImageBitmap> = emptyMap()) {
     for (a in scene.actors) {
         val st = state[a.id] ?: continue
         when (a.kind) {
@@ -373,6 +419,7 @@ fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: F
             "dome" -> drawDome(a, st, master)
             "shade" -> drawShade(st, master, t)
             "dimlights" -> drawDimLights(a, st, master)
+            "image" -> drawImageActor(a, st, master, images)
             "beam" -> drawBeam(a, st, master)
             "crowd" -> drawCrowd(a, st, master)
             "smoke" -> drawSmoke(a, st, master, t)
@@ -383,9 +430,9 @@ fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: F
     }
 }
 
-fun DrawScope.drawFrame(frame: SceneFrame, alpha: Float, t: Float) {
+fun DrawScope.drawFrame(frame: SceneFrame, alpha: Float, t: Float, images: Map<String, ImageBitmap>) {
     drawEnvironment(frame.scene.env, alpha, t)
-    drawActors(frame.scene, frame.state, alpha, t)
+    drawActors(frame.scene, frame.state, alpha, t, images)
 }
 
 @Composable
@@ -396,15 +443,16 @@ fun SceneCanvas(
     timeMs: Long,
     animate: Boolean,
     modifier: Modifier = Modifier,
+    images: Map<String, ImageBitmap> = emptyMap(),
 ) {
     Canvas(modifier = modifier) {
         val t = if (animate) timeMs / 1000f else 0f
         val p = transition.coerceIn(0f, 1f)
         if (from != null && p < 1f) {
-            drawFrame(from, 1f, t)
-            drawFrame(to, p, t)
+            drawFrame(from, 1f, t, images)
+            drawFrame(to, p, t, images)
         } else {
-            drawFrame(to, 1f, t)
+            drawFrame(to, 1f, t, images)
         }
     }
 }

@@ -203,10 +203,78 @@ WHISPER = {
    'keys': [K(0.0, w2={'a': 0.0, 'r': 0.0}), K(0.25, smoke={'a': 1.0}, other={'a': 1.0}), K(0.5, wU={'a': 0.9, 'r': 0.5}, wP={'a': 0.9, 'r': 0.5}), K(0.88, wU={'r': 1.0}, wP={'r': 1.0})]},
  ]}
 
-scenes = [REFUGE, WHISPER]
-for s in scenes:
-    s['review'] = {'status': 'draft', 'note': 'مشهد رمزي مرسوم بالكود؛ ربط المعنى بالحدث موثّق لكل آية، وينتظر مراجعتك البصرية قبل الاعتماد.'}
-    s['transition'] = {'type': 'crossfade', 'ms': 1600}
+procedural_scenes = [REFUGE, WHISPER]
+for sc in procedural_scenes:
+    sc['review'] = {'status': 'draft', 'note': 'مشهد إجرائي بديل (مرسوم بالكود)؛ غير مستعمل في الوحدة الحالية ومحفوظ في content/drafts.'}
+    sc['transition'] = {'type': 'crossfade', 'ms': 1600}
+drafts = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'content', 'drafts')
+os.makedirs(drafts, exist_ok=True)
+open(os.path.join(drafts, 'an-nas-procedural-scenes.json'), 'w', encoding='utf-8').write(
+    json.dumps({'formatVersion': 2, 'surah': SURAH, 'scenes': procedural_scenes}, ensure_ascii=False, indent=1))
+
+# ---------- المشهد المعتمد حاليًا: صورة لكل آية (قصّتها tools/slice_scenes.py من لوحة صاحب المشروع) ----------
+from PIL import Image
+IMG_DIR = os.path.join(OUT, 'modules', '114', 'img')
+img_files, img_info = [], {}
+for i in range(1, 7):
+    rel = f'modules/114/img/n{i}.jpg'
+    data = open(os.path.join(OUT, rel), 'rb').read()
+    w_, h_ = Image.open(os.path.join(OUT, rel)).size
+    img_files.append({'path': rel, 'sha256': sha(data), 'bytes': len(data)})
+    img_info[i] = (rel, w_, h_)
+MIN_W = 1080
+low_res = [i for i, (_, w_, h_) in img_info.items() if w_ < MIN_W]
+
+def IMG(i):
+    rel, w_, h_ = img_info[i]
+    return {'id': f'img{i}', 'kind': 'image', 'file': rel, 'init': {'a': 0.0, 'z': 0.0}}
+
+def shot(i, prev):
+    keys = [K(0.2, **{f'img{i}': {'a': 1.0}})] if prev is None else [K(0.2, **{f'img{prev}': {'a': 0.0}, f'img{i}': {'a': 1.0}})]
+    keys.append(K(0.95, **{f'img{i}': {'z': 1.0}}))
+    return keys
+
+IMG_BEATS = {
+ 1: dict(meaning='المتكلم يعتصم ويستجير برب الناس، القادر وحده على دفع الشرور عنهم.',
+         visualEvent='رجل مجهول الهوية يجلس على سجادة في ليل هادئ تحت الهلال، يرفع يديه بالدعاء ومعه قنديل، والقرية الوادعة أمامه.',
+         rationale='رفع اليدين بالدعاء في الليل هو صورة الالتجاء والاستجارة. لا يُصوَّر الرسول، والرجل مرسوم من الخلف بلا هوية.',
+         symbolic=False, symbolicNote='', gap='دفع الشرور (قدرة الله وحده) مفهوم من السياق ولا تُظهره اللقطة.'),
+ 2: dict(meaning='الله مالك جميع الناس ومدبّر أمورهم، وله السلطان الكامل عليهم.',
+         visualEvent='سوق عامر بجميع أصناف الناس يمضون في شؤونهم، وتعلو المدينة قلعة على التل في ضوء الغروب.',
+         rationale='«جميع الناس» ظاهر في الحشد المتنوع، و«مدبّر أمورهم» في حياتهم اليومية وشؤونهم، و«السلطان» في القلعة المشرفة على المدينة.',
+         symbolic=True, symbolicNote='القلعة إشارة رمزية إلى السلطان، وليست تصويرًا لذات الله.', gap=''),
+ 3: dict(meaning='الله معبودهم الحق، لا معبود بحق سواه.',
+         visualEvent='رجل مجهول الهوية ساجد في مسجد، وأشعة ضوء تنساب من النوافذ العالية نحو المصلّى.',
+         rationale='السجود أخصّ صور العبادة، وهو لله وحده؛ والأشعة تعطي جلال المكان ولا تُصوِّر ذات الله.',
+         symbolic=True, symbolicNote='الأشعة تعبير عن السكينة والجلال، وليست صورة لله.', gap=''),
+ 4: dict(meaning='الاستعاذة من شر الشيطان الذي يوسوس عند الغفلة ويختفي وينقبض عند ذكر الله.',
+         visualEvent='رجل شارد يضع يده على فمه، وخلفه شكل دخاني داكن يميل إلى أذنه (الوسوسة عند الغفلة).',
+         rationale='الصورة تُظهر الجزء الأول من الآية: الوسوسة عند الغفلة.',
+         symbolic=True, symbolicNote='الشكل الدخاني تمثيل رمزي للوسوسة الخفية، وليس صورة لحقيقة الشيطان.',
+         gap='«ويختفي وينقبض عند ذكر الله» غير مُصوَّر؛ يلزم لقطة ثانية (الرجل يذكر الله فينحسر الدخان).'),
+ 5: dict(meaning='الذي يبثّ الشكوك والشرور في قلوب البشر.',
+         visualEvent='رجل يضع يده على صدره وقد تسلّل دخان داكن متوهّج إلى موضع القلب.',
+         rationale='وضع اليد على الصدر وتسلّل الدخان إلى موضع القلب يصوّران بثّ الشكوك والشرور في الصدور.',
+         symbolic=True, symbolicNote='الدخان في الصدر تمثيل رمزي لحديث النفس الخفي.', gap=''),
+ 6: dict(meaning='هذا الوسواس يكون من شياطين الجن، ويكون أيضًا من شياطين الإنس.',
+         visualEvent='لوحتان متجاورتان: يسارًا شكل دخاني خلف رجل (الجنّ)، ويمينًا رجل يهمس في أذن آخر (الإنس).',
+         rationale='الآية تجمع مصدرين: خفيّ (الجنّة) وبشري (الناس)؛ فاللقطة تضع المصدرين جنبًا إلى جنب.',
+         symbolic=True, symbolicNote='الشكل الدخاني تمثيل رمزي، والهمس البشري تمثيل مباشر.',
+         gap='ترتيب الصورة الأصلية يضع «من الجنة» على لوحة الهمس البشري و«والناس» على لوحة الظل؛ اعتُمد الربط الصحيح (الظل = الجنّة، الهمس البشري = الناس).'),
+}
+img_beats = []
+for i in range(1, 7):
+    d = IMG_BEATS[i]
+    img_beats.append({'ayah': i, 'tafsirRecord': f'user-brief-{i}', 'tafsirQuote': user_quote(i), 'meaning': d['meaning'],
+                      'visualEvent': d['visualEvent'], 'rationale': d['rationale'], 'symbolic': d['symbolic'],
+                      'symbolicNote': d['symbolicNote'], 'gap': d['gap'], 'keys': shot(i, None if i == 1 else i - 1)})
+IMAGES_SCENE = {
+ 'id': 'n-images', 'ayahs': [1, 2, 3, 4, 5, 6], 'kind': 'image', 'title': 'سورة الناس — لقطة لكل آية',
+ 'env': {'skyTop': '#050B1F', 'skyBottom': '#050B1F', 'stars': 0, 'twinkle': 0.0, 'ridges': [], 'mist': 0.0, 'drift': 0.0},
+ 'actors': [IMG(i) for i in range(1, 7)], 'beats': img_beats,
+ 'review': {'status': 'draft', 'note': 'صور مقدَّمة من صاحب المشروع (لوحة مجمَّعة ~1254px)؛ مسودة بدقة منخفضة تنتظر الأصول عالية الدقة.'},
+ 'transition': {'type': 'crossfade', 'ms': 1600}}
+scenes = [IMAGES_SCENE]
 scene_meta = write('modules/114/scenes.json', {'formatVersion': 2, 'surah': SURAH, 'scenes': scenes})
 
 # التلاوة: رابط ملف كل آية؛ لا تُضمَّن الملفات. الترخيص غير موثّق فتبقى معطّلة افتراضيًا.
@@ -220,7 +288,11 @@ module = {'formatVersion': 1, 'surah': SURAH, 'moduleVersion': '0.1.0',
           'review': {'status': 'draft', 'blockers': [
               'ترخيص التلاوة غير موثّق: روابط EveryAyah بلا ترخيص معلن، وملف m4a الذي أرسلته بلا بيانات قارئ أو ترخيص (وسوم الملف تدل على تنزيل من منصة بث)؛ لا يُعاد توزيعه قبل التحقق كتابيًا',
               'مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)',
-              'مراجعتك البصرية للمشهدين وأحداثهما الستة (review.status = draft)',
+              'مراجعتك البصرية للقطات الست (review.status = draft)',
+              *(['دقة صور المشاهد منخفضة (%s): قُصّت من لوحة مجمَّعة ~1254px؛ المطلوب صور منفصلة بعرض ≥ %d px بلا نص ولا أرقام' % ('، '.join('n%d=%dx%d' % (i, img_info[i][1], img_info[i][2]) for i in low_res), MIN_W)] if low_res else []),
+              'نص الآية داخل الصور المرسلة غير صالح (آية 2 مكتوبة «مبلك»)؛ قُصّ، ويُرسم نص الآية من Tanzil فقط — الصور النهائية بلا أي نص',
+              'لقطة الآية 4 تُظهر الوسوسة فقط، و«يختفي عند ذكر الله» غير مصوَّر (لقطة ثانية مطلوبة)',
+              'مصدر الصور وحقوقها: صور مولَّدة قدّمها صاحب المشروع؛ يلزم توثيق الأداة وشروط الاستخدام قبل التوزيع',
               'هل ملف الآية الأولى في التسجيل يتضمن البسملة؟ يلزم الاستماع والتحقق قبل ضبط البداية',
               'التوقيت: اقتُرحت نقاط تقسيم آلية لملف m4a (7 مقاطع) في docs/audio/an-nas-cues.draft.json، لكن لا يُعرف أي مقطع هو أي آية (وهل الأول بسملة) قبل استماعك؛ ومدد الملفات في module.json ما زالت null']},
           'basmala': BASMALA if basmala_prefixed else None,
@@ -228,7 +300,7 @@ module = {'formatVersion': 1, 'surah': SURAH, 'moduleVersion': '0.1.0',
           'ayahs': ayahs}
 mod_meta = write('modules/114/module.json', module)
 
-files = [mod_meta, tafsir_meta, scene_meta]
+files = [mod_meta, tafsir_meta, scene_meta] + img_files
 catalog = {'formatVersion': 1, 'appMinVersion': 1, 'modules': [
     {'surah': SURAH, 'version': '0.1.0', 'status': 'draft', 'dir': 'modules/114', 'files': files,
      'totalBytes': sum(f['bytes'] for f in files)}]}

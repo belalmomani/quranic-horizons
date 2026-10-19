@@ -22,12 +22,12 @@ def err(m):
 KIND_PARAMS = {
     'crowd': {'a', 'gather', 'rows', 'bind'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
     'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a', 'g'},
-    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'}, 'image': {'a', 'z'},
 }
 STRUCTURAL = {
     'crowd': {'a', 'gather', 'rows', 'bind'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
     'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a'},
-    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'}, 'shade': {'a', 'r'}, 'dimlights': {'a'}, 'image': {'a'},
 }
 
 
@@ -117,8 +117,25 @@ for m in catalog['modules']:
             err(f'سورة {n} آية {a["number"]}: مشهد غير موجود')
         if not a['text'].strip():
             err(f'سورة {n} آية {a["number"]}: نص فارغ')
+    listed = {f['path']: f for f in m['files']}
+    low_res = False
     for sc in scenes.values():
         check_scene_semantics(n, sc, tafsir, err)
+        for a_ in sc.get('actors', []):
+            if a_['kind'] != 'image':
+                continue
+            f_ = a_.get('file', '')
+            if f_ not in listed:
+                err(f'{sc["id"]}: صورة {a_["id"]} غير مدرجة في الكتالوج ({f_})')
+                continue
+            from PIL import Image
+            w_, h_ = Image.open(os.path.join(ROOT, f_)).size
+            if w_ < 1080:
+                low_res = True
+    if low_res and m['status'] == 'approved':
+        err(f'سورة {n}: صور منخفضة الدقة (< 1080px عرضًا) في وحدة معلنة approved')
+    if low_res and not any('دقة' in b for b in mod['review'].get('blockers', [])):
+        err(f'سورة {n}: صور منخفضة الدقة بلا معوّق مسجّل في module.json')
     covered = {x for s in scenes.values() for x in s['ayahs']}
     if covered != set(nums):
         err(f'سورة {n}: المشاهد لا تغطي كل الآيات بالضبط')

@@ -11,9 +11,13 @@ import java.io.File
 /** اختبارات محرك الزمن: المعنى يغيّر عناصر المشهد نفسها، والحالة تُحمَل بين الآيات. */
 class TimelineTest {
     private val json = Json { ignoreUnknownKeys = true }
+    // المشاهد الإجرائية البديلة (المحرك نفسه) في content/drafts، والمشهد الحالي بالصور في الوحدة
     private val scenes = json.decodeFromString(
-        SceneFile.serializer(), File("../content/bootstrap/modules/114/scenes.json").readText(Charsets.UTF_8),
+        SceneFile.serializer(), File("../content/drafts/an-nas-procedural-scenes.json").readText(Charsets.UTF_8),
     ).scenes.associateBy { it.id }
+    private val imageScene = json.decodeFromString(
+        SceneFile.serializer(), File("../content/bootstrap/modules/114/scenes.json").readText(Charsets.UTF_8),
+    ).scenes.first()
     private val refuge = scenes.getValue("n-refuge")
     private val whisper = scenes.getValue("n-whisper")
 
@@ -77,6 +81,22 @@ class TimelineTest {
         for (sc in scenes.values) for (b in sc.beats) {
             assertTrue(b.meaning.isNotBlank() && b.visualEvent.isNotBlank() && b.rationale.isNotBlank() && b.tafsirQuote.isNotBlank())
             if (b.symbolic) assertTrue(b.symbolicNote.isNotBlank())
+        }
+    }
+
+    @Test fun imageSceneCrossfadesOneShotPerAyah() {
+        assertEquals(6, imageScene.actors.count { it.kind == "image" })
+        // بداية الآية 1: لا لقطة ظاهرة بعد، ونهايتها: لقطة الآية 1 وحدها
+        assertEquals(0f, v(SceneTimeline.resolve(imageScene, 1, 0f), "img1", "a"), 0.001f)
+        val e1 = SceneTimeline.resolve(imageScene, 1, 1f)
+        assertEquals(1f, v(e1, "img1", "a"), 0.001f)
+        for (k in 2..6) {
+            val start = SceneTimeline.resolve(imageScene, k, 0f)
+            assertEquals(1f, v(start, "img${k - 1}", "a"), 0.001f)   // تُحمَل لقطة الآية السابقة
+            assertEquals(0f, v(start, "img$k", "a"), 0.001f)
+            val end = SceneTimeline.resolve(imageScene, k, 1f)
+            assertEquals(0f, v(end, "img${k - 1}", "a"), 0.001f)
+            assertEquals(1f, v(end, "img$k", "a"), 0.001f)
         }
     }
 }
