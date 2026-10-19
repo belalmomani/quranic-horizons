@@ -13,7 +13,8 @@ android {
         applicationId = "app.quranichorizons"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
+        // رقم الإصدار يزداد مع كل بناء على GitHub (run_number) ليُقبل كتحديث فوق النسخة المثبّتة
+        versionCode = System.getenv("QH_VERSION_CODE")?.toIntOrNull() ?: 1
         versionName = "0.1.0"
 
         // التلاوة معطّلة حتى يُوثَّق ترخيص التسجيلات (انظر docs/EXTERNAL_DEPENDENCIES.md)
@@ -26,9 +27,27 @@ android {
         buildConfigField("String", "CONTENT_BASE_URL", "\"\"")
     }
 
+    // توقيع ثابت: نفس المفتاح في كل بناء (من أسرار GitHub) كي يعمل التحديث دون حذف التطبيق.
+    // المفتاح ليس في المستودع أبدًا.
+    val qhKeystore = System.getenv("QH_KEYSTORE_FILE")
+    signingConfigs {
+        if (!qhKeystore.isNullOrBlank()) {
+            create("qh") {
+                storeFile = file(qhKeystore)
+                storePassword = System.getenv("QH_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("QH_KEY_ALIAS")
+                keyPassword = System.getenv("QH_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            if (!qhKeystore.isNullOrBlank()) signingConfig = signingConfigs.getByName("qh")
+        }
         release {
             isMinifyEnabled = true
+            if (!qhKeystore.isNullOrBlank()) signingConfig = signingConfigs.getByName("qh")
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }

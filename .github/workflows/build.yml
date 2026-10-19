@@ -19,6 +19,10 @@ jobs:
     name: بناء APK تجريبي
     runs-on: ubuntu-latest
     needs: content
+    env:
+      QH_KEYSTORE_PASSWORD: ${{ secrets.QH_KEYSTORE_PASSWORD }}
+      QH_KEY_ALIAS: ${{ secrets.QH_KEY_ALIAS }}
+      QH_KEY_PASSWORD: ${{ secrets.QH_KEY_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -28,6 +32,17 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: مفتاح التوقيع الثابت (ليُقبل APK كتحديث لا كتطبيق جديد)
+        env:
+          KS_B64: ${{ secrets.QH_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KS_B64" ]; then
+            echo "::error::سرّ QH_KEYSTORE_BASE64 غير مضبوط. بدونه يُوقَّع كل بناء بمفتاح مختلف فلا يعمل التحديث. راجع docs/SIGNING.md"
+            exit 1
+          fi
+          echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/qh.jks"
+          echo "QH_KEYSTORE_FILE=$RUNNER_TEMP/qh.jks" >> "$GITHUB_ENV"
+          echo "QH_VERSION_CODE=${{ github.run_number }}" >> "$GITHUB_ENV"
       - name: اختبارات الوحدة
         run: gradle --no-daemon :app:testDebugUnitTest
       - name: بناء APK (debug)
