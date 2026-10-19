@@ -21,6 +21,18 @@ object ContentVerifier {
             if (a.text.isBlank()) out.add("آية ${a.number}: نص فارغ")
             if (!scenes.containsKey(a.sceneId)) out.add("آية ${a.number}: مشهد ${a.sceneId} غير موجود")
         }
+        scenes.values.forEach { sc ->
+            val beatAyahs = sc.beats.map { it.ayah }.sorted()
+            if (beatAyahs != sc.ayahs.sorted()) out.add("مشهد ${sc.id}: نبضات المعنى لا تغطي آياته")
+            val ids = sc.actors.map { it.id }.toSet()
+            sc.beats.forEach { b ->
+                if (b.meaning.isBlank() || b.visualEvent.isBlank() || b.rationale.isBlank() || b.tafsirQuote.isBlank()) {
+                    out.add("مشهد ${sc.id} آية ${b.ayah}: ربط المعنى بالحدث ناقص")
+                }
+                if (b.symbolic && b.symbolicNote.isBlank()) out.add("مشهد ${sc.id} آية ${b.ayah}: تمثيل رمزي بلا توضيح")
+                b.keys.forEach { k -> k.set.keys.forEach { id -> if (id !in ids) out.add("مشهد ${sc.id}: عنصر غير معرّف $id") } }
+            }
+        }
         val covered = scenes.values.flatMap { it.ayahs }.toSet()
         if (covered != module.ayahs.map { it.number }.toSet()) out.add("المشاهد لا تغطي الآيات بالضبط")
         val src = module.text.sha256OfSourceLines

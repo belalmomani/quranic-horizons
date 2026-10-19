@@ -9,7 +9,7 @@
   "blockers": [
    "ترخيص تسجيلات الشيخ ياسر الدوسري (EveryAyah لا يذكر ترخيصًا) غير موثّق",
    "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
-   "مراجعتك للمشاهد الستة (review.status = draft)",
+   "مراجعتك البصرية للمشهدين وأحداثهما الستة (review.status = draft)",
    "هل ملف الآية الأولى في التسجيل يتضمن البسملة؟ يلزم الاستماع والتحقق قبل ضبط البداية",
    "التوقيت: يعتمد على حدود ملف كل آية، ولم تُقَس مدد الملفات بعد (durationMs = null)"
   ]
@@ -24,7 +24,7 @@
   {
    "number": 1,
    "text": "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ",
-   "sceneId": "n1",
+   "sceneId": "n-refuge",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114001.mp3",
     "durationMs": null,
@@ -34,7 +34,7 @@
   {
    "number": 2,
    "text": "مَلِكِ ٱلنَّاسِ",
-   "sceneId": "n2",
+   "sceneId": "n-refuge",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114002.mp3",
     "durationMs": null,
@@ -44,7 +44,7 @@
   {
    "number": 3,
    "text": "إِلَٰهِ ٱلنَّاسِ",
-   "sceneId": "n3",
+   "sceneId": "n-refuge",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114003.mp3",
     "durationMs": null,
@@ -54,7 +54,7 @@
   {
    "number": 4,
    "text": "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ",
-   "sceneId": "n4",
+   "sceneId": "n-whisper",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114004.mp3",
     "durationMs": null,
@@ -64,7 +64,7 @@
   {
    "number": 5,
    "text": "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ",
-   "sceneId": "n5",
+   "sceneId": "n-whisper",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114005.mp3",
     "durationMs": null,
@@ -74,7 +74,7 @@
   {
    "number": 6,
    "text": "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ",
-   "sceneId": "n6",
+   "sceneId": "n-whisper",
    "audio": {
     "url": "https://everyayah.com/data/Yasser_Ad-Dussary_128kbps/114006.mp3",
     "durationMs": null,

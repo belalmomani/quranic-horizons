@@ -47,6 +47,12 @@ class AudioPlayer(
         try { mp?.start() } catch (_: IllegalStateException) { }
     }
 
+    /** نسبة التقدّم داخل الملف (0..1)، أو 0 إن لم تتوفر المدة بعد. */
+    fun fraction(): Float = try {
+        val m = mp
+        if (m != null && m.duration > 0) (m.currentPosition.toFloat() / m.duration).coerceIn(0f, 1f) else 0f
+    } catch (_: IllegalStateException) { 0f }
+
     fun setVolume(v: Float) {
         volume = v.coerceIn(0f, 1f)
         try { mp?.setVolume(volume, volume) } catch (_: IllegalStateException) { }

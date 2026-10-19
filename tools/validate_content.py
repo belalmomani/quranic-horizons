@@ -17,6 +17,72 @@ def err(m):
     errors.append(m)
 
 
+# معاملات كل نوع عنصر؛ والبنيوية منها هي التي تُحسب تغيّرًا دلاليًا (ظهور/حركة/تشكّل).
+# الإضاءة (مثل g في القنديل) ليست بنيوية ولا تكفي لتبرير مشهد.
+KIND_PARAMS = {
+    'crowd': {'a', 'gather', 'rows'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
+    'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a', 'g'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'},
+}
+STRUCTURAL = {
+    'crowd': {'a', 'gather', 'rows'}, 'dome': {'a', 'draw'}, 'starOrder': {'a', 'order'},
+    'beam': {'a', 'h'}, 'figure': {'a', 'chest'}, 'lantern': {'a'},
+    'wisps': {'a', 'r'}, 'smoke': {'a'},
+}
+
+
+def check_scene_semantics(n, scene, saadi_text, err):
+    sid = scene['id']
+    actors = {a['id']: a for a in scene.get('actors', [])}
+    state = {i: dict(a.get('init', {})) for i, a in actors.items()}
+    for i, a in actors.items():
+        if a['kind'] not in KIND_PARAMS:
+            err(f'{sid}: نوع عنصر غير معروف {a["kind"]}')
+        for k in state[i]:
+            if k not in KIND_PARAMS.get(a['kind'], set()):
+                err(f'{sid}: معامل غير معروف {k} في {i}')
+    beats = {b['ayah']: b for b in scene.get('beats', [])}
+    if set(beats) != set(scene['ayahs']):
+        err(f'{sid}: نبضات المشهد لا تغطي آياته بالضبط')
+    prev_changes = None
+    for ay in sorted(scene['ayahs']):
+        b = beats.get(ay)
+        if not b:
+            continue
+        for f in ('meaning', 'visualEvent', 'rationale', 'tafsirQuote'):
+            if not str(b.get(f, '')).strip():
+                err(f'{sid} آية {ay}: الحقل {f} فارغ — لا يُعتمد مشهد بلا ربط بالمعنى')
+        if b.get('tafsirQuote') and b['tafsirQuote'] not in saadi_text:
+            err(f'{sid} آية {ay}: الاقتباس ليس حرفيًا من التفسير')
+        before = {i: dict(v) for i, v in state.items()}
+        last_t = -1
+        changes = set()
+        for key in b.get('keys', []):
+            if not (0 <= key['t'] <= 0.95) or key['t'] < last_t:
+                err(f'{sid} آية {ay}: أزمنة المفاتيح يجب أن تتصاعد ضمن 0..0.95')
+            last_t = key['t']
+            for aid, st in key['set'].items():
+                if aid not in actors:
+                    err(f'{sid} آية {ay}: عنصر غير معرّف {aid}')
+                    continue
+                for k, v in st.items():
+                    if k not in KIND_PARAMS[actors[aid]['kind']]:
+                        err(f'{sid} آية {ay}: معامل {k} غير صالح لـ {aid}')
+                    state[aid][k] = v
+            # التغيّر يُقاس عند كل مفتاح (قد يقترب العنصر ثم يتراجع ضمن الآية نفسها)
+            for i, a in actors.items():
+                for k in STRUCTURAL[a['kind']]:
+                    if abs(state[i].get(k, 0) - before[i].get(k, 0)) >= 0.5:
+                        changes.add((i, k))
+        if not changes:
+            err(f'{sid} آية {ay}: لا تغيّر دلاليًا (ظهور/حركة/تشكّل). تغيير الضوء أو الحركة الشكلية لا يكفي')
+        elif prev_changes is not None and changes == prev_changes and not b.get('continuity'):
+            err(f'{sid} آية {ay}: نفس حدث الآية السابقة دون تبرير استمرار (continuity)')
+        prev_changes = changes
+        if b.get('symbolic') and not str(b.get('symbolicNote', '')).strip():
+            err(f'{sid} آية {ay}: تمثيل رمزي بلا توضيح (symbolicNote)')
+
+
 surahs = load('surahs.json')
 by_num = {s['number']: s for s in surahs['surahs']}
 if len(by_num) != 114 or sum(s['ayahCount'] for s in by_num.values()) != 6236:
@@ -47,6 +113,8 @@ for m in catalog['modules']:
             err(f'سورة {n} آية {a["number"]}: مشهد غير موجود')
         if not a['text'].strip():
             err(f'سورة {n} آية {a["number"]}: نص فارغ')
+    for sc in scenes.values():
+        check_scene_semantics(n, sc, tafsir[0]['text'] if tafsir else '', err)
     covered = {x for s in scenes.values() for x in s['ayahs']}
     if covered != set(nums):
         err(f'سورة {n}: المشاهد لا تغطي كل الآيات بالضبط')

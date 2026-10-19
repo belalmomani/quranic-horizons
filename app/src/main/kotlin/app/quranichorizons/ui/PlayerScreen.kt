@@ -2,11 +2,13 @@ package app.quranichorizons.ui
 
 import androidx.activity.ComponentActivity
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,8 +20,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Slider
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -46,11 +46,11 @@ import app.quranichorizons.BuildConfig
 import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
-import app.quranichorizons.data.SceneSpec
 import app.quranichorizons.data.SurahsFile
 import app.quranichorizons.player.AudioPlayer
 import app.quranichorizons.scene.SceneCanvas
-import kotlinx.coroutines.delay
+import app.quranichorizons.scene.SceneFrame
+import app.quranichorizons.scene.SceneTimeline
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -83,68 +83,76 @@ fun PlayerScreen(
     var pace by remember { mutableStateOf(prefs.paceSeconds) }
     var audioFailed by remember { mutableStateOf<String?>(null) }
     var replayKey by remember { mutableStateOf(0) }
+    var timeMs by remember { mutableLongStateOf(0L) }   // ساعة الحركة الدقيقة (وميض/تموّج)
+    var ayahMs by remember { mutableLongStateOf(0L) }   // الزمن المنقضي داخل الآية الحالية
 
     val audioMode = BuildConfig.AUDIO_ENABLED && audioFailed == null
     val active = playing && !showTafsir && !showSettings && !finished
     val ayah = ayahs[index]
     val scene = mod.scenes.getValue(ayah.sceneId)
+    val beat = scene.beats.firstOrNull { it.ayah == ayah.number }
 
-    // حفظ الموضع
-    LaunchedEffect(index) { prefs.lastSurah = number; prefs.lastAyah = index + 1 }
-
-    // الانتقال بين المشاهد: مزج تدريجي (أو قطع فوري عند تقليل الحركة)
-    var fromSpec by remember { mutableStateOf<SceneSpec?>(null) }
-    var curSpec by remember { mutableStateOf(scene.spec) }
-    var curId by remember { mutableStateOf(scene.id) }
-    val fade = remember { Animatable(1f) }
-    LaunchedEffect(scene.id, replayKey) {
-        if (scene.id != curId) {
-            fromSpec = curSpec
-            curSpec = scene.spec
-            curId = scene.id
-            if (reduce) fade.snapTo(1f) else {
-                fade.snapTo(0f)
-                fade.animateTo(1f, androidx.compose.animation.core.tween(scene.transition.ms))
-            }
-            fromSpec = null
-        }
+    fun goTo(i: Int) {
+        ayahMs = 0L
+        finished = false
+        index = i.coerceIn(0, ayahs.size - 1)
     }
 
-    // ساعة الحركة
-    var timeMs by remember { mutableLongStateOf(0L) }
-    LaunchedEffect(active, reduce) {
-        if (active && !reduce) {
+    val advanceState = rememberUpdatedState<() -> Unit> {
+        ayahMs = 0L
+        if (index < ayahs.size - 1) { index += 1 } else { finished = true }
+    }
+
+    LaunchedEffect(index) { prefs.lastSurah = number; prefs.lastAyah = index + 1 }
+
+    // التلاوة (معطّلة في هذا الإصدار؛ تُفعَّل بعد التحقق من ترخيص القارئ)
+    val player = remember {
+        AudioPlayer(onCompleted = { advanceState.value() }, onFailed = { audioFailed = it })
+    }
+    DisposableEffect(Unit) { onDispose { player.release() } }
+    LaunchedEffect(index, audioMode, replayKey) { if (audioMode) player.play(ayah.audio.url) }
+    LaunchedEffect(active, audioMode) { if (audioMode) { if (active) player.resume() else player.pause() } }
+
+    // ساعة واحدة تحرّك المشهد وتقدّم الآيات (في وضع القراءة) فلا ينفصل المشهد عن الآية
+    LaunchedEffect(active, audioMode, pace) {
+        if (active) {
             var last = withFrameMillis { it }
             while (true) {
                 val now = withFrameMillis { it }
-                timeMs += now - last
+                val dt = now - last
                 last = now
+                timeMs += dt
+                if (!audioMode) {
+                    ayahMs += dt
+                    if (ayahMs >= pace * 1000L) advanceState.value()
+                }
             }
         }
     }
 
-    // وضع القراءة: مؤقت لكل آية حين لا تتوفر تلاوة
-    LaunchedEffect(index, active, audioMode, pace, replayKey) {
-        if (!audioMode && active) {
-            delay(pace * 1000L)
-            if (index < ayahs.size - 1) index += 1 else finished = true
-        }
+    // تقدّم الحدث داخل الآية: يتبع التلاوة إن وُجدت، وإلا مؤقّت القراءة. تقليل الحركة = الحالة النهائية للحدث.
+    val progress: Float = when {
+        reduce -> 1f
+        audioMode -> player.fraction()
+        else -> (ayahMs / (pace * 1000f)).coerceIn(0f, 1f)
     }
+    val frame = SceneFrame(scene, SceneTimeline.resolve(scene, ayah.number, progress))
 
-    // التلاوة (معطّلة في هذا الإصدار؛ تُفعَّل بعد التحقق من ترخيص القارئ)
-    val advanceState = rememberUpdatedState({ if (index < ayahs.size - 1) index += 1 else finished = true })
-    val player = remember {
-        AudioPlayer(
-            onCompleted = { advanceState.value() },
-            onFailed = { audioFailed = it },
-        )
-    }
-    DisposableEffect(Unit) { onDispose { player.release() } }
-    LaunchedEffect(index, audioMode, replayKey) {
-        if (audioMode) player.play(ayah.audio.url)
-    }
-    LaunchedEffect(active, audioMode) {
-        if (audioMode) { if (active) player.resume() else player.pause() }
+    // الانتقال بين مشهدين مختلفين الموضوع: مزج من آخر لقطة للمشهد السابق
+    var fromFrame by remember { mutableStateOf<SceneFrame?>(null) }
+    var curSceneId by remember { mutableStateOf(scene.id) }
+    val fade = remember { Animatable(1f) }
+    LaunchedEffect(scene.id) {
+        if (scene.id != curSceneId) {
+            val prev = mod.scenes.getValue(curSceneId)
+            fromFrame = SceneFrame(prev, SceneTimeline.finalState(prev))
+            curSceneId = scene.id
+            if (reduce) fade.snapTo(1f) else {
+                fade.snapTo(0f)
+                fade.animateTo(1f, tween(scene.transition.ms))
+            }
+            fromFrame = null
+        }
     }
 
     // إيقاف عند خروج التطبيق للخلفية
@@ -158,14 +166,15 @@ fun PlayerScreen(
 
     Box(Modifier.fillMaxSize().background(QhColors.NavyDeep)) {
         SceneCanvas(
-            from = fromSpec, to = curSpec, transition = fade.value,
-            timeMs = timeMs, sceneProgress = (index + 1f) / ayahs.size,
-            animate = active && !reduce, modifier = Modifier.fillMaxSize(),
+            from = fromFrame, to = frame, transition = fade.value,
+            timeMs = timeMs, animate = active && !reduce, modifier = Modifier.fillMaxSize(),
         )
-        // غلالة تحمي وضوح النص دون حجب المشهد
+        // غلالة خفيفة أسفل الشاشة فقط لحماية وضوح النص؛ منطقة الحدث في الأعلى تبقى صافية
         Box(
             Modifier.fillMaxSize().background(
-                Brush.verticalGradient(listOf(Color(0x66060D25), Color(0x22060D25), Color(0xCC060D25))),
+                Brush.verticalGradient(
+                    0.0f to Color(0x44060D25), 0.45f to Color.Transparent, 0.62f to Color(0xAA060D25), 1.0f to Color(0xDD060D25),
+                ),
             ),
         )
         Column(Modifier.fillMaxSize().padding(16.dp)) {
@@ -179,15 +188,24 @@ fun PlayerScreen(
             }
             if (mod.module.review.status != "approved") {
                 Text(
-                    "معاينة قيد المراجعة — المشاهد تجريبية غير معتمدة",
+                    "معاينة قيد المراجعة — المشاهد غير معتمدة بعد",
                     color = QhColors.GoldSoft, fontSize = 12.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
                 )
             }
-            Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+            // منطقة المشهد (الحدث البصري) في الأعلى
+            Spacer(Modifier.weight(1.1f))
+            // وصف قصير لما يحدث الآن، يربط المشهد بمعنى الآية
+            if (beat != null) {
+                Text(
+                    beat.visualEvent, color = QhColors.GoldSoft, fontSize = 12.sp,
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp), textAlign = TextAlign.Center,
+                )
+            }
+            Box(Modifier.weight(0.9f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                 Column(
                     Modifier.verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     if (index == 0 && mod.module.basmala != null) {
                         Text(
@@ -199,14 +217,11 @@ fun PlayerScreen(
                         ayah.text, style = AyahStyle, fontSize = (30 * scale).sp, lineHeight = (54 * scale).sp,
                         textAlign = TextAlign.Center,
                     )
-                    if (scene.title.isNotBlank()) {
-                        Text(scene.title, color = QhColors.Muted, fontSize = 13.sp)
-                    }
                 }
             }
             Slider(
                 value = index.toFloat(),
-                onValueChange = { index = it.toInt().coerceIn(0, ayahs.size - 1); finished = false },
+                onValueChange = { goTo(it.toInt()) },
                 valueRange = 0f..(ayahs.size - 1).toFloat().coerceAtLeast(1f),
                 steps = (ayahs.size - 2).coerceAtLeast(0),
             )
@@ -214,17 +229,17 @@ fun PlayerScreen(
                 Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                TextButton(onClick = { if (index > 0) { index -= 1; finished = false } }) { Text("السابقة", color = QhColors.Ink) }
+                TextButton(onClick = { if (index > 0) goTo(index - 1) }) { Text("السابقة", color = QhColors.Ink) }
                 Button(
-                    onClick = { if (finished) { index = 0; finished = false; replayKey++; playing = true } else playing = !playing },
+                    onClick = { if (finished) { goTo(0); replayKey++; playing = true } else playing = !playing },
                     colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
                 ) { Text(if (playing && !finished) "إيقاف مؤقت" else "تشغيل") }
-                TextButton(onClick = { if (index < ayahs.size - 1) index += 1 }) { Text("التالية", color = QhColors.Ink) }
+                TextButton(onClick = { if (index < ayahs.size - 1) goTo(index + 1) }) { Text("التالية", color = QhColors.Ink) }
             }
             TextButton(
                 onClick = { playing = false; showTafsir = true },
                 modifier = Modifier.fillMaxWidth(),
-            ) { Text("التفسير ومصدر المشهد", color = QhColors.GoldSoft) }
+            ) { Text("معنى الآية وسبب المشهد", color = QhColors.GoldSoft) }
         }
 
         if (finished) {
@@ -232,7 +247,7 @@ fun PlayerScreen(
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("انتهت سورة ${mod.info.nameAr}", color = QhColors.Gold, fontSize = 24.sp)
                     Button(
-                        onClick = { index = 0; finished = false; playing = true; replayKey++ },
+                        onClick = { goTo(0); playing = true; replayKey++ },
                         colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
                     ) { Text("إعادة الرحلة") }
                     TextButton(onClick = onToList) { Text("العودة إلى السور", color = QhColors.GoldSoft) }
@@ -246,15 +261,25 @@ fun PlayerScreen(
             var tab by remember { mutableStateOf(0) }
             val recs = mod.tafsir
             Column(Modifier.padding(16.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("سبب اختيار هذا المشهد", color = QhColors.Gold, fontSize = 16.sp)
-                if (scene.tafsirQuote.isNotBlank()) {
-                    Text(scene.tafsirQuote, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
-                    Text("المقطع أعلاه نقل حرفي من تفسير السعدي، والنسبة قيد المراجعة.", color = QhColors.Muted, fontSize = 12.sp)
+                if (beat != null) {
+                    Text("معنى الآية (خلاصة تحريرية)", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(beat.meaning, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    Text("ما يظهر في المشهد", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(beat.visualEvent, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    Text("سبب الملاءمة", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(beat.rationale, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    if (beat.symbolic) {
+                        Text("تمثيل رمزي: ${beat.symbolicNote}", color = QhColors.Muted, fontSize = 13.sp)
+                    }
+                    Text("المقطع المعتمد عليه (نقل حرفي من تفسير السعدي — النسبة قيد المراجعة)", color = QhColors.Gold, fontSize = 14.sp)
+                    Text(beat.tafsirQuote, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }
                 if (recs.isNotEmpty()) {
-                    TabRow(selectedTabIndex = tab.coerceIn(0, recs.size - 1), containerColor = QhColors.NavyCard) {
+                    androidx.compose.material3.TabRow(
+                        selectedTabIndex = tab.coerceIn(0, recs.size - 1), containerColor = QhColors.NavyCard,
+                    ) {
                         recs.forEachIndexed { i, r ->
-                            Tab(selected = tab == i, onClick = { tab = i }, text = { Text(r.bookAr, fontSize = 13.sp) })
+                            androidx.compose.material3.Tab(selected = tab == i, onClick = { tab = i }, text = { Text(r.bookAr, fontSize = 13.sp) })
                         }
                     }
                     val r = recs[tab.coerceIn(0, recs.size - 1)]
