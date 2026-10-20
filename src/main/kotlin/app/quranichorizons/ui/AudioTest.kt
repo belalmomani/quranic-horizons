@@ -63,6 +63,9 @@ fun AudioTestSection() {
         manifest?.let {
             Text(tr("audioCredit", it.reciterName) + if (playing) "  ${idx + 1}/${it.files.size}" else "", color = QhColors.Muted, fontSize = 12.sp)
         }
-        if (failed) Text(tr("audioOffline"), color = QhColors.GoldSoft, fontSize = 12.sp)
+        if (failed) {
+            Text(tr("audioOffline"), color = QhColors.GoldSoft, fontSize = 12.sp)
+            if (OnlineAudio.lastError.isNotBlank()) Text(OnlineAudio.lastError, color = QhColors.Muted, fontSize = 11.sp)
+        }
     }
 }
