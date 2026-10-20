@@ -25,7 +25,8 @@ function http($url, $headers, $post = null, $basic = null) {
     curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 15, CURLOPT_HTTPHEADER => $headers]);
     if ($post !== null) { curl_setopt($c, CURLOPT_POST, true); curl_setopt($c, CURLOPT_POSTFIELDS, $post); }
     if ($basic) curl_setopt($c, CURLOPT_USERPWD, $basic);
-    $body = curl_exec($c); $code = curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
+    $body = curl_exec($c); $code = curl_getinfo($c, CURLINFO_HTTP_CODE); $err = curl_error($c); curl_close($c);
+    $GLOBALS['curl_err'] = $err;
     return [$code, $body];
 }
 
@@ -37,7 +38,11 @@ $tok = is_file($tf) ? json_decode(file_get_contents($tf), true) : null;
 if (!$tok || $tok['exp'] < time() + 60) {
     [$code, $body] = http($oauth, ['Content-Type: application/x-www-form-urlencoded'], 'grant_type=client_credentials&scope=content', $cfg['client_id'] . ':' . $cfg['client_secret']);
     $j = json_decode($body, true);
-    if ($code !== 200 || empty($j['access_token'])) { http_response_code(502); exit('{"error":"auth_failed"}'); }
+    if ($code !== 200 || empty($j['access_token'])) {
+        http_response_code(502);
+        // تشخيص بلا أسرار: رمز HTTP وخطأ cURL وخطأ OAuth (مثل invalid_client)
+        exit(json_encode(['error' => 'auth_failed', 'env' => $cfg['env'], 'http' => $code, 'curl' => $GLOBALS['curl_err'] ?? '', 'oauth' => is_array($j) ? ($j['error'] ?? null) : null]));
+    }
     $tok = ['t' => $j['access_token'], 'exp' => time() + (int)($j['expires_in'] ?? 3600)];
     file_put_contents($tf, json_encode($tok)); @chmod($tf, 0600);
 }
@@ -48,9 +53,24 @@ $H = ["x-auth-token: {$tok['t']}", "x-client-id: {$cfg['client_id']}"];
 $name = '';
 foreach ((json_decode($b1, true)['recitations'] ?? []) as $r) if ((int)$r['id'] === $rec) $name = trim(($r['reciter_name'] ?? '') . (empty($r['style']) ? '' : ' — ' . $r['style']));
 // ملفات الآيات
-[$c2, $b2] = http("$apiHost/content/api/v4/recitations/$rec/by_chapter/$surah?per_page=300", $H);
-$files = json_decode($b2, true)['audio_files'] ?? [];
-if ($c1 !== 200 || $c2 !== 200 || !$name || !$files) { http_response_code(502); exit('{"error":"upstream"}'); }
+// الحدّ الأقصى للصفحة 50 آية حسب الوثائق، فنقرأ الصفحات بالتتابع
+$files = []; $c2 = 200; $b2 = '';
+for ($page = 1; $page <= 10; $page++) {
+    [$c2, $b2] = http("$apiHost/content/api/v4/recitations/$rec/by_chapter/$surah?per_page=50&page=$page", $H);
+    if ($c2 !== 200) break;
+    $j2 = json_decode($b2, true);
+    foreach (($j2['audio_files'] ?? []) as $f) $files[] = $f;
+    if (empty($j2['pagination']['next_page'])) break;
+}
+if ($c1 !== 200 || $c2 !== 200 || !$name || !$files) {
+    http_response_code(502);
+    // تشخيص بلا أسرار: رمز كل طلب ومقتطف من الرد
+    $ids = [];
+    foreach ((json_decode($b1, true)['recitations'] ?? []) as $r) $ids[] = ($r['id'] ?? '?') . ':' . ($r['reciter_name'] ?? '');
+    exit(json_encode(['error' => 'upstream', 'ver' => 3, 'surah_requested' => $surah, 'env' => $cfg['env'], 'recitations_http' => $c1, 'by_chapter_http' => $c2, 'name_found' => $name !== '',
+        'files' => count($files), 'recitation_ids' => array_slice($ids, 0, 60),
+        'by_chapter_snippet' => mb_substr((string)$b2, 0, 200)], JSON_UNESCAPED_UNICODE));
+}
 
 $out = ['source' => 'Quran.Foundation', 'reciterName' => $name, 'recitationId' => $rec, 'files' => []];
 foreach ($files as $f) {

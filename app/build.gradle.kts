@@ -46,6 +46,10 @@ android {
 
     buildTypes {
         debug {
+            // نسخة الاختبار فقط: بثّ التلاوة من الخدمة الوسيطة (بيئة prelive، قارئ 7 للتجربة التقنية). الإصدار الرسمي يبقى معطّلًا.
+            buildConfigField("boolean", "AUDIO_ENABLED", "true")
+            buildConfigField("String", "AUDIO_API_BASE_URL", "\"https://dreams.xo.je/audio-proxy\"")
+            buildConfigField("int", "RECITATION_ID", "7")
             if (!qhKeystore.isNullOrBlank()) signingConfig = signingConfigs.getByName("qh")
         }
         release {
