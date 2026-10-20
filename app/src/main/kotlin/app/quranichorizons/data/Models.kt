@@ -180,3 +180,14 @@ data class SurahModule(
 
 /** حالة سورة في القائمة. */
 enum class SurahAvailability { PREVIEW, IN_PREPARATION, READY }
+
+/** ترجمة معنى الآية (خلاصة المعنى لا نص القرآن). اختيارية لكل لغة، وغير معتمدة حتى تُراجَع. */
+@Serializable
+data class TranslationFile(
+    val lang: String,
+    val status: String = "unreviewed",
+    val source: String = "",
+    val translator: String = "",
+    /** رقم الآية → ترجمة حقل meaning في اللقطة؛ لا تُترجم الآيات نفسها. */
+    val meaning: Map<String, String> = emptyMap(),
+)

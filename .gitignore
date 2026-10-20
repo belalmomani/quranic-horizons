@@ -10,3 +10,6 @@ google-services.json
 *.local.*
 .idea/
 *.iml
+
+server/audio-proxy/config.php
+server/audio-proxy/cache/

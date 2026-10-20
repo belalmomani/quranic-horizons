@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.quranichorizons.i18n.tr
 import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
@@ -73,7 +74,7 @@ fun HomeScreen(
                     Text("الآفاق القرآنية", color = QhColors.Gold, fontSize = 30.sp, fontWeight = FontWeight.Bold)
                     Text("Quranic Horizons", color = QhColors.Muted, fontSize = 13.sp)
                     Spacer(Modifier.height(6.dp))
-                    Text("رحلة بصرية في رحاب القرآن الكريم", color = QhColors.Ink, fontSize = 15.sp)
+                    Text(tr("tagline"), color = QhColors.Ink, fontSize = 15.sp)
                 }
             }
             if (canContinue) {
@@ -84,8 +85,8 @@ fun HomeScreen(
                         border = BorderStroke(1.dp, QhColors.Gold.copy(alpha = 0.5f)),
                     ) {
                         Column(Modifier.padding(16.dp)) {
-                            Text("متابعة", color = QhColors.Gold, fontSize = 13.sp)
-                            Text("سورة ${lastInfo!!.nameAr} — الآية ${prefs.lastAyah}", color = QhColors.Ink, fontSize = 18.sp)
+                            Text(tr("continue"), color = QhColors.Gold, fontSize = 13.sp)
+                            Text("${tr("surahNamed", lastInfo!!.nameAr)} — ${tr("ayahNo", prefs.lastAyah)}", color = QhColors.Ink, fontSize = 18.sp)
                         }
                     }
                 }
@@ -93,7 +94,7 @@ fun HomeScreen(
             if (notice.isNotEmpty()) {
                 item { Text(notice, color = QhColors.GoldSoft, fontSize = 14.sp) }
             }
-            item { Text("السور", color = QhColors.Muted, fontSize = 13.sp, modifier = Modifier.padding(top = 6.dp)) }
+            item { Text(tr("surahs"), color = QhColors.Muted, fontSize = 13.sp, modifier = Modifier.padding(top = 6.dp)) }
             items(surahs.surahs, key = { it.number }) { s ->
                 val av = repo.availability(catalog, s.number)
                 Card(
@@ -113,7 +114,7 @@ fun HomeScreen(
                         }
                         Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
                             Text(s.nameAr, color = QhColors.Ink, fontSize = 18.sp)
-                            Text("${s.ayahCount} آية", color = QhColors.Muted, fontSize = 12.sp)
+                            Text(tr("ayahsCount", s.ayahCount), color = QhColors.Muted, fontSize = 12.sp)
                         }
                         StatusChip(av)
                     }
@@ -121,7 +122,7 @@ fun HomeScreen(
             }
             item {
                 TextButton(onClick = onSettings, modifier = Modifier.fillMaxWidth()) {
-                    Text("الإعدادات وحالة المحتوى", color = QhColors.GoldSoft)
+                    Text(tr("settings"), color = QhColors.GoldSoft)
                 }
             }
         }

@@ -27,4 +27,9 @@ class Prefs(context: Context) {
     var paceSeconds: Int
         get() = sp.getInt("pace", 9)
         set(v) = sp.edit().putInt("pace", v).apply()
+
+    /** رمز اللغة المختار يدويًا؛ فارغ = حسب لغة الجهاز */
+    var langOverride: String
+        get() = sp.getString("lang", "") ?: ""
+        set(v) = sp.edit().putString("lang", v).apply()
 }

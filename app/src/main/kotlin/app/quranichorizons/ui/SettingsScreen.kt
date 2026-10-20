@@ -23,6 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.quranichorizons.BuildConfig
+import app.quranichorizons.i18n.Lang
+import app.quranichorizons.i18n.LocalLang
+import app.quranichorizons.i18n.tr
 import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
@@ -37,12 +40,12 @@ fun PrefsControls(
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text("تقليل الحركة", color = QhColors.Ink, modifier = Modifier.weight(1f))
+            Text(tr("reduceMotion"), color = QhColors.Ink, modifier = Modifier.weight(1f))
             Switch(checked = reduce, onCheckedChange = onReduce)
         }
-        Text("حجم نص الآية: ${(scale * 100).toInt()}٪", color = QhColors.Ink, fontSize = 14.sp)
+        Text(tr("textSize", (scale * 100).toInt()), color = QhColors.Ink, fontSize = 14.sp)
         Slider(value = scale, onValueChange = onScale, valueRange = 0.8f..1.5f)
-        Text("مدة بقاء كل آية في وضع القراءة: $pace ث", color = QhColors.Ink, fontSize = 14.sp)
+        Text(tr("pace", pace), color = QhColors.Ink, fontSize = 14.sp)
         Slider(value = pace.toFloat(), onValueChange = { onPace(it.toInt()) }, valueRange = 5f..25f)
     }
 }
@@ -50,7 +53,10 @@ fun PrefsControls(
 private fun mb(bytes: Long): String = "%.2f ميغابايت".format(bytes / 1048576.0)
 
 @Composable
-fun SettingsScreen(repo: ContentRepository, prefs: Prefs, surahs: SurahsFile, catalog: Catalog, onBack: () -> Unit) {
+fun SettingsScreen(
+    repo: ContentRepository, prefs: Prefs, surahs: SurahsFile, catalog: Catalog, onBack: () -> Unit,
+    langOverride: String, onLang: (String) -> Unit,
+) {
     var reduce by remember { mutableStateOf(prefs.reduceMotion) }
     var scale by remember { mutableStateOf(prefs.textScale) }
     var pace by remember { mutableStateOf(prefs.paceSeconds) }
@@ -60,8 +66,18 @@ fun SettingsScreen(repo: ContentRepository, prefs: Prefs, surahs: SurahsFile, ca
         Modifier.fillMaxSize().background(QhColors.NavyDeep).verticalScroll(rememberScrollState()).padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        TextButton(onClick = onBack) { Text("‹ رجوع", color = QhColors.GoldSoft) }
-        Text("الإعدادات", color = QhColors.Gold, fontSize = 26.sp)
+        TextButton(onClick = onBack) { Text("‹ " + tr("back"), color = QhColors.GoldSoft) }
+        Text(tr("settingsTitle"), color = QhColors.Gold, fontSize = 26.sp)
+        Text(tr("language"), color = QhColors.Gold, fontSize = 18.sp)
+        Text(tr("langNote"), color = QhColors.Muted, fontSize = 12.sp)
+        TextButton(onClick = { onLang("") }) {
+            Text((if (langOverride.isEmpty()) "● " else "○ ") + tr("langAuto") + " — " + Lang.fromDevice().native, color = QhColors.Ink)
+        }
+        Lang.values().forEach { l ->
+            TextButton(onClick = { onLang(l.code) }) {
+                Text((if (langOverride == l.code) "● " else "○ ") + l.flag + "  " + l.native, color = QhColors.Ink)
+            }
+        }
         PrefsControls(
             reduce, { reduce = it; prefs.reduceMotion = it },
             scale, { scale = it; prefs.textScale = it },
@@ -84,7 +100,10 @@ fun SettingsScreen(repo: ContentRepository, prefs: Prefs, surahs: SurahsFile, ca
             val name = surahs.surahs.firstOrNull { it.number == m.surah }?.nameAr ?: "${m.surah}"
             Text("سورة $name — الإصدار ${m.version} — الحالة: ${m.status} — الحجم ${mb(m.totalBytes)}", color = QhColors.Ink, fontSize = 13.sp)
         }
-        Text("التلاوة: ${if (BuildConfig.AUDIO_ENABLED) "مفعّلة" else "غير مفعّلة (بانتظار التحقق من ترخيص القارئ)"}", color = QhColors.Muted, fontSize = 13.sp)
+        Text(
+            if (app.quranichorizons.data.OnlineAudio.configured) tr("audioStatusOn") else tr("audioStatusOff"),
+            color = QhColors.Muted, fontSize = 13.sp,
+        )
         Text("الإعلانات: غير مفعّلة في هذا الإصدار", color = QhColors.Muted, fontSize = 13.sp)
         Text("الإصدار ${BuildConfig.VERSION_NAME}", color = QhColors.Muted, fontSize = 12.sp)
     }

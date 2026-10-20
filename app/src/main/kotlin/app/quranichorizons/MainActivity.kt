@@ -14,6 +14,11 @@ import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
 import app.quranichorizons.data.SurahsFile
+import app.quranichorizons.i18n.Lang
+import app.quranichorizons.i18n.LocalLang
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import app.quranichorizons.ui.HomeScreen
 import app.quranichorizons.ui.PlayerScreen
 import app.quranichorizons.ui.QhTheme
@@ -38,6 +43,8 @@ private const val SETTINGS = 3
 private fun App(repo: ContentRepository, prefs: Prefs) {
     val surahs: SurahsFile = remember { repo.loadSurahs() }
     val catalog: Catalog = remember { repo.loadCatalog() }
+    var langOverride by remember { mutableStateOf(prefs.langOverride) }
+    val lang = Lang.resolve(langOverride)
     var screen by rememberSaveable { mutableStateOf(HOME) }
     var selected by rememberSaveable { mutableStateOf(0) }
     var startAyah by rememberSaveable { mutableStateOf(1) }
@@ -46,6 +53,10 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
         screen = if (screen == PLAYER) SURAH else HOME
     }
 
+    CompositionLocalProvider(
+        LocalLang provides lang,
+        LocalLayoutDirection provides (if (lang == Lang.AR) LayoutDirection.Rtl else LayoutDirection.Ltr),
+    ) {
     when (screen) {
         HOME -> HomeScreen(
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog,
@@ -63,6 +74,10 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             onExit = { screen = SURAH },
             onToList = { screen = HOME },
         )
-        SETTINGS -> SettingsScreen(repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME })
+        SETTINGS -> SettingsScreen(
+            repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME },
+            langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },
+        )
+    }
     }
 }

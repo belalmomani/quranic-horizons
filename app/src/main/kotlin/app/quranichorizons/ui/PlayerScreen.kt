@@ -43,6 +43,11 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import app.quranichorizons.BuildConfig
+import app.quranichorizons.data.OnlineAudio
+import app.quranichorizons.data.StreamManifest
+import app.quranichorizons.i18n.Lang
+import app.quranichorizons.i18n.LocalLang
+import app.quranichorizons.i18n.tr
 import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
@@ -68,7 +73,7 @@ fun PlayerScreen(
     if (mod == null) {
         Column(Modifier.fillMaxSize().background(QhColors.NavyDeep).padding(24.dp)) {
             Text(error ?: "تعذر التحميل", color = QhColors.Gold, fontSize = 18.sp)
-            TextButton(onClick = onExit) { Text("رجوع", color = QhColors.GoldSoft) }
+            TextButton(onClick = onExit) { Text(tr("back"), color = QhColors.GoldSoft) }
         }
         return
     }
@@ -87,7 +92,11 @@ fun PlayerScreen(
     var timeMs by remember { mutableLongStateOf(0L) }   // ساعة الحركة الدقيقة (وميض/تموّج)
     var ayahMs by remember { mutableLongStateOf(0L) }   // الزمن المنقضي داخل الآية الحالية
 
-    val audioMode = BuildConfig.AUDIO_ENABLED && audioFailed == null
+    // التلاوة تُبثّ أونلاين من Quran.Foundation عبر الخدمة الوسيطة؛ وإن تعذّرت يستمر وضع القراءة
+    var manifest by remember(number) { mutableStateOf<StreamManifest?>(null) }
+    LaunchedEffect(number) { if (OnlineAudio.configured) { manifest = OnlineAudio.fetch(number); if (manifest == null) audioFailed = "manifest" } }
+    val streamUrl = manifest?.files?.firstOrNull { it.verseKey == "$number:${ayahs[index].number}" }?.url
+    val audioMode = OnlineAudio.configured && manifest != null && streamUrl != null && audioFailed == null
     val active = playing && !showTafsir && !showSettings && !finished
     val ayah = ayahs[index]
     val scene = mod.scenes.getValue(ayah.sceneId)
@@ -98,6 +107,12 @@ fun PlayerScreen(
         finished = false
         index = i.coerceIn(0, ayahs.size - 1)
     }
+
+    // مدة الآية: المدة المقيسة من ملف التلاوة إن وُجدت (تتبعها الصور)، وإلا وتيرة القراءة
+    val ayahLenMs: Long = ayah.audio.durationMs?.takeIf { it > 0 } ?: (pace * 1000L)
+
+    val lang = LocalLang.current
+    val translation = remember(mod, lang) { repo.loadTranslation(mod, lang.code) }
 
     val advanceState = rememberUpdatedState<() -> Unit> {
         ayahMs = 0L
@@ -111,11 +126,11 @@ fun PlayerScreen(
         AudioPlayer(onCompleted = { advanceState.value() }, onFailed = { audioFailed = it })
     }
     DisposableEffect(Unit) { onDispose { player.release() } }
-    LaunchedEffect(index, audioMode, replayKey) { if (audioMode) player.play(ayah.audio.url) }
+    LaunchedEffect(index, audioMode, replayKey) { if (audioMode && streamUrl != null) player.play(streamUrl) }
     LaunchedEffect(active, audioMode) { if (audioMode) { if (active) player.resume() else player.pause() } }
 
     // ساعة واحدة تحرّك المشهد وتقدّم الآيات (في وضع القراءة) فلا ينفصل المشهد عن الآية
-    LaunchedEffect(active, audioMode, pace) {
+    LaunchedEffect(active, audioMode, ayahLenMs) {
         if (active) {
             var last = withFrameMillis { it }
             while (true) {
@@ -125,7 +140,7 @@ fun PlayerScreen(
                 timeMs += dt
                 if (!audioMode) {
                     ayahMs += dt
-                    if (ayahMs >= pace * 1000L) advanceState.value()
+                    if (ayahMs >= ayahLenMs) advanceState.value()
                 }
             }
         }
@@ -135,7 +150,7 @@ fun PlayerScreen(
     val progress: Float = when {
         reduce -> 1f
         audioMode -> player.fraction()
-        else -> (ayahMs / (pace * 1000f)).coerceIn(0f, 1f)
+        else -> (ayahMs / ayahLenMs.toFloat()).coerceIn(0f, 1f)
     }
     val frame = SceneFrame(scene, SceneTimeline.resolve(scene, ayah.number, progress))
 
@@ -182,7 +197,7 @@ fun PlayerScreen(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 TextButton(onClick = onExit) { Text("‹", color = QhColors.GoldSoft, fontSize = 22.sp) }
                 Text(
-                    "سورة ${mod.info.nameAr} — ${index + 1}/${ayahs.size}",
+                    "${tr("surahNamed", mod.info.nameAr)} — ${index + 1}/${ayahs.size}",
                     color = QhColors.Ink, fontSize = 15.sp, modifier = Modifier.weight(1f), textAlign = TextAlign.Center,
                 )
                 TextButton(onClick = { playing = false; showSettings = true }) { Text("⚙", color = QhColors.GoldSoft, fontSize = 20.sp) }
@@ -220,6 +235,16 @@ fun PlayerScreen(
                     )
                 }
             }
+            manifest?.let {
+                Text(
+                    if (audioMode) tr("audioCredit", it.reciterName) else tr("audioOffline"),
+                    color = QhColors.Muted, fontSize = 11.sp,
+                    modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
+                )
+            }
+            if (OnlineAudio.configured && manifest == null && audioFailed != null) {
+                Text(tr("audioOffline"), color = QhColors.Muted, fontSize = 11.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            }
             Slider(
                 value = index.toFloat(),
                 onValueChange = { goTo(it.toInt()) },
@@ -230,28 +255,28 @@ fun PlayerScreen(
                 Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                TextButton(onClick = { if (index > 0) goTo(index - 1) }) { Text("السابقة", color = QhColors.Ink) }
+                TextButton(onClick = { if (index > 0) goTo(index - 1) }) { Text(tr("prev"), color = QhColors.Ink) }
                 Button(
                     onClick = { if (finished) { goTo(0); replayKey++; playing = true } else playing = !playing },
                     colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
-                ) { Text(if (playing && !finished) "إيقاف مؤقت" else "تشغيل") }
-                TextButton(onClick = { if (index < ayahs.size - 1) goTo(index + 1) }) { Text("التالية", color = QhColors.Ink) }
+                ) { Text(if (playing && !finished) tr("pause") else tr("play")) }
+                TextButton(onClick = { if (index < ayahs.size - 1) goTo(index + 1) }) { Text(tr("next"), color = QhColors.Ink) }
             }
             TextButton(
                 onClick = { playing = false; showTafsir = true },
                 modifier = Modifier.fillMaxWidth(),
-            ) { Text("معنى الآية وسبب المشهد", color = QhColors.GoldSoft) }
+            ) { Text(tr("meaningBtn"), color = QhColors.GoldSoft) }
         }
 
         if (finished) {
             Box(Modifier.fillMaxSize().background(Color(0xDD060D25)), contentAlignment = Alignment.Center) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text("انتهت سورة ${mod.info.nameAr}", color = QhColors.Gold, fontSize = 24.sp)
+                    Text(tr("finished", mod.info.nameAr), color = QhColors.Gold, fontSize = 24.sp)
                     Button(
                         onClick = { goTo(0); playing = true; replayKey++ },
                         colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
-                    ) { Text("إعادة الرحلة") }
-                    TextButton(onClick = onToList) { Text("العودة إلى السور", color = QhColors.GoldSoft) }
+                    ) { Text(tr("replay")) }
+                    TextButton(onClick = onToList) { Text(tr("toSurahs"), color = QhColors.GoldSoft) }
                 }
             }
         }
@@ -265,6 +290,16 @@ fun PlayerScreen(
                 if (beat != null) {
                     Text("معنى الآية (خلاصة تحريرية)", color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.meaning, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    if (lang != Lang.AR) {
+                        Text(tr("transHeader"), color = QhColors.Gold, fontSize = 16.sp)
+                        val tm = translation?.meaning?.get(ayah.number.toString())
+                        if (tm != null) {
+                            Text(tm, color = QhColors.Ink, fontSize = 15.sp)
+                            Text(tr("transUnapproved") + (translation?.source?.let { " ($it)" } ?: ""), color = QhColors.Muted, fontSize = 12.sp)
+                        } else {
+                            Text(tr("transMissing"), color = QhColors.Muted, fontSize = 12.sp)
+                        }
+                    }
                     Text("ما يظهر في المشهد", color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.visualEvent, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     Text("سبب الملاءمة", color = QhColors.Gold, fontSize = 16.sp)
@@ -301,8 +336,8 @@ fun PlayerScreen(
         AlertDialog(
             onDismissRequest = { showSettings = false },
             containerColor = QhColors.NavyCard,
-            confirmButton = { TextButton(onClick = { showSettings = false }) { Text("تم", color = QhColors.Gold) } },
-            title = { Text("إعدادات العرض", color = QhColors.Gold) },
+            confirmButton = { TextButton(onClick = { showSettings = false }) { Text(tr("done"), color = QhColors.Gold) } },
+            title = { Text(tr("displaySettings"), color = QhColors.Gold) },
             text = {
                 PrefsControls(
                     reduce, { reduce = it; prefs.reduceMotion = it },

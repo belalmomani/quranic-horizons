@@ -53,6 +53,15 @@ class ContentRepository(private val context: Context) {
         return SurahModule(info, entry, module, tafsir, scenes)
     }
 
+    /** ترجمة معنى الآيات للغة معيّنة إن وُجدت في الكتالوج (ومطابقة لبصمتها)؛ وإلا null فيُعرض العربي. */
+    fun loadTranslation(module: SurahModule, lang: String): TranslationFile? {
+        val path = "${module.catalog.dir}/translations/$lang.json"
+        val fe = module.catalog.files.firstOrNull { it.path == path } ?: return null
+        val b = try { downloaded(module.catalog, path) ?: asset(path) } catch (e: Exception) { return null }
+        if (!ContentVerifier.fileMatches(fe, b)) return null
+        return try { json.decodeFromString(TranslationFile.serializer(), String(b, Charsets.UTF_8)) } catch (e: Exception) { null }
+    }
+
     /** صور عناصر المشهد (kind = image): تُحمَّل بعد التحقق من بصمة كل ملف؛ المفتاح هو معرّف العنصر. */
     fun loadImages(module: SurahModule): Map<String, ImageBitmap> {
         val out = HashMap<String, ImageBitmap>()

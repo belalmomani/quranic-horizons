@@ -19,6 +19,9 @@ android {
 
         // التلاوة معطّلة حتى يُوثَّق ترخيص التسجيلات (انظر docs/EXTERNAL_DEPENDENCIES.md)
         buildConfigField("boolean", "AUDIO_ENABLED", "false")
+        // خدمة وسيط التلاوة (Quran.Foundation) ورقم التلاوة (ayah-by-ayah) بعد التحقق من القارئ المعتمد؛ فارغان حتى الاعتماد
+        buildConfigField("String", "AUDIO_API_BASE_URL", "\"\"")
+        buildConfigField("int", "RECITATION_ID", "0")
         // الإعلانات (Start.io): المعرّف ليس سرًا، لكن الحزمة غير مدمجة والإعلانات معطّلة حتى تُراجَع قواعد العرض
         // (لا إعلان فوق نص القرآن ولا أثناء التلاوة ولا يعطّل التشغيل). انظر docs/EXTERNAL_DEPENDENCIES.md
         buildConfigField("String", "START_IO_APP_ID", "\"209749236\"")

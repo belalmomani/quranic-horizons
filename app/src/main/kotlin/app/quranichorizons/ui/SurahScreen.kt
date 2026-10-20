@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.quranichorizons.i18n.tr
 import app.quranichorizons.data.Catalog
 import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.SurahAvailability
@@ -54,16 +55,16 @@ fun SurahScreen(
         Modifier.fillMaxSize().background(QhColors.NavyDeep).verticalScroll(rememberScrollState()).padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        TextButton(onClick = onBack) { Text("‹ رجوع", color = QhColors.GoldSoft) }
+        TextButton(onClick = onBack) { Text("‹ " + tr("back"), color = QhColors.GoldSoft) }
         if (module == null) {
             Text("تعذر فتح السورة", color = QhColors.Gold, fontSize = 22.sp)
             Text(error ?: "", color = QhColors.Muted, fontSize = 15.sp)
             return@Column
         }
         val info = module.info
-        Text("سورة ${info.nameAr}", color = QhColors.Gold, fontSize = 32.sp)
+        Text(tr("surahNamed", info.nameAr), color = QhColors.Gold, fontSize = 32.sp)
         Text("${info.nameEn} — ${info.meaning}", color = QhColors.Muted, fontSize = 14.sp)
-        Text("${info.ayahCount} آيات • ${info.revelation}", color = QhColors.Ink, fontSize = 14.sp)
+        Text("${tr("ayahsCount", info.ayahCount)} • ${info.revelation}", color = QhColors.Ink, fontSize = 14.sp)
         Column(horizontalAlignment = Alignment.Start) { StatusChip(av) }
 
         if (av != SurahAvailability.READY) {
@@ -88,6 +89,6 @@ fun SurahScreen(
             onClick = onStart,
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
-        ) { Text(if (av == SurahAvailability.READY) "ابدأ الرحلة" else "ابدأ المعاينة", fontSize = 17.sp) }
+        ) { Text(if (av == SurahAvailability.READY) tr("start") else tr("startPreview"), fontSize = 17.sp) }
     }
 }
