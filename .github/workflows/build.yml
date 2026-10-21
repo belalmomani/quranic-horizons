@@ -25,6 +25,14 @@ jobs:
       QH_KEY_PASSWORD: ${{ secrets.QH_KEY_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
+      - name: فحص الملفات المكرّرة (مثل Models(1).kt)
+        run: |
+          dups=$(find . -path ./.git -prune -o -type f -name '*([0-9]*).*' -print)
+          if [ -n "$dups" ]; then
+            echo "::error::توجد نسخ مكرّرة بأسماء مثل (1) و(2) تكسر البناء. احذفها من المستودع:"
+            echo "$dups"
+            exit 1
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
