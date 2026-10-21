@@ -30,6 +30,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val repo = ContentRepository(applicationContext)
         val prefs = Prefs(applicationContext)
+        app.quranichorizons.data.OnlineAudio.baseOverride = prefs.audioBase
         setContent { QhTheme { App(repo, prefs) } }
     }
 }

@@ -22,4 +22,11 @@ class OnlineAudioTest {
         assertNull(OnlineAudio.parse(m("https://audio.qurancdn.com/a.mp3", source = "EveryAyah"), 114))
         assertNull(OnlineAudio.parse("{}", 114))
     }
+
+    @Test fun normalizeBaseAcceptsOnlyHttps() {
+        assertEquals("https://qh-audio.x.workers.dev", OnlineAudio.normalizeBase(" https://qh-audio.x.workers.dev/ "))
+        assertEquals("", OnlineAudio.normalizeBase("http://x.dev"))
+        assertEquals("", OnlineAudio.normalizeBase("javascript:alert(1)"))
+        assertEquals("", OnlineAudio.normalizeBase("https://a b"))
+    }
 }

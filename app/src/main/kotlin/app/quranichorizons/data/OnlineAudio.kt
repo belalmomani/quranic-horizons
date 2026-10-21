@@ -30,7 +30,17 @@ object OnlineAudio {
     /** أسماء النطاقات المسموح البثّ منها (لاحقة). تُراجَع مع Quran.Foundation قبل التفعيل. */
     val allowedHostSuffixes = listOf("qurancdn.com", "quran.com", "quran.foundation")
 
-    val configured: Boolean get() = BuildConfig.AUDIO_ENABLED && BuildConfig.AUDIO_API_BASE_URL.isNotBlank()
+    /** عنوان الخدمة الوسيطة المُدخَل يدويًا (نسخة الاختبار)؛ يتقدّم على قيمة البناء. https فقط. */
+    @Volatile var baseOverride: String = ""
+
+    fun normalizeBase(raw: String): String {
+        val t = raw.trim().trimEnd('/')
+        return if (t.startsWith("https://") && !t.contains(" ")) t else ""
+    }
+
+    val baseUrl: String get() = baseOverride.ifBlank { BuildConfig.AUDIO_API_BASE_URL }
+
+    val configured: Boolean get() = BuildConfig.AUDIO_ENABLED && baseUrl.isNotBlank()
 
     /** يتحقق من المانيفست: https فقط، نطاق مسموح، ومفاتيح آيات سليمة. يرجع null إن كان أي شيء مشبوهًا. */
     fun parse(text: String, surah: Int, hosts: List<String> = allowedHostSuffixes): StreamManifest? {
@@ -51,7 +61,7 @@ object OnlineAudio {
     suspend fun fetch(surah: Int): StreamManifest? = withContext(Dispatchers.IO) {
         lastError = ""
         try {
-            val c = URL("${BuildConfig.AUDIO_API_BASE_URL.trimEnd('/')}/audio.php?surah=$surah&recitation=${BuildConfig.RECITATION_ID}")
+            val c = URL("${baseUrl.trimEnd('/')}/audio.php?surah=$surah&recitation=${BuildConfig.RECITATION_ID}")
                 .openConnection() as HttpURLConnection
             c.connectTimeout = 10_000; c.readTimeout = 15_000
             c.setRequestProperty("User-Agent", "QuranicHorizons/${BuildConfig.VERSION_NAME} (Android)")

@@ -28,6 +28,11 @@ class Prefs(context: Context) {
         get() = sp.getInt("pace", 9)
         set(v) = sp.edit().putInt("pace", v).apply()
 
+    /** عنوان خدمة التلاوة الوسيطة المُدخَل في نسخة الاختبار (فارغ = قيمة البناء) */
+    var audioBase: String
+        get() = sp.getString("audio_base", "") ?: ""
+        set(v) = sp.edit().putString("audio_base", v).apply()
+
     /** رمز اللغة المختار يدويًا؛ فارغ = حسب لغة الجهاز */
     var langOverride: String
         get() = sp.getString("lang", "") ?: ""

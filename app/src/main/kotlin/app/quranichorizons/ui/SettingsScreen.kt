@@ -104,7 +104,7 @@ fun SettingsScreen(
             if (app.quranichorizons.data.OnlineAudio.configured) tr("audioStatusOn") else tr("audioStatusOff"),
             color = QhColors.Muted, fontSize = 13.sp,
         )
-        AudioTestSection()
+        AudioTestSection(prefs)
         Text(tr("adsOff"), color = QhColors.Muted, fontSize = 13.sp)
         Text(tr("versionLine", BuildConfig.VERSION_NAME), color = QhColors.Muted, fontSize = 12.sp)
     }

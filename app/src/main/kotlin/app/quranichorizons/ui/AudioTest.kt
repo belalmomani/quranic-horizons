@@ -2,6 +2,7 @@ package app.quranichorizons.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +27,10 @@ import kotlinx.coroutines.launch
  * يظهر فقط حين تكون التلاوة مضبوطة (نسخة الاختبار). لا تُحفظ أي ملفات صوت.
  */
 @Composable
-fun AudioTestSection() {
-    if (!OnlineAudio.configured) return
+fun AudioTestSection(prefs: app.quranichorizons.data.Prefs) {
+    if (!app.quranichorizons.BuildConfig.AUDIO_ENABLED) return
+    var baseText by remember { mutableStateOf(prefs.audioBase.ifBlank { OnlineAudio.baseUrl }) }
+    var baseSaved by remember { mutableStateOf(false) }
     var manifest by remember { mutableStateOf<StreamManifest?>(null) }
     var idx by remember { mutableStateOf(0) }
     var playing by remember { mutableStateOf(false) }
@@ -48,8 +51,17 @@ fun AudioTestSection() {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(tr("audioTest"), color = QhColors.Gold, fontSize = 18.sp)
         Text(tr("audioTestNote"), color = QhColors.Muted, fontSize = 12.sp)
+        androidx.compose.material3.OutlinedTextField(
+            value = baseText, onValueChange = { baseText = it; baseSaved = false },
+            label = { Text(tr("audioBaseLabel")) }, singleLine = true,
+            modifier = androidx.compose.ui.Modifier.fillMaxWidth(),
+        )
+        androidx.compose.material3.TextButton(onClick = {
+            val n = OnlineAudio.normalizeBase(baseText)
+            prefs.audioBase = n; OnlineAudio.baseOverride = n; baseSaved = n.isNotEmpty()
+        }) { Text(if (baseSaved) tr("audioBaseSaved") else tr("audioBaseSave"), color = QhColors.GoldSoft) }
         Button(
-            enabled = !loading,
+            enabled = !loading && OnlineAudio.baseUrl.isNotBlank(),
             onClick = {
                 if (playing) { playing = false; player.release() }
                 else scope.launch {
