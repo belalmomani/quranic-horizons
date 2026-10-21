@@ -204,7 +204,7 @@ fun PlayerScreen(
             }
             if (mod.module.review.status != "approved") {
                 Text(
-                    "معاينة قيد المراجعة — المشاهد غير معتمدة بعد",
+                    tr("previewBanner"),
                     color = QhColors.GoldSoft, fontSize = 12.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
                 )
             }
@@ -288,7 +288,7 @@ fun PlayerScreen(
             val recs = mod.tafsir.filter { it.ayahs.isEmpty() || ayah.number in it.ayahs }
             Column(Modifier.padding(16.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 if (beat != null) {
-                    Text("معنى الآية (خلاصة تحريرية)", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(tr("meaningSec"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.meaning, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     if (lang != Lang.AR) {
                         Text(tr("transHeader"), color = QhColors.Gold, fontSize = 16.sp)
@@ -300,18 +300,18 @@ fun PlayerScreen(
                             Text(tr("transMissing"), color = QhColors.Muted, fontSize = 12.sp)
                         }
                     }
-                    Text("ما يظهر في المشهد", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(tr("sceneShows"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.visualEvent, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
-                    Text("سبب الملاءمة", color = QhColors.Gold, fontSize = 16.sp)
+                    Text(tr("whyFits"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.rationale, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     if (beat.gap.isNotBlank()) {
-                        Text("ما لا تُظهره هذه اللقطة: ${beat.gap}", color = QhColors.GoldSoft, fontSize = 13.sp)
+                        Text(tr("gapLabel", beat.gap), color = QhColors.GoldSoft, fontSize = 13.sp)
                     }
                     if (beat.symbolic) {
-                        Text("تمثيل رمزي: ${beat.symbolicNote}", color = QhColors.Muted, fontSize = 13.sp)
+                        Text(tr("symbolicLabel", beat.symbolicNote), color = QhColors.Muted, fontSize = 13.sp)
                     }
-                    val src = mod.tafsir.firstOrNull { it.id == beat.tafsirRecord }?.bookAr ?: "التفسير"
-                    Text("المقطع المعتمد عليه (نقل حرفي من $src — النسبة قيد المراجعة)", color = QhColors.Gold, fontSize = 14.sp)
+                    val src = mod.tafsir.firstOrNull { it.id == beat.tafsirRecord }?.bookAr ?: tr("tafsirDefault")
+                    Text(tr("quoteHeader", src), color = QhColors.Gold, fontSize = 14.sp)
                     Text(beat.tafsirQuote, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }
                 if (recs.isNotEmpty()) {
@@ -324,7 +324,7 @@ fun PlayerScreen(
                     }
                     val r = recs[tab.coerceIn(0, recs.size - 1)]
                     Text("${r.bookAr} — ${r.authorAr}", color = QhColors.GoldSoft, fontSize = 14.sp)
-                    Text("نقل حرفي — النسبة قيد المراجعة (الترخيص: ${r.licenseStatus})", color = QhColors.Muted, fontSize = 12.sp)
+                    Text(tr("verbatimNote", r.licenseStatus), color = QhColors.Muted, fontSize = 12.sp)
                     r.sourceNotes.forEach { Text("• $it", color = QhColors.Muted, fontSize = 12.sp) }
                     Text(r.text, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }

@@ -57,7 +57,7 @@ fun SurahScreen(
     ) {
         TextButton(onClick = onBack) { Text("‹ " + tr("back"), color = QhColors.GoldSoft) }
         if (module == null) {
-            Text("تعذر فتح السورة", color = QhColors.Gold, fontSize = 22.sp)
+            Text(tr("cantOpen"), color = QhColors.Gold, fontSize = 22.sp)
             Text(error ?: "", color = QhColors.Muted, fontSize = 15.sp)
             return@Column
         }
@@ -72,16 +72,16 @@ fun SurahScreen(
                 Modifier.fillMaxWidth().background(QhColors.NavyCard, RoundedCornerShape(14.dp)).padding(14.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                Text("هذه معاينة قيد المراجعة", color = QhColors.GoldSoft, fontSize = 15.sp)
+                Text(tr("previewTitle"), color = QhColors.GoldSoft, fontSize = 15.sp)
                 Text(
-                    "لم تُعتمد السورة بعد. المعوّقات الحالية:",
+                    tr("notApproved"),
                     color = QhColors.Muted, fontSize = 13.sp,
                 )
                 module.module.review.blockers.forEach { Text("• $it", color = QhColors.Ink, fontSize = 13.sp) }
             }
         }
         Text(
-            "المشاهد تتبع معاني التفسير المنقول حرفيًا في الشاشة التالية، ولا تُصوِّر أنبياء ولا ذات الله تعالى.",
+            tr("scenesNote"),
             color = QhColors.Muted, fontSize = 13.sp,
         )
         Spacer(Modifier.height(8.dp))

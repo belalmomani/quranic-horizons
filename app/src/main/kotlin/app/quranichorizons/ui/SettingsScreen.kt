@@ -50,7 +50,7 @@ fun PrefsControls(
     }
 }
 
-private fun mb(bytes: Long): String = "%.2f ميغابايت".format(bytes / 1048576.0)
+private fun mb(bytes: Long, unit: String): String = "%.2f %s".format(bytes / 1048576.0, unit)
 
 @Composable
 fun SettingsScreen(
@@ -84,28 +84,28 @@ fun SettingsScreen(
             pace, { pace = it; prefs.paceSeconds = it },
         )
 
-        Text("المحتوى المنزَّل", color = QhColors.Gold, fontSize = 18.sp, modifier = Modifier.padding(top = 10.dp))
-        Text("المساحة المستخدمة: ${mb(downloaded)}", color = QhColors.Ink, fontSize = 14.sp)
+        Text(tr("dlTitle"), color = QhColors.Gold, fontSize = 18.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(tr("dlUsed", mb(downloaded, tr("mbUnit"))), color = QhColors.Ink, fontSize = 14.sp)
         Text(
-            if (repo.remoteConfigured) "خادم المحتوى مضبوط. لا تُنزَّل وحدات كبيرة تلقائيًا على بيانات الجوال."
-            else "لا يوجد خادم محتوى مضبوط في هذا الإصدار؛ المعاينة مضمّنة في التطبيق.",
+            if (repo.remoteConfigured) tr("serverOn")
+            else tr("serverOff"),
             color = QhColors.Muted, fontSize = 13.sp,
         )
         TextButton(onClick = { repo.deleteDownloaded(); downloaded = repo.downloadedSizeBytes() }) {
-            Text("حذف المحتوى المنزَّل", color = QhColors.GoldSoft)
+            Text(tr("deleteDl"), color = QhColors.GoldSoft)
         }
 
-        Text("حالة المحتوى", color = QhColors.Gold, fontSize = 18.sp, modifier = Modifier.padding(top = 10.dp))
+        Text(tr("statusTitle"), color = QhColors.Gold, fontSize = 18.sp, modifier = Modifier.padding(top = 10.dp))
         catalog.modules.forEach { m ->
             val name = surahs.surahs.firstOrNull { it.number == m.surah }?.nameAr ?: "${m.surah}"
-            Text("سورة $name — الإصدار ${m.version} — الحالة: ${m.status} — الحجم ${mb(m.totalBytes)}", color = QhColors.Ink, fontSize = 13.sp)
+            Text(tr("statusLine", name, m.version, m.status, mb(m.totalBytes, tr("mbUnit"))), color = QhColors.Ink, fontSize = 13.sp)
         }
         Text(
             if (app.quranichorizons.data.OnlineAudio.configured) tr("audioStatusOn") else tr("audioStatusOff"),
             color = QhColors.Muted, fontSize = 13.sp,
         )
         AudioTestSection()
-        Text("الإعلانات: غير مفعّلة في هذا الإصدار", color = QhColors.Muted, fontSize = 13.sp)
-        Text("الإصدار ${BuildConfig.VERSION_NAME}", color = QhColors.Muted, fontSize = 12.sp)
+        Text(tr("adsOff"), color = QhColors.Muted, fontSize = 13.sp)
+        Text(tr("versionLine", BuildConfig.VERSION_NAME), color = QhColors.Muted, fontSize = 12.sp)
     }
 }

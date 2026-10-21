@@ -45,13 +45,22 @@ object OnlineAudio {
         return m
     }
 
+    /** سبب آخر فشل (للتشخيص في شاشة الاختبار فقط) */
+    @Volatile var lastError: String = ""
+
     suspend fun fetch(surah: Int): StreamManifest? = withContext(Dispatchers.IO) {
+        lastError = ""
         try {
             val c = URL("${BuildConfig.AUDIO_API_BASE_URL.trimEnd('/')}/audio.php?surah=$surah&recitation=${BuildConfig.RECITATION_ID}")
                 .openConnection() as HttpURLConnection
             c.connectTimeout = 10_000; c.readTimeout = 15_000
-            if (c.responseCode != 200) return@withContext null
-            parse(c.inputStream.use { String(it.readBytes(), Charsets.UTF_8) }, surah)
-        } catch (e: Exception) { null }
+            c.setRequestProperty("User-Agent", "QuranicHorizons/${BuildConfig.VERSION_NAME} (Android)")
+            c.setRequestProperty("Accept", "application/json")
+            if (c.responseCode != 200) { lastError = "HTTP ${c.responseCode}"; return@withContext null }
+            val body = c.inputStream.use { String(it.readBytes(), Charsets.UTF_8) }
+            val m = parse(body, surah)
+            if (m == null) lastError = "الرد ليس JSON متوقعًا: " + body.trim().take(60).replace("\n", " ")
+            m
+        } catch (e: Exception) { lastError = e.javaClass.simpleName + ": " + (e.message ?: ""); null }
     }
 }

@@ -97,10 +97,11 @@ fun HomeScreen(
             item { Text(tr("surahs"), color = QhColors.Muted, fontSize = 13.sp, modifier = Modifier.padding(top = 6.dp)) }
             items(surahs.surahs, key = { it.number }) { s ->
                 val av = repo.availability(catalog, s.number)
+                val inPrepNotice = tr("inPrepNotice", s.nameAr)
                 Card(
                     Modifier.fillMaxWidth().clickable {
                         if (av == SurahAvailability.IN_PREPARATION) {
-                            notice = "سورة ${s.nameAr} قيد الإعداد. تُسلَّم السور بترتيب عكسي: الناس ثم الفلق وهكذا."
+                            notice = inPrepNotice
                         } else {
                             notice = ""
                             onOpen(s.number)
