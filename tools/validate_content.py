@@ -9,6 +9,7 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'content',
 errors, warnings = [], []
 
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from imgsize import image_size  # noqa: E402  (jpg/png/webp بلا مكتبات خارجية)
 
 

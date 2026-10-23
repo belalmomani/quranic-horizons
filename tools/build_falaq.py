@@ -16,6 +16,7 @@ from imgsize import image_size  # noqa: E402
 SURAH = 113
 args = [a for a in sys.argv[1:] if not a.startswith('--')]
 PUBLISH = '--publish' in sys.argv
+PARTIAL = '--partial' in sys.argv   # معاينة: تُنشر باللقطات المتوفرة فقط (مع معوّقات)، بشرط لقطة لكل آية
 Q, T = args[0], args[1]
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'content')
 BOOT = os.path.join(ROOT, 'bootstrap')
@@ -99,6 +100,11 @@ def find_img(stem):
 
 found = {stem: find_img(stem) for stem, _ in SHOTS}
 missing = [s for s, f in found.items() if not f]
+ALL_SHOTS = SHOTS
+if PARTIAL and PUBLISH:
+    SHOTS = [(s, a) for s, a in SHOTS if found[s]]
+    if {a for _, a in SHOTS} != set(range(1, 6)):
+        sys.exit('--partial يتطلب لقطة واحدة على الأقل لكل آية')
 ids = {stem: f'img{i + 1}' for i, (stem, _) in enumerate(SHOTS)}
 
 
@@ -114,26 +120,28 @@ def fade(prev_ids, cur, t=0.2, extra=None):
 
 BEATS = {
  1: dict(meaning='الأمر بالاعتصام برب الفلق، وهو الصبح، الذي يفلق ظلمة الليل.',
-         visualEvent='فجر ينشقّ فيه الليل عن خيط ضوء على الأفق، وشخص عام من الخلف متوجّه إلى الضوء رافع يديه بالدعاء.',
-         rationale='«الفلق» هو الصبح؛ فالمشهد يُظهر انفلاق الظلام عن الضوء، ورفع اليدين صورة الاعتصام. لا يُصوَّر الرسول ولا الذات الإلهية.',
-         symbolic=False, symbolicNote='', gap='اللقطة مقترحة من Claude ولم يقدّمها صاحب المشروع؛ تحتاج موافقته.'),
+         visualEvent='شروق الشمس فوق أفق جبلي وبحيرة، وسماء ذهبية بعد ليل انقضى.',
+         rationale='«الفلق» هو الصبح؛ فالمشهد يُظهر انبثاق الضوء من الأفق. لا يُصوَّر الرسول ولا الذات الإلهية.',
+         symbolic=False, symbolicNote='', gap='الاعتصام (الدعاء) غير مصوَّر؛ اللقطة تُظهر الفلق (الصبح) وحده.'),
  2: dict(meaning='الاستعاذة من شر جميع المخلوقات وأذاها.',
-         visualEvent='منظر طبيعي واسع تتجاور فيه مظاهر الخلق: بحر هائج وغابة وصحراء، بلا تصوير مخلوق مخيف.',
-         rationale='الآية عامة في «جميع المخلوقات»؛ فيُعبَّر عنها بتنوّع الخلق ومظاهر الأذى الطبيعي دون تعيين مخلوق بعينه.',
-         symbolic=True, symbolicNote='العموم لا يُصوَّر في مشهد واحد حرفيًا؛ المنظر الطبيعي المتنوع تمثيل رمزي للعموم.',
-         gap='اللقطة مقترحة من Claude ولم يقدّمها صاحب المشروع؛ تحتاج موافقته.'),
+         visualEvent='منظر طبيعي واسع: غابة وجبال وبحر وطيور وغزال وأرنب، تعبيرًا عن عموم الخلق.',
+         rationale='الآية عامة في «جميع المخلوقات»؛ فيُعبَّر عن العموم بتنوّع الخلق في مشهد واحد دون تعيين مخلوق بعينه.',
+         symbolic=True, symbolicNote='العموم لا يُصوَّر حرفيًا؛ تنوّع الخلق في المنظر تمثيل رمزي للعموم.',
+         gap='اللقطة تُظهر تنوّع الخلق لا «شرّه وأذاه»؛ هذا المعنى يُفهم من نص الآية ولا تُظهره الصورة.'),
  3: dict(meaning='الاستعاذة من شر الليل إذا اشتدّ ظلامه ودخل، وما فيه من الشرور والمؤذيات.',
-         visualEvent='طريق ريفي ضيّق بين أشجار كثيفة في منطقة جبلية ليلًا، غيوم تحجب القمر وضباب خفيف، والطريق يمتدّ إلى عمق مظلم.',
-         rationale='«ليل شديد الظلمة إذا دخل وتغلغل» يتجسّد في الطريق الذي يبتلعه الظلام. لا تُصوَّر مخلوقات خيالية ولا أرواح.',
-         symbolic=False, symbolicNote='', gap='«الشرور والمؤذيات» تُترك للإحساس بالمخاطر المحتملة ولا تُصوَّر.'),
+         visualEvent='ليل مظلم بسماء ملبّدة وقمر يخترق الغيوم، وقرية بعيدة بأضواء خافتة تحت الجبال.',
+         rationale='«ليل شديد الظلمة إذا دخل وتغلغل» يتجسّد في السماء المعتمة والقرية الغارقة في الظلام. لا تُصوَّر مخلوقات خيالية ولا أرواح.',
+         symbolic=False, symbolicNote='', gap='لا يظهر الطريق الريفي والضباب كما طُلب في الوصف؛ و«الشرور والمؤذيات» تُترك للإحساس ولا تُصوَّر.'),
  4: dict(meaning='الاستعاذة من شر الساحرات اللاتي ينفخن في العقد التي يعقدنها بقصد السحر.',
-         visualEvent='لقطة قريبة ليدَي امرأة مجهولة تربط عقدًا متتابعة في خيط، ثم لقطة بزاوية مختلفة لها وهي تنفث باتجاه العقد.',
-         rationale='الآية والتفسير يذكران فعلين: عقد العقد والنفث فيها؛ فلكل فعل لقطة مستقلة. بلا مؤثرات سحرية ولا رموز غيبية.',
-         symbolic=False, symbolicNote='', gap='السحر نفسه وأثره غيب لا يُصوَّر؛ المصوَّر الفعل المذكور فقط.'),
+         visualEvent='لقطة قريبة ليدين تربطان عقدًا في خيط على طاولة خشبية، وبجانبها وعاء أعشاب وقنديل.',
+         rationale='الآية والتفسير يذكران فعل عقد العقد؛ فاللقطة تُصوّر هذا الفعل. بلا مؤثرات سحرية ولا رموز غيبية.',
+         symbolic=False, symbolicNote='',
+         gap='لقطة «النفث» غير مرسلة بعد؛ والصورة المستلمة ليدين رجل ولا تُظهر امرأة كما في الوصف. السحر وأثره غيب لا يُصوَّر.'),
  5: dict(meaning='الاستعاذة من شر الحاسد الذي يبغض نعمة الله على غيره ويريد زوالها وإيقاع الأذى بصاحبها.',
-         visualEvent='رجل في مقدمة الصورة أمام بيته أو حديقته راضٍ بنعمته، وفي الخلفية رجل آخر يراقبه بنظرات استياء وغيرة.',
-         rationale='التباين بين صاحب النعمة والحاسد يُظهر معنى «حسدهم على ما وهبهم الله»، ويُعبَّر عن الحسد بالوجه والنظرة والسلوك فقط.',
-         symbolic=False, symbolicNote='', gap='الإيذاء المراد لا يُصوَّر؛ بلا عين زرقاء ولا أشعة ولا دخان.'),
+         visualEvent='رجل في المقدمة ينظر إلى رجل آخر في حديقة عامرة بالثمار والخضار.',
+         rationale='التباين بين صاحب النعمة والمراقب له يُظهر معنى «حسدهم على ما وهبهم الله»، ويُعبَّر عنه بالنظرة والوضعية فقط.',
+         symbolic=False, symbolicNote='',
+         gap='ترتيب المشهد معكوس عن الوصف: الناظر في المقدمة وصاحب النعمة في الخلفية، وتعبير الحسد على وجهه غير ظاهر بوضوح؛ الإيذاء المراد لا يُصوَّر.'),
 }
 by_ayah = {}
 for stem, a in SHOTS:
@@ -161,7 +169,7 @@ scene = {'id': 'f-images', 'ayahs': list(range(1, N + 1)), 'kind': 'image', 'tit
          'env': {'skyTop': '#050B1F', 'skyBottom': '#050B1F', 'stars': 0, 'twinkle': 0.0, 'ridges': [], 'mist': 0.0, 'drift': 0.0},
          'actors': [{'id': ids[s], 'kind': 'image', 'file': f'modules/{SURAH}/img/{s}.webp', 'init': {'a': 0.0, 'z': 0.0}} for s, _ in SHOTS],
          'beats': beats,
-         'review': {'status': 'draft', 'note': 'مسودة: لقطتا الآيتين 1 و2 مقترحتان، والصور النهائية لم تصل بعد.'},
+         'review': {'status': 'draft', 'note': 'معاينة: لقطات مقصوصة من لوحة مجمَّعة قدّمها صاحب المشروع بدقة منخفضة؛ بانتظار الأصول النهائية.'},
          'transition': {'type': 'crossfade', 'ms': 1600}}
 # إن وُجدت الصور فعلًا نعتمد امتداداتها الحقيقية
 for act in scene['actors']:
@@ -171,18 +179,20 @@ for act in scene['actors']:
 
 blockers = [
     'الصور النهائية لم تصل بعد (بلا صور بديلة): ' + '، '.join(s for s, _ in SHOTS) + ' — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs',
-    'لقطتا الآيتين 1 و2 (falaq_01_dawn وfalaq_02_creation) مقترحتان من Claude ولم يقدّمهما صاحب المشروع؛ تنتظران موافقته',
     'التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع',
     'مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)',
     'مراجعة صاحب المشروع البصرية للقطات (review.status = draft)',
     'مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع',
     'مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)',
 ]
-if PUBLISH and missing:
+if PUBLISH and missing and not PARTIAL:
     sys.exit('لا نشر: صور ناقصة في %s: %s' % (IMG_DIR, '، '.join(missing)))
 if PUBLISH:
     blockers = [b for b in blockers if not b.startswith('الصور النهائية')]
-    for stem, rel in found.items():
+    if PARTIAL:
+        blockers.append('الصور النهائية لم تصل بعد: ما نُشر معاينة مقصوصة من لوحة مجمَّعة. ناقص: ' + ('، '.join(missing) or 'لا شيء') + ' (لقطة النفث للآية 4 ناقصة)')
+        blockers.append('صور المعاينة مقصوصة من لوحة مجمَّعة (1024×1536) بأبعاد أفقية ~2.5:1، لا 9:16؛ والمطلوب ملفات منفصلة عمودية بلا أي إطار أو ترقيم أو نص')
+    for stem, rel in [(k, v) for k, v in found.items() if v]:
         w, h = image_size(os.path.join(BOOT, rel))
         if w < MIN_W or not (0.55 <= w / h <= 0.58):
             blockers.append(f'دقة/نسبة صورة {stem} غير مطابقة ({w}x{h}): المطلوب عرض ≥ {MIN_W} px ونسبة 9:16')
@@ -206,7 +216,7 @@ if not PUBLISH:
     print('مسودة الفلق في content/drafts/falaq — لم تُنشر.', 'صور ناقصة:', len(missing), 'من', len(SHOTS))
     sys.exit(0)
 
-if missing:
+if missing and not PARTIAL:
     sys.exit('لا نشر: صور ناقصة في %s: %s' % (IMG_DIR, '، '.join(missing)))
 mdir = os.path.join(BOOT, 'modules', str(SURAH))
 files = []
@@ -214,7 +224,7 @@ for n, o in out.items():
     data = dump(o)
     open(os.path.join(mdir, n), 'wb').write(data)
     files.append({'path': f'modules/{SURAH}/{n}', 'sha256': sha(data), 'bytes': len(data)})
-for stem, rel in found.items():
+for stem, rel in [(k, v) for k, v in found.items() if v]:
     data = open(os.path.join(BOOT, rel), 'rb').read()
     files.append({'path': rel, 'sha256': sha(data), 'bytes': len(data)})
 cat_path = os.path.join(BOOT, 'catalog.json')
