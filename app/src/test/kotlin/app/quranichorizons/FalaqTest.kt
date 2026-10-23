@@ -31,9 +31,19 @@ class FalaqTest {
         assertEquals(5, module.ayahs.size)
     }
 
-    @Test fun quranTextIsNotTouchedByBasmalaSplit() {
-        assertTrue(module.ayahs[0].text.startsWith("قُلْ"))
-        assertEquals("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", module.basmala)
+    // نص القرآن يُتحقَّق منه ببصمة المصدر (Tanzil) لا بنص عربي مكتوب في الاختبار
+    @Test fun quranTextMatchesSourceFingerprintAfterBasmalaSplit() {
+        assertTrue("البسملة مفقودة", module.basmala != null)
+        val lines = module.ayahs.map { it.text }.toMutableList()
+        lines[0] = module.basmala + " " + lines[0]
+        val sha = ContentVerifier.sha256Hex(lines.joinToString("\n").toByteArray(Charsets.UTF_8))
+        assertEquals(module.text.sha256OfSourceLines, sha)
+    }
+
+    @Test fun basmalaIsTheSameAsAnNasBasmala() {
+        val nas = catalog.modules.first { it.surah == 114 }
+        val nasModule = json.decodeFromString(ModuleFile.serializer(), read("${nas.dir}/module.json"))
+        assertEquals(nasModule.basmala, module.basmala)
     }
 
     @Test fun beatQuotesAreVerbatimFromMuyassarRecords() {
