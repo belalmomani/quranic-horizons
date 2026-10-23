@@ -9,28 +9,7 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'content',
 errors, warnings = [], []
 
 
-def image_size(path):
-    """أبعاد JPEG/PNG بلا مكتبات خارجية (يعمل على الـCI دون تثبيت شيء)."""
-    import struct
-    b = open(path, 'rb').read()
-    if b[:8] == b'\x89PNG\r\n\x1a\n':
-        return struct.unpack('>II', b[16:24])
-    if b[:2] == b'\xff\xd8':
-        i = 2
-        while i + 9 < len(b):
-            if b[i] != 0xFF:
-                i += 1
-                continue
-            m = b[i + 1]
-            if m in (0xD8, 0x01) or 0xD0 <= m <= 0xD7:
-                i += 2
-                continue
-            ln = struct.unpack('>H', b[i + 2:i + 4])[0]
-            if m in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
-                h, w = struct.unpack('>HH', b[i + 5:i + 9])
-                return w, h
-            i += 2 + ln
-    raise ValueError('صيغة صورة غير مدعومة: ' + path)
+from imgsize import image_size  # noqa: E402  (jpg/png/webp بلا مكتبات خارجية)
 
 
 def load(rel):

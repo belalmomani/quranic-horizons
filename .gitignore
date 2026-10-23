@@ -13,3 +13,5 @@ google-services.json
 
 server/audio-proxy/config.php
 server/audio-proxy/cache/
+__pycache__/
+*.pyc
