@@ -64,12 +64,12 @@
    "files": [
     {
      "path": "modules/113/module.json",
-     "sha256": "99722d29b21764442f6fd346c0f14bca9179259ab236831c04ab6033c9b3891c",
-     "bytes": 3283
+     "sha256": "a3a46d6fd04fde1e171f4ce757d2a4db27d68e597edeb354548c61d184b73337",
+     "bytes": 3262
     },
     {
      "path": "modules/113/tafsir.json",
-     "sha256": "b168417c68929bb8bd9d8a4769c02246a5daf35c3244aa220ef4a7bf7b97575c",
+     "sha256": "0d007dceec3c5d38a2b8c5da146679a55f16074212b7b781038ba71e7049d9dc",
      "bytes": 76563
     },
     {
@@ -103,7 +103,7 @@
      "bytes": 145485
     }
    ],
-   "totalBytes": 606381
+   "totalBytes": 606360
   }
  ]
 }

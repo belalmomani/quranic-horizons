@@ -1,0 +1,67 @@
+{
+ "formatVersion": 1,
+ "surah": 112,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الإخلاص",
+ "ayahCount": 4,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "الصور النهائية لم تصل بعد (بلا صور بديلة): ikhlas_01_ahad، ikhlas_02_samad، ikhlas_03_tanzih، ikhlas_04_la_mithl — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs",
+   "سورة في ذات الله وصفاته: كل لقطاتها رمزية ومقترحة من Claude ولم يقدّمها صاحب المشروع؛ تحتاج مراجعة عقدية (منه أو من مختص) قبل أي اعتماد، ولا يُصوَّر الله ولا نور يُراد به ذاته ولا أسرة ولا ولادة",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "64fa0106f0310f346dd8207847d6713da71724cc542ced9521914f6a4e2fa527",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "قُلْ هُوَ ٱللَّهُ أَحَدٌ",
+   "sceneId": "i-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "ٱللَّهُ ٱلصَّمَدُ",
+   "sceneId": "i-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "لَمْ يَلِدْ وَلَمْ يُولَدْ",
+   "sceneId": "i-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
+   "sceneId": "i-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

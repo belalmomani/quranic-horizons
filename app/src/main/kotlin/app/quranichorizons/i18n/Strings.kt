@@ -100,6 +100,8 @@ object Strings {
         "audioBaseLabel" to e("Audio service URL (https)", "诵读服务地址（https）", "तिलावत सेवा का पता (https)", "URL del servicio de audio (https)", "عنوان خدمة التلاوة (https)", "URL du service audio (https)", "তিলাওয়াত সার্ভিসের ঠিকানা (https)"),
         "audioBaseSave" to e("Save address", "保存地址", "पता सहेजें", "Guardar dirección", "حفظ العنوان", "Enregistrer l'adresse", "ঠিকানা সংরক্ষণ"),
         "audioBaseSaved" to e("Saved ✓", "已保存 ✓", "सहेजा गया ✓", "Guardado ✓", "تم الحفظ ✓", "Enregistré ✓", "সংরক্ষিত ✓"),
+        "verbatimTag" to e("verbatim from the source", "原文逐字引用", "स्रोत से शब्दशः", "texto literal de la fuente", "نقل حرفي من المصدر", "texte littéral de la source", "সূত্র থেকে হুবহু"),
+        "reviewNotes" to e("Editorial review notes (not part of the tafsir)", "编辑审校说明（不属于经注）", "संपादकीय समीक्षा टिप्पणियाँ (तफ़सीर का हिस्सा नहीं)", "Notas editoriales de revisión (no forman parte del tafsir)", "ملاحظات المراجعة التحريرية (ليست من التفسير)", "Notes éditoriales de relecture (ne font pas partie du tafsir)", "সম্পাদকীয় পর্যালোচনা নোট (তাফসিরের অংশ নয়)"),
         "transHeader" to e("Translation of the meaning", "含义翻译", "अर्थ का अनुवाद", "Traducción del significado", "ترجمة المعنى", "Traduction du sens", "অর্থের অনুবাদ"),
         "transUnapproved" to e("Translation not yet reviewed — the Arabic tafsir is the reference.",
             "翻译尚未审校——以阿拉伯语经注为准。", "अनुवाद की समीक्षा अभी नहीं हुई — अरबी तफ़सीर ही आधार है।",

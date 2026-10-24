@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -211,11 +212,17 @@ fun PlayerScreen(
             // منطقة المشهد (الحدث البصري) في الأعلى
             Spacer(Modifier.weight(1.1f))
             // وصف قصير لما يحدث الآن، يربط المشهد بمعنى الآية
-            if (beat != null) {
-                Text(
-                    beat.visualEvent, color = QhColors.GoldSoft, fontSize = 12.sp,
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp), textAlign = TextAlign.Center,
-                )
+            // الشرح الظاهر مع الصورة هو نص التفسير نفسه كما ورد في المصدر، لا وصفًا للصورة
+            val capRec = beat?.let { b -> mod.tafsir.firstOrNull { it.id == b.tafsirRecord } }
+            if (capRec != null) {
+                val capText = capRec.text.substringAfter("[التفسير]", capRec.text).trim()
+                Column(
+                    Modifier.fillMaxWidth().heightIn(max = 150.dp).verticalScroll(rememberScrollState()).padding(horizontal = 6.dp, vertical = 4.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Text(capText, color = QhColors.Ink, fontSize = 14.sp, lineHeight = 24.sp, textAlign = TextAlign.Center)
+                    Text("${capRec.bookAr} — ${tr("verbatimTag")}", color = QhColors.Muted, fontSize = 10.sp, textAlign = TextAlign.Center)
+                }
             }
             Box(Modifier.weight(0.9f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                 Column(
@@ -287,7 +294,23 @@ fun PlayerScreen(
             var tab by remember { mutableStateOf(0) }
             val recs = mod.tafsir.filter { it.ayahs.isEmpty() || ayah.number in it.ayahs }
             Column(Modifier.padding(16.dp).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                if (recs.isNotEmpty()) {
+                    androidx.compose.material3.TabRow(
+                        selectedTabIndex = tab.coerceIn(0, recs.size - 1), containerColor = QhColors.NavyCard,
+                    ) {
+                        recs.forEachIndexed { i, r ->
+                            androidx.compose.material3.Tab(selected = tab == i, onClick = { tab = i }, text = { Text(r.bookAr, fontSize = 13.sp) })
+                        }
+                    }
+                    val r = recs[tab.coerceIn(0, recs.size - 1)]
+                    Text("${r.bookAr} — ${r.authorAr}", color = QhColors.GoldSoft, fontSize = 14.sp)
+                    Text(tr("verbatimNote", r.licenseStatus), color = QhColors.Muted, fontSize = 12.sp)
+                    r.sourceNotes.forEach { Text("• $it", color = QhColors.Muted, fontSize = 12.sp) }
+                    Text(r.text, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                }
                 if (beat != null) {
+                    androidx.compose.material3.HorizontalDivider(color = QhColors.Muted.copy(alpha = 0.4f))
+                    Text(tr("reviewNotes"), color = QhColors.Muted, fontSize = 12.sp)
                     Text(tr("meaningSec"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.meaning, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     if (lang != Lang.AR) {
@@ -310,23 +333,6 @@ fun PlayerScreen(
                     if (beat.symbolic) {
                         Text(tr("symbolicLabel", beat.symbolicNote), color = QhColors.Muted, fontSize = 13.sp)
                     }
-                    val src = mod.tafsir.firstOrNull { it.id == beat.tafsirRecord }?.bookAr ?: tr("tafsirDefault")
-                    Text(tr("quoteHeader", src), color = QhColors.Gold, fontSize = 14.sp)
-                    Text(beat.tafsirQuote, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
-                }
-                if (recs.isNotEmpty()) {
-                    androidx.compose.material3.TabRow(
-                        selectedTabIndex = tab.coerceIn(0, recs.size - 1), containerColor = QhColors.NavyCard,
-                    ) {
-                        recs.forEachIndexed { i, r ->
-                            androidx.compose.material3.Tab(selected = tab == i, onClick = { tab = i }, text = { Text(r.bookAr, fontSize = 13.sp) })
-                        }
-                    }
-                    val r = recs[tab.coerceIn(0, recs.size - 1)]
-                    Text("${r.bookAr} — ${r.authorAr}", color = QhColors.GoldSoft, fontSize = 14.sp)
-                    Text(tr("verbatimNote", r.licenseStatus), color = QhColors.Muted, fontSize = 12.sp)
-                    r.sourceNotes.forEach { Text("• $it", color = QhColors.Muted, fontSize = 12.sp) }
-                    Text(r.text, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }
             }
         }
