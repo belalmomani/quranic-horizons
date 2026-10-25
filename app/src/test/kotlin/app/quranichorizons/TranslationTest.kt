@@ -3,9 +3,9 @@ package app.quranichorizons
 import app.quranichorizons.data.TranslationFile
 import kotlinx.serialization.json.Json
 import java.io.File
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class TranslationTest {
     private val json = Json { ignoreUnknownKeys = true }
@@ -25,7 +25,7 @@ class TranslationTest {
             for (f in tdir.listFiles()!!) {
                 val t = json.decodeFromString(TranslationFile.serializer(), f.readText())
                 assertEquals(f.nameWithoutExtension, t.lang)
-                assertTrue(t.status != "approved", "لا اعتماد بلا مراجع بشري")
+                assertTrue("لا اعتماد بلا مراجع بشري", t.status != "approved")
                 assertTrue(t.tafsir.isNotEmpty() && t.tafsir.keys.all { it in ids } && t.tafsir.values.all { it.isNotBlank() })
             }
         }
