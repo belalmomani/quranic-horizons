@@ -164,6 +164,80 @@
     }
    ],
    "totalBytes": 614305
+  },
+  {
+   "surah": 112,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/112",
+   "files": [
+    {
+     "path": "modules/112/module.json",
+     "sha256": "11693051bc2e8f990dcc6dd6b413f75ea01b11fa8c047ac09a4714643d9578dc",
+     "bytes": 3265
+    },
+    {
+     "path": "modules/112/tafsir.json",
+     "sha256": "7ea2269b9efb6b80b77ccbd21cef1f27649ad5b77deca20deda2624cc79b43ce",
+     "bytes": 97168
+    },
+    {
+     "path": "modules/112/scenes.json",
+     "sha256": "2345bb261be66f01608350674e56cbeaf1ca5d9bde1fdc4d6f7795b74dbbc83d",
+     "bytes": 6550
+    },
+    {
+     "path": "modules/112/img/ikhlas_01_ahad.jpg",
+     "sha256": "c557a3353e740e734651d58a6c74929b74912cb54ef527468ddc2d500f1807f0",
+     "bytes": 38559
+    },
+    {
+     "path": "modules/112/img/ikhlas_02_samad.jpg",
+     "sha256": "74bf7f6db5df6aded037868aac62e509f1203c3e20b83fead8c7abf9e229122e",
+     "bytes": 26831
+    },
+    {
+     "path": "modules/112/img/ikhlas_03_tanzih.jpg",
+     "sha256": "3d25b0b70ca4637fa23663687225046f43924f22bde071371e5f5ede2d364406",
+     "bytes": 45401
+    },
+    {
+     "path": "modules/112/img/ikhlas_04_la_mithl.jpg",
+     "sha256": "717a1ca4af7c9b4df7ad3ce6f06e1854b6dd7c48fcc044dc719696b920928e69",
+     "bytes": 55266
+    },
+    {
+     "path": "modules/112/translations/bn.json",
+     "sha256": "8feb6cdaca8bcf537906cd94c407ccb17f207fe97872ed1348e1175d0bb51b48",
+     "bytes": 1483
+    },
+    {
+     "path": "modules/112/translations/en.json",
+     "sha256": "1c90476af37876ab1ba3a275b5cfda44e0c1351afec5ca2db67e32dee05eae78",
+     "bytes": 959
+    },
+    {
+     "path": "modules/112/translations/es.json",
+     "sha256": "474c88ebc8d64197fec55e18beb1b7a8346bf4e95fd8aa35f7f80a795a7426e2",
+     "bytes": 953
+    },
+    {
+     "path": "modules/112/translations/fr.json",
+     "sha256": "2c584c83c2bd8a8225c7c191f0f98d2f10e6313a1ad8542a27553cb472c1160f",
+     "bytes": 993
+    },
+    {
+     "path": "modules/112/translations/hi.json",
+     "sha256": "fb9160cb526b2d3482dbe0cf480ead2631929507dc28a9437bf18daed24f97de",
+     "bytes": 1558
+    },
+    {
+     "path": "modules/112/translations/zh.json",
+     "sha256": "90a5b5f1a6100b7fa31676bc5ce5af683be2656721f63059a5e447cf64639fd3",
+     "bytes": 975
+    }
+   ],
+   "totalBytes": 279961
   }
  ]
 }
