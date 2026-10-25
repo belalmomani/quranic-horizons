@@ -19,6 +19,15 @@ import app.quranichorizons.i18n.LocalLang
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.ui.Modifier
+import app.quranichorizons.ui.AdSlot
+import app.quranichorizons.ui.QhColors
 import app.quranichorizons.ui.HomeScreen
 import app.quranichorizons.ui.PlayerScreen
 import app.quranichorizons.ui.QhTheme
@@ -58,6 +67,9 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
         LocalLang provides lang,
         LocalLayoutDirection provides (if (lang == Lang.AR) LayoutDirection.Rtl else LayoutDirection.Ltr),
     ) {
+    // الشاشات الجانبية: المحتوى كله فوق، وشريط الإعلان المحجوز في أسفلها لا يغطي شيئًا؛ شاشة التشغيل بلا إعلان
+    Column(Modifier.fillMaxSize().background(QhColors.Navy).then(if (screen == PLAYER) Modifier else Modifier.systemBarsPadding())) {
+    Box(Modifier.weight(1f).fillMaxWidth()) {
     when (screen) {
         HOME -> HomeScreen(
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog,
@@ -79,6 +91,9 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME },
             langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },
         )
+    }
+    }
+    if (screen != PLAYER) AdSlot()
     }
     }
 }
