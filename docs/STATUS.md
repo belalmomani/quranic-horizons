@@ -38,3 +38,7 @@
 - المواصفات: content/specs/112.json؛ المسودة: content/drafts/112 (لم تُنشر: لا صور).
 - أوصاف الصور المقترحة: docs/image-briefs/ikhlas.proposal.txt (4 لقطات، رمزية، بحاجة مراجعة عقدية).
 - ترجمات التفسير الجاهزة: content/translations-src/112 (آلية غير مراجَعة) — تُدرج بعد النشر بـ tools/add_translations.py.
+
+## سورة المسد (111)
+- المواصفات: content/specs/111.json؛ المسودة: content/drafts/111 (لم تُنشر: لا صور).
+- أوصاف الصور: docs/image-briefs/masad.proposal.txt (5 لقطات رمزية بلا أشخاص). ترجمات الميسّر: content/translations-src/111 (آلية غير مراجَعة).

@@ -238,6 +238,85 @@
     }
    ],
    "totalBytes": 279961
+  },
+  {
+   "surah": 111,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/111",
+   "files": [
+    {
+     "path": "modules/111/module.json",
+     "sha256": "35b2fd1c790200b7fc42d8ca84eb09d7eb54c27685504731b9450841aeaec145",
+     "bytes": 3182
+    },
+    {
+     "path": "modules/111/tafsir.json",
+     "sha256": "31a34fb034fa4a4f33cc3287bb97f496db0bd9d999ca019c3e5e75fc2ebac4bf",
+     "bytes": 52149
+    },
+    {
+     "path": "modules/111/scenes.json",
+     "sha256": "509bdfa703caf9ac14a341674fef4dd3d5b7e9a65514590ba6c6fd616bc0e3e0",
+     "bytes": 7815
+    },
+    {
+     "path": "modules/111/img/masad_01_tabbat.jpg",
+     "sha256": "92cb056c9f140bf55051f0f5373289f846a11070c1ba93213374f17d89aa8c16",
+     "bytes": 49710
+    },
+    {
+     "path": "modules/111/img/masad_02_mal.jpg",
+     "sha256": "b836284b55b75318abbf9e7269bc1a9769f74e4f8fdf244f02f4c67ed5fbcbb7",
+     "bytes": 62149
+    },
+    {
+     "path": "modules/111/img/masad_03_nar.jpg",
+     "sha256": "a28a7a4f2a999509c9cfa9521d414524e283869dc4eb78338dd01e8e82065ba8",
+     "bytes": 64857
+    },
+    {
+     "path": "modules/111/img/masad_04_hatab.jpg",
+     "sha256": "09e75d3390eaa59e8af2341c6b713d6b5d0f444fd28e93d8d6fc9d9f31031c7d",
+     "bytes": 69599
+    },
+    {
+     "path": "modules/111/img/masad_05_masad.jpg",
+     "sha256": "0ec835383caccd4a7676a27ec81646eabbb582a24cdead0aa17c1755ee3dfc68",
+     "bytes": 50315
+    },
+    {
+     "path": "modules/111/translations/bn.json",
+     "sha256": "db8d11b759cf2ac1d7d474f5bf2ffbc33cbf63fcaeefb06517f6464f84dc35ec",
+     "bytes": 1855
+    },
+    {
+     "path": "modules/111/translations/en.json",
+     "sha256": "cbe74f5f47416d6f236671568ba450da8264d97480f2ab3bae052431d2db7df7",
+     "bytes": 1143
+    },
+    {
+     "path": "modules/111/translations/es.json",
+     "sha256": "b31b1388bfb98c1f86b95f736bf94d63368b4d3965f560f5ac0b1aeb334e2b7c",
+     "bytes": 1155
+    },
+    {
+     "path": "modules/111/translations/fr.json",
+     "sha256": "2f25a0a33ed7f5936101fe456a15781a166a6bea9cdb3b93a10a58e295e99782",
+     "bytes": 1167
+    },
+    {
+     "path": "modules/111/translations/hi.json",
+     "sha256": "3b47556f399c76b45c5686b82cae0af51aa0e73fb691ebec73b70a68f8bca929",
+     "bytes": 1953
+    },
+    {
+     "path": "modules/111/translations/zh.json",
+     "sha256": "e9a56e1e927f1faae9e0d55cbb2481dd5858561379d6db752ceaf697d97bc685",
+     "bytes": 1089
+    }
+   ],
+   "totalBytes": 368138
   }
  ]
 }
