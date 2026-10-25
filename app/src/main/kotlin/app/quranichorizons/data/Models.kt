@@ -188,6 +188,7 @@ data class TranslationFile(
     val status: String = "unreviewed",
     val source: String = "",
     val translator: String = "",
-    /** رقم الآية → ترجمة حقل meaning في اللقطة؛ لا تُترجم الآيات نفسها. */
-    val meaning: Map<String, String> = emptyMap(),
+    val scopeNote: String = "",
+    /** معرّف سجل التفسير → ترجمة نصه (ما بعد [التفسير])؛ لا تُترجم الآيات القرآنية أبدًا. */
+    val tafsir: Map<String, String> = emptyMap(),
 )

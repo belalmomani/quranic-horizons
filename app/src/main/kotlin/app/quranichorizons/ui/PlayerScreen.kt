@@ -220,7 +220,14 @@ fun PlayerScreen(
                     Modifier.fillMaxWidth().heightIn(max = 150.dp).verticalScroll(rememberScrollState()).padding(horizontal = 6.dp, vertical = 4.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Text(capText, color = QhColors.Ink, fontSize = 14.sp, lineHeight = 24.sp, textAlign = TextAlign.Center)
+                    val capTr = if (lang != Lang.AR) translation?.tafsir?.get(capRec.id) else null
+                    if (capTr != null) {
+                        Text(capTr, color = QhColors.Ink, fontSize = 14.sp, lineHeight = 22.sp, textAlign = TextAlign.Center)
+                        Text(tr("transMachine"), color = QhColors.Muted, fontSize = 10.sp, textAlign = TextAlign.Center)
+                        Text(capText, color = QhColors.Muted, fontSize = 12.sp, lineHeight = 20.sp, textAlign = TextAlign.Center)
+                    } else {
+                        Text(capText, color = QhColors.Ink, fontSize = 14.sp, lineHeight = 24.sp, textAlign = TextAlign.Center)
+                    }
                     Text("${capRec.bookAr} — ${tr("verbatimTag")}", color = QhColors.Muted, fontSize = 10.sp, textAlign = TextAlign.Center)
                 }
             }
@@ -306,23 +313,23 @@ fun PlayerScreen(
                     Text("${r.bookAr} — ${r.authorAr}", color = QhColors.GoldSoft, fontSize = 14.sp)
                     Text(tr("verbatimNote", r.licenseStatus), color = QhColors.Muted, fontSize = 12.sp)
                     r.sourceNotes.forEach { Text("• $it", color = QhColors.Muted, fontSize = 12.sp) }
-                    Text(r.text, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                    if (lang != Lang.AR) {
+                        val rt = translation?.tafsir?.get(r.id)
+                        Text(tr("transHeader"), color = QhColors.Gold, fontSize = 16.sp)
+                        if (rt != null) {
+                            Text(rt, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
+                            Text(tr("transMachine"), color = QhColors.Muted, fontSize = 12.sp)
+                        } else {
+                            Text(tr("transMissing"), color = QhColors.Muted, fontSize = 12.sp)
+                        }
+                    }
+                    Text(r.text, color = if (lang != Lang.AR && translation?.tafsir?.get(r.id) != null) QhColors.Muted else QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                 }
                 if (beat != null) {
                     androidx.compose.material3.HorizontalDivider(color = QhColors.Muted.copy(alpha = 0.4f))
                     Text(tr("reviewNotes"), color = QhColors.Muted, fontSize = 12.sp)
                     Text(tr("meaningSec"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.meaning, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
-                    if (lang != Lang.AR) {
-                        Text(tr("transHeader"), color = QhColors.Gold, fontSize = 16.sp)
-                        val tm = translation?.meaning?.get(ayah.number.toString())
-                        if (tm != null) {
-                            Text(tm, color = QhColors.Ink, fontSize = 15.sp)
-                            Text(tr("transUnapproved") + (translation?.source?.let { " ($it)" } ?: ""), color = QhColors.Muted, fontSize = 12.sp)
-                        } else {
-                            Text(tr("transMissing"), color = QhColors.Muted, fontSize = 12.sp)
-                        }
-                    }
                     Text(tr("sceneShows"), color = QhColors.Gold, fontSize = 16.sp)
                     Text(beat.visualEvent, color = QhColors.Ink, fontSize = 15.sp, lineHeight = 26.sp)
                     Text(tr("whyFits"), color = QhColors.Gold, fontSize = 16.sp)

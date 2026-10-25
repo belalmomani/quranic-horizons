@@ -52,9 +52,39 @@
      "path": "modules/114/img/n6.jpg",
      "sha256": "22c60eaa0452d9c29952e3ac8a190049dc59a18a0063dcfe51c59dc5224e136e",
      "bytes": 46804
+    },
+    {
+     "path": "modules/114/translations/bn.json",
+     "sha256": "ea352ba766a09f8d29907b70fcede636ccd79527435673d423a7934b9ffa1c18",
+     "bytes": 1905
+    },
+    {
+     "path": "modules/114/translations/en.json",
+     "sha256": "ade7062e275826c0fb30c2e9efd50343803dc0238a6668d4da3acf61d350d982",
+     "bytes": 1154
+    },
+    {
+     "path": "modules/114/translations/es.json",
+     "sha256": "88279d0e22db67b178b13c4a4d5a10aa4e07d83ac15b285c4d1f0421b242c71a",
+     "bytes": 1200
+    },
+    {
+     "path": "modules/114/translations/fr.json",
+     "sha256": "40e044b7c47714957c651bb838d54a271c9a882e7932b080384d226ea0d971c9",
+     "bytes": 1206
+    },
+    {
+     "path": "modules/114/translations/hi.json",
+     "sha256": "3d7c7a7e905b69e6201a6b7cbdce038523edef978ac03f67e70394c857e885d9",
+     "bytes": 1828
+    },
+    {
+     "path": "modules/114/translations/zh.json",
+     "sha256": "02159b623e92c60f20a200de9eccd5f7e67f5f0551bd00a2ae41f4d6e4c5f08b",
+     "bytes": 1089
     }
    ],
-   "totalBytes": 450707
+   "totalBytes": 459089
   },
   {
    "surah": 113,
@@ -101,9 +131,39 @@
      "path": "modules/113/img/falaq_05_envy.jpg",
      "sha256": "e412381f4e4a4d1a09cdbe21b19a0c63c3152de21a8700d82d4c7e87e80d5950",
      "bytes": 145485
+    },
+    {
+     "path": "modules/113/translations/bn.json",
+     "sha256": "79a207d30ddcf4dda06d44f075c5657a008458072694ad48107447f9943916ec",
+     "bytes": 1821
+    },
+    {
+     "path": "modules/113/translations/en.json",
+     "sha256": "b8f2ed4343008eb08862288e80bfc3111695d1584861bf7c1029cd08df1c1501",
+     "bytes": 1097
+    },
+    {
+     "path": "modules/113/translations/es.json",
+     "sha256": "3119e87949f648e0099189f77952ce2ba6a8da489ad70320f604f8d1ae9f27b8",
+     "bytes": 1086
+    },
+    {
+     "path": "modules/113/translations/fr.json",
+     "sha256": "ef24dd89b9c93c3bc27f7a37b657b412e071d7e1d693a17712e3da321b8bd267",
+     "bytes": 1111
+    },
+    {
+     "path": "modules/113/translations/hi.json",
+     "sha256": "e4758a9ad9c52d14f54fea919eaf9290f90abe59f095ddcf3e501dfa4ab68b5f",
+     "bytes": 1817
+    },
+    {
+     "path": "modules/113/translations/zh.json",
+     "sha256": "28595527f03a6c6a7c0bd1bb4299d1f9d4fca0f6ef47d51007e4fde7ce20a8d2",
+     "bytes": 1013
     }
    ],
-   "totalBytes": 606360
+   "totalBytes": 614305
   }
  ]
 }

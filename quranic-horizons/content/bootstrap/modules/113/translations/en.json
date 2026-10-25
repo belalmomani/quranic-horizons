@@ -1,0 +1,14 @@
+{
+ "lang": "en",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Say, O Messenger: I seek refuge and protection in the Lord of the Falaq, which is the dawn.",
+  "muyassar-2": "From the evil of all creatures and the harm they cause.",
+  "muyassar-3": "And from the evil of an intensely dark night when it enters and spreads, and of the evils and harmful things within it.",
+  "muyassar-4": "And from the evil of the women practitioners of magic who blow on the knots they tie with the intent of casting spells.",
+  "muyassar-5": "And from the evil of an envier, one who hates people, when he envies them for the blessings God has granted them, wanting them to vanish and wanting to harm them."
+ }
+}

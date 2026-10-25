@@ -139,6 +139,21 @@ for m in catalog['modules']:
         err(f'سورة {n}: صور منخفضة الدقة (< 1080px عرضًا) في وحدة معلنة approved')
     if low_res and not any('دقة' in b for b in mod['review'].get('blockers', [])):
         err(f'سورة {n}: صور منخفضة الدقة بلا معوّق مسجّل في module.json')
+    # ترجمات التفسير: لغات مدعومة، معرّفات سجلات موجودة، لا نص فارغ، ولا اعتماد بلا مراجع بشري
+    tids = {t['id'] for t in tafsir}
+    for f_ in m['files']:
+        if '/translations/' not in f_['path']:
+            continue
+        tr_ = load(f_['path'])
+        if tr_.get('lang') not in {'en', 'zh', 'hi', 'es', 'fr', 'bn'} or not f_['path'].endswith(tr_.get('lang', '?') + '.json'):
+            err(f'{f_["path"]}: لغة ترجمة غير صالحة')
+        for k_, v_ in tr_.get('tafsir', {}).items():
+            if k_ not in tids:
+                err(f'{f_["path"]}: معرّف تفسير غير موجود {k_}')
+            if not str(v_).strip():
+                err(f'{f_["path"]}: ترجمة فارغة {k_}')
+        if tr_.get('status') == 'approved' and not tr_.get('reviewer'):
+            err(f'{f_["path"]}: معتمدة بلا مراجع بشري')
     covered = {x for s in scenes.values() for x in s['ayahs']}
     if covered != set(nums):
         err(f'سورة {n}: المشاهد لا تغطي كل الآيات بالضبط')

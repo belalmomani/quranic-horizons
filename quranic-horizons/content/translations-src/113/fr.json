@@ -1,0 +1,14 @@
+{
+ "lang": "fr",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Dis, ô Messager : je me réfugie et cherche protection auprès du Seigneur de l'aube (al-Falaq), c'est-à-dire le matin.",
+  "muyassar-2": "Du mal de toutes les créatures et du tort qu'elles causent.",
+  "muyassar-3": "Et du mal d'une nuit très sombre lorsqu'elle s'installe et s'étend, et des maux et des nuisances qu'elle renferme.",
+  "muyassar-4": "Et du mal des magiciennes qui soufflent sur les nœuds qu'elles font dans l'intention de jeter un sort.",
+  "muyassar-5": "Et du mal de l'envieux, qui déteste les gens, lorsqu'il envie les bienfaits que Dieu leur a accordés, voulant qu'ils disparaissent et cherchant à leur nuire."
+ }
+}

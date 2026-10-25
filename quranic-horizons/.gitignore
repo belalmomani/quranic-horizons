@@ -1,0 +1,17 @@
+.gradle/
+build/
+local.properties
+*.jks
+*.keystore
+*.p12
+google-services.json
+.env
+.env.*
+*.local.*
+.idea/
+*.iml
+
+server/audio-proxy/config.php
+server/audio-proxy/cache/
+__pycache__/
+*.pyc

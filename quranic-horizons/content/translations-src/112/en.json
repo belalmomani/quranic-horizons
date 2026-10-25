@@ -1,0 +1,13 @@
+{
+ "lang": "en",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Say, O Messenger: He is Allah, uniquely singular in divinity and lordship; none shares with Him in His names and attributes.",
+  "muyassar-2": "Allah, Who is perfect in attributes of honor, glory and majesty, to Whom creation turns to fulfil their needs and desires.",
+  "muyassar-3": "He has no child, no father, and no consort.",
+  "muyassar-4": "And none among His creation is like Him or resembles Him — not in His names, nor His attributes, nor His acts. Blessed and exalted is He."
+ }
+}
