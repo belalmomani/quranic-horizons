@@ -26,6 +26,7 @@ android {
         // (لا إعلان فوق نص القرآن ولا أثناء التلاوة ولا يعطّل التشغيل). انظر docs/EXTERNAL_DEPENDENCIES.md
         buildConfigField("String", "START_IO_APP_ID", "\"209749236\"")
         buildConfigField("boolean", "ADS_ENABLED", "false")
+        buildConfigField("boolean", "ADS_TEST_MODE", "false")
         // عنوان مستودع المحتوى البعيد (Supabase Storage). فارغ = المحتوى المضمَّن فقط
         buildConfigField("String", "CONTENT_BASE_URL", "\"\"")
     }
@@ -50,6 +51,9 @@ android {
             buildConfigField("boolean", "AUDIO_ENABLED", "true")
             buildConfigField("String", "AUDIO_API_BASE_URL", "\"\"")   // يُدخَل عنوان الـWorker من الإعدادات في نسخة الاختبار
             buildConfigField("int", "RECITATION_ID", "7")
+            // إعلانات تجريبية (Test Ads) في نسخة الاختبار فقط؛ الإصدار الرسمي يبقى معطّلًا حتى سياسة الخصوصية والموافقة
+            buildConfigField("boolean", "ADS_ENABLED", "true")
+            buildConfigField("boolean", "ADS_TEST_MODE", "true")
             if (!qhKeystore.isNullOrBlank()) signingConfig = signingConfigs.getByName("qh")
         }
         release {
@@ -88,6 +92,8 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.android)
+    // الإعلانات: Start.io (من Maven Central). تُعرض داخل شريط AdSlot فقط، وليس في شاشة التشغيل
+    implementation("com.startapp:inapp-sdk:5.3.1")
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.junit)
 }

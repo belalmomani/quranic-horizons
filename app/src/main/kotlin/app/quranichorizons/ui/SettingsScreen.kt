@@ -105,7 +105,7 @@ fun SettingsScreen(
             color = QhColors.Muted, fontSize = 13.sp,
         )
         AudioTestSection(prefs)
-        Text(tr("adsOff"), color = QhColors.Muted, fontSize = 13.sp)
+        Text(tr(if (BuildConfig.ADS_ENABLED) "adsTest" else "adsOff"), color = QhColors.Muted, fontSize = 13.sp)
         Text(tr("versionLine", BuildConfig.VERSION_NAME), color = QhColors.Muted, fontSize = 12.sp)
     }
 }

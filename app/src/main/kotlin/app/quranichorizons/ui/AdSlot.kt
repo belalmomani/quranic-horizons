@@ -5,6 +5,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.viewinterop.AndroidView
+import app.quranichorizons.BuildConfig
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
@@ -19,5 +22,11 @@ val AD_SLOT_HEIGHT = 56.dp
  */
 @Composable
 fun AdSlot(modifier: Modifier = Modifier) {
-    Box(modifier.fillMaxWidth().height(AD_SLOT_HEIGHT).background(QhColors.NavyDeep))
+    Box(modifier.fillMaxWidth().height(AD_SLOT_HEIGHT).background(QhColors.NavyDeep), contentAlignment = Alignment.Center) {
+        if (BuildConfig.ADS_ENABLED) {
+            AndroidView(factory = { ctx ->
+                try { com.startapp.sdk.ads.banner.Banner(ctx) } catch (e: Throwable) { android.view.View(ctx) }
+            })
+        }
+    }
 }

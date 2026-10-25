@@ -40,6 +40,13 @@ class MainActivity : ComponentActivity() {
         val repo = ContentRepository(applicationContext)
         val prefs = Prefs(applicationContext)
         app.quranichorizons.data.OnlineAudio.baseOverride = prefs.audioBase
+        if (BuildConfig.ADS_ENABLED) {
+            try {
+                com.startapp.sdk.adsbase.StartAppSDK.init(this, BuildConfig.START_IO_APP_ID, false)
+                com.startapp.sdk.adsbase.StartAppAd.disableSplash()
+                if (BuildConfig.ADS_TEST_MODE) com.startapp.sdk.adsbase.StartAppSDK.setTestAdsEnabled(true)
+            } catch (e: Throwable) { /* الإعلان لا يعطّل التطبيق أبدًا */ }
+        }
         setContent { QhTheme { App(repo, prefs) } }
     }
 }
