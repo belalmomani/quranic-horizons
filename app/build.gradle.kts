@@ -27,6 +27,8 @@ android {
         buildConfigField("String", "START_IO_APP_ID", "\"209749236\"")
         buildConfigField("boolean", "ADS_ENABLED", "false")
         buildConfigField("boolean", "ADS_TEST_MODE", "false")
+        // بثّ سورة كاملة من mp3quran.net: تجربة في نسخة الاختبار فقط حتى يُوثَّق الإذن/الترخيص
+        buildConfigField("boolean", "SURAH_STREAM_ENABLED", "false")
         // عنوان مستودع المحتوى البعيد (Supabase Storage). فارغ = المحتوى المضمَّن فقط
         buildConfigField("String", "CONTENT_BASE_URL", "\"\"")
     }
@@ -54,6 +56,7 @@ android {
             // إعلانات تجريبية (Test Ads) في نسخة الاختبار فقط؛ الإصدار الرسمي يبقى معطّلًا حتى سياسة الخصوصية والموافقة
             buildConfigField("boolean", "ADS_ENABLED", "true")
             buildConfigField("boolean", "ADS_TEST_MODE", "true")
+            buildConfigField("boolean", "SURAH_STREAM_ENABLED", "true")
             if (!qhKeystore.isNullOrBlank()) signingConfig = signingConfigs.getByName("qh")
         }
         release {

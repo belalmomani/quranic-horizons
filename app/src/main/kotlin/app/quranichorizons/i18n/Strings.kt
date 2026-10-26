@@ -55,6 +55,7 @@ object Strings {
             "تنطبق اللغة على التطبيق وعلى ترجمة التفسير. النص القرآني لا يُترجم أبدًا ويبقى بالعربية.",
             "La langue s'applique à l'application et à la traduction du tafsir. Le texte coranique n'est jamais traduit et reste en arabe.",
             "ভাষা অ্যাপ ও তাফসির অনুবাদে প্রযোজ্য। কুরআনের পাঠ কখনো অনুবাদ হয় না, সবসময় আরবিতে থাকে।"),
+        "audioCreditMp3" to e("Recitation: {0} — streamed from {1} (test; verse timing approximate)", "诵读：{0}——来自 {1} 的在线播放（测试；经文时间为估算）", "तिलावत: {0} — {1} से स्ट्रीम (परीक्षण; आयतों का समय अनुमानित)", "Recitación: {0} — transmitida desde {1} (prueba; tiempos aproximados)", "التلاوة: {0} — بثّ من {1} (تجريبي؛ توقيت الآيات تقريبي)", "Récitation : {0} — streaming depuis {1} (test ; minutage approximatif)", "তিলাওয়াত: {0} — {1} থেকে স্ট্রিম (পরীক্ষামূলক; আয়াতের সময় আনুমানিক)"),
         "audioCredit" to e("Recitation: {0} — streamed from Quran.Foundation", "诵读：{0}——来自 Quran.Foundation 的在线播放",
             "तिलावत: {0} — Quran.Foundation से स्ट्रीम", "Recitación: {0} — transmitida desde Quran.Foundation",
             "التلاوة: {0} — بثّ مباشر من Quran.Foundation", "Récitation : {0} — diffusée depuis Quran.Foundation", "তিলাওয়াত: {0} — Quran.Foundation থেকে স্ট্রিম"),

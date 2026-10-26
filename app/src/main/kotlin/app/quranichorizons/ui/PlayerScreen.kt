@@ -45,6 +45,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import app.quranichorizons.BuildConfig
 import app.quranichorizons.data.OnlineAudio
+import app.quranichorizons.data.SurahStream
 import app.quranichorizons.data.StreamManifest
 import app.quranichorizons.i18n.Lang
 import app.quranichorizons.i18n.LocalLang
@@ -97,16 +98,30 @@ fun PlayerScreen(
     var manifest by remember(number) { mutableStateOf<StreamManifest?>(null) }
     LaunchedEffect(number) { if (OnlineAudio.configured) { manifest = OnlineAudio.fetch(number); if (manifest == null) audioFailed = "manifest" } }
     val streamUrl = manifest?.files?.firstOrNull { it.verseKey == "$number:${ayahs[index].number}" }?.url
-    val audioMode = OnlineAudio.configured && manifest != null && streamUrl != null && audioFailed == null
+    val audioMode = !SurahStream.enabled && OnlineAudio.configured && manifest != null && streamUrl != null && audioFailed == null
     val active = playing && !showTafsir && !showSettings && !finished
     val ayah = ayahs[index]
     val scene = mod.scenes.getValue(ayah.sceneId)
     val beat = scene.beats.firstOrNull { it.ayah == ayah.number }
 
+    // بثّ السورة كاملة (mp3quran.net): ملف واحد؛ الآية الحالية تُستنتج من موضع التشغيل بنسبة أطوال الآيات
+    val surahMode = SurahStream.enabled && audioFailed == null
+    val streamEnds = remember(mod) { SurahStream.ends(mod.module.basmala, ayahs.map { it.text }) }
+    var seekGuardUntil by remember { mutableLongStateOf(0L) }
+    val sp = remember { AudioPlayer(onCompleted = { finished = true }, onFailed = { audioFailed = it }) }
+    DisposableEffect(Unit) { onDispose { sp.release() } }
+
     fun goTo(i: Int) {
         ayahMs = 0L
         finished = false
         index = i.coerceIn(0, ayahs.size - 1)
+        if (surahMode) {
+            val d = sp.durationMs()
+            if (d > 0) {
+                sp.seekToMs((SurahStream.startOf(streamEnds, index) * d).toInt())
+                seekGuardUntil = System.currentTimeMillis() + 600
+            }
+        }
     }
 
     // مدة الآية: المدة المقيسة من ملف التلاوة إن وُجدت (تتبعها الصور)، وإلا وتيرة القراءة
@@ -128,10 +143,17 @@ fun PlayerScreen(
     }
     DisposableEffect(Unit) { onDispose { player.release() } }
     LaunchedEffect(index, audioMode, replayKey) { if (audioMode && streamUrl != null) player.play(streamUrl) }
+    LaunchedEffect(number, replayKey, surahMode) {
+        if (surahMode) {
+            val u = SurahStream.url(number)
+            if (u != null) { sp.play(u); if (index > 0) { kotlinx.coroutines.delay(1500); val d = sp.durationMs(); if (d > 0) sp.seekToMs((SurahStream.startOf(streamEnds, index) * d).toInt()) } }
+        }
+    }
+    LaunchedEffect(active, surahMode) { if (surahMode) { if (active) sp.resume() else sp.pause() } }
     LaunchedEffect(active, audioMode) { if (audioMode) { if (active) player.resume() else player.pause() } }
 
     // ساعة واحدة تحرّك المشهد وتقدّم الآيات (في وضع القراءة) فلا ينفصل المشهد عن الآية
-    LaunchedEffect(active, audioMode, ayahLenMs) {
+    LaunchedEffect(active, audioMode, surahMode, ayahLenMs) {
         if (active) {
             var last = withFrameMillis { it }
             while (true) {
@@ -139,7 +161,17 @@ fun PlayerScreen(
                 val dt = now - last
                 last = now
                 timeMs += dt
-                if (!audioMode) {
+                if (surahMode) {
+                    val d = sp.durationMs()
+                    if (d > 0 && System.currentTimeMillis() > seekGuardUntil) {
+                        val f = (sp.positionMs().toDouble() / d).coerceIn(0.0, 1.0)
+                        val i = SurahStream.indexAt(streamEnds, f)
+                        if (i != index) index = i
+                        val st = SurahStream.startOf(streamEnds, i)
+                        val local = ((f - st) / (streamEnds[i] - st)).coerceIn(0.0, 1.0)
+                        ayahMs = (local * ayahLenMs).toLong()
+                    }
+                } else if (!audioMode) {
                     ayahMs += dt
                     if (ayahMs >= ayahLenMs) advanceState.value()
                 }
@@ -248,6 +280,13 @@ fun PlayerScreen(
                         textAlign = TextAlign.Center,
                     )
                 }
+            }
+            if (surahMode) {
+                Text(
+                    tr("audioCreditMp3", SurahStream.RECITER_AR, SurahStream.SOURCE),
+                    color = QhColors.Muted, fontSize = 11.sp,
+                    modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
+                )
             }
             manifest?.let {
                 Text(

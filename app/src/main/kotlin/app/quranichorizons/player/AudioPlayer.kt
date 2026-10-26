@@ -53,6 +53,14 @@ class AudioPlayer(
         if (m != null && m.duration > 0) (m.currentPosition.toFloat() / m.duration).coerceIn(0f, 1f) else 0f
     } catch (_: IllegalStateException) { 0f }
 
+    fun positionMs(): Int = try { mp?.currentPosition ?: 0 } catch (_: IllegalStateException) { 0 }
+
+    fun durationMs(): Int = try { mp?.duration?.takeIf { it > 0 } ?: 0 } catch (_: IllegalStateException) { 0 }
+
+    fun seekToMs(ms: Int) {
+        try { mp?.seekTo(ms) } catch (_: IllegalStateException) { }
+    }
+
     fun setVolume(v: Float) {
         volume = v.coerceIn(0f, 1f)
         try { mp?.setVolume(volume, volume) } catch (_: IllegalStateException) { }
