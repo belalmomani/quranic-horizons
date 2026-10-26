@@ -89,11 +89,14 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             onBack = { screen = HOME },
             onStart = { startAyah = 1; screen = PLAYER },
         )
-        PLAYER -> PlayerScreen(
-            repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, number = selected, startAyah = startAyah,
-            onExit = { screen = SURAH },
-            onToList = { screen = HOME },
-        )
+        PLAYER -> androidx.compose.runtime.key(selected) {
+            PlayerScreen(
+                repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, number = selected, startAyah = startAyah,
+                onExit = { screen = SURAH },
+                onToList = { screen = HOME },
+                onSurah = { n -> selected = n; startAyah = 1 },
+            )
+        }
         SETTINGS -> SettingsScreen(
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME },
             langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },

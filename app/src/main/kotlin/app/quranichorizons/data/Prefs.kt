@@ -37,4 +37,9 @@ class Prefs(context: Context) {
     var langOverride: String
         get() = sp.getString("lang", "") ?: ""
         set(v) = sp.edit().putString("lang", v).apply()
+
+    /** تشغيل السور تباعًا: عند انتهاء السورة تبدأ التالية المتاحة تلقائيًا */
+    var autoNextSurah: Boolean
+        get() = sp.getBoolean("auto_next", true)
+        set(v) = sp.edit().putBoolean("auto_next", v).apply()
 }

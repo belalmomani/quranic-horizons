@@ -45,6 +45,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import app.quranichorizons.BuildConfig
 import app.quranichorizons.data.OnlineAudio
+import app.quranichorizons.data.SurahAvailability
 import app.quranichorizons.data.SurahStream
 import app.quranichorizons.data.StreamManifest
 import app.quranichorizons.i18n.Lang
@@ -70,6 +71,7 @@ fun PlayerScreen(
     startAyah: Int,
     onExit: () -> Unit,
     onToList: () -> Unit,
+    onSurah: (Int) -> Unit = {},
 ) {
     val (mod, error) = remember(number) { loadModuleSafely(repo, surahs, catalog, number) }
     if (mod == null) {
@@ -91,6 +93,10 @@ fun PlayerScreen(
     var pace by remember { mutableStateOf(prefs.paceSeconds) }
     var audioFailed by remember { mutableStateOf<String?>(null) }
     var replayKey by remember { mutableStateOf(0) }
+    var repeatAyah by remember { mutableStateOf(false) }          // تكرار الآية/اللقطة الحالية
+    var autoNext by remember { mutableStateOf(prefs.autoNextSurah) }  // تشغيل السور تباعًا
+    val nextSurah = remember(number) { ((number + 1)..114).firstOrNull { repo.availability(catalog, it) != SurahAvailability.IN_PREPARATION } }
+    val prevSurah = remember(number) { (number - 1 downTo 1).firstOrNull { repo.availability(catalog, it) != SurahAvailability.IN_PREPARATION } }
     var timeMs by remember { mutableLongStateOf(0L) }   // ساعة الحركة الدقيقة (وميض/تموّج)
     var ayahMs by remember { mutableLongStateOf(0L) }   // الزمن المنقضي داخل الآية الحالية
 
@@ -108,7 +114,20 @@ fun PlayerScreen(
     val surahMode = SurahStream.enabled && audioFailed == null
     val streamEnds = remember(mod) { SurahStream.ends(mod.module.basmala, ayahs.map { it.text }) }
     var seekGuardUntil by remember { mutableLongStateOf(0L) }
-    val sp = remember { AudioPlayer(onCompleted = { finished = true }, onFailed = { audioFailed = it }) }
+    val indexNow = rememberUpdatedState(index)
+    val repeatNow = rememberUpdatedState(repeatAyah)
+    val spHolder = remember { arrayOfNulls<AudioPlayer>(1) }
+    val sp = remember {
+        AudioPlayer(
+            onCompleted = {
+                val p = spHolder[0]
+                if (repeatNow.value && p != null) {
+                    p.seekToMs((SurahStream.startOf(streamEnds, indexNow.value) * p.durationMs()).toInt()); p.resume()
+                } else finished = true
+            },
+            onFailed = { audioFailed = it },
+        ).also { spHolder[0] = it }
+    }
     DisposableEffect(Unit) { onDispose { sp.release() } }
 
     fun goTo(i: Int) {
@@ -132,7 +151,8 @@ fun PlayerScreen(
 
     val advanceState = rememberUpdatedState<() -> Unit> {
         ayahMs = 0L
-        if (index < ayahs.size - 1) { index += 1 } else { finished = true }
+        if (repeatAyah) { replayKey++ }
+        else if (index < ayahs.size - 1) { index += 1 } else { finished = true }
     }
 
     LaunchedEffect(index) { prefs.lastSurah = number; prefs.lastAyah = index + 1 }
@@ -165,7 +185,14 @@ fun PlayerScreen(
                     val d = sp.durationMs()
                     if (d > 0 && System.currentTimeMillis() > seekGuardUntil) {
                         val f = (sp.positionMs().toDouble() / d).coerceIn(0.0, 1.0)
-                        val i = SurahStream.indexAt(streamEnds, f)
+                        val i0 = SurahStream.indexAt(streamEnds, f)
+                        var i = i0
+                        if (repeatAyah && i0 > index) {
+                            // تكرار: ارجع إلى بداية الآية الحالية بدل الانتقال
+                            sp.seekToMs((SurahStream.startOf(streamEnds, index) * d).toInt())
+                            seekGuardUntil = System.currentTimeMillis() + 600
+                            i = index
+                        }
                         if (i != index) index = i
                         val st = SurahStream.startOf(streamEnds, i)
                         val local = ((f - st) / (streamEnds[i] - st)).coerceIn(0.0, 1.0)
@@ -173,7 +200,7 @@ fun PlayerScreen(
                     }
                 } else if (!audioMode) {
                     ayahMs += dt
-                    if (ayahMs >= ayahLenMs) advanceState.value()
+                    if (ayahMs >= ayahLenMs) { if (repeatAyah) ayahMs = 0L else advanceState.value() }
                 }
             }
         }
@@ -202,6 +229,11 @@ fun PlayerScreen(
             }
             fromFrame = null
         }
+    }
+
+    // تشغيل السور تباعًا: بعد انتهاء السورة تبدأ التالية المتاحة
+    LaunchedEffect(finished) {
+        if (finished && autoNext && nextSurah != null) { kotlinx.coroutines.delay(1800); onSurah(nextSurah) }
     }
 
     // إيقاف عند خروج التطبيق للخلفية
@@ -315,6 +347,16 @@ fun PlayerScreen(
                 ) { Text(if (playing && !finished) tr("pause") else tr("play")) }
                 TextButton(onClick = { if (index < ayahs.size - 1) goTo(index + 1) }) { Text(tr("next"), color = QhColors.Ink) }
             }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+                TextButton(onClick = { prevSurah?.let(onSurah) }, enabled = prevSurah != null, modifier = Modifier.weight(1f), contentPadding = androidx.compose.foundation.layout.PaddingValues(2.dp)) { Text(tr("prevSurah"), color = QhColors.GoldSoft, fontSize = 11.sp, textAlign = TextAlign.Center) }
+                TextButton(onClick = { repeatAyah = !repeatAyah }, modifier = Modifier.weight(1f), contentPadding = androidx.compose.foundation.layout.PaddingValues(2.dp)) {
+                    Text((if (repeatAyah) "● " else "○ ") + tr("repeatAyah"), color = if (repeatAyah) QhColors.Gold else QhColors.Muted, fontSize = 11.sp, textAlign = TextAlign.Center)
+                }
+                TextButton(onClick = { autoNext = !autoNext; prefs.autoNextSurah = autoNext }, modifier = Modifier.weight(1f), contentPadding = androidx.compose.foundation.layout.PaddingValues(2.dp)) {
+                    Text((if (autoNext) "● " else "○ ") + tr("autoNext"), color = if (autoNext) QhColors.Gold else QhColors.Muted, fontSize = 11.sp, textAlign = TextAlign.Center)
+                }
+                TextButton(onClick = { nextSurah?.let(onSurah) }, enabled = nextSurah != null, modifier = Modifier.weight(1f), contentPadding = androidx.compose.foundation.layout.PaddingValues(2.dp)) { Text(tr("nextSurah"), color = QhColors.GoldSoft, fontSize = 11.sp, textAlign = TextAlign.Center) }
+            }
             TextButton(
                 onClick = { playing = false; showTafsir = true },
                 modifier = Modifier.fillMaxWidth(),
@@ -329,6 +371,7 @@ fun PlayerScreen(
                         onClick = { goTo(0); playing = true; replayKey++ },
                         colors = ButtonDefaults.buttonColors(containerColor = QhColors.Gold, contentColor = QhColors.NavyDeep),
                     ) { Text(tr("replay")) }
+                    if (nextSurah != null) TextButton(onClick = { onSurah(nextSurah) }) { Text(tr("nextSurah"), color = QhColors.GoldSoft) }
                     TextButton(onClick = onToList) { Text(tr("toSurahs"), color = QhColors.GoldSoft) }
                 }
             }
