@@ -1,0 +1,57 @@
+{
+ "formatVersion": 1,
+ "surah": 110,
+ "moduleVersion": "0.1.0",
+ "nameAr": "النصر",
+ "ayahCount": 3,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "الصور النهائية لم تصل بعد (بلا صور بديلة): nasr_01_fath، nasr_02_afwaj، nasr_03_tasbih — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs",
+   "سورة تتعلق بفتح مكة والنبي ﷺ: تُعرض الكعبة والمسجد الحرام بوضوح، ولا يُصوَّر النبي ﷺ ولا الصحابة ولا أشخاص بملامح؛ اللقطات مقترحة من Claude وتحتاج مراجعتك",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "4892a658fde0bf066735a0392f3a21cdcf0c61776049a701556a1a2051e72d03",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ",
+   "sceneId": "n-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا",
+   "sceneId": "n-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ إِنَّهُۥ كَانَ تَوَّابًۢا",
+   "sceneId": "n-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

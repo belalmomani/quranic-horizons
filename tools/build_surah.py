@@ -46,8 +46,15 @@ if pref:
     text_lines[0] = raw_lines[0][len(BASMALA) + 1:]
 
 
+MISSING_SRC = []  # آيات لا نص لها في نسخة المصدر الرقمية: لا تُختلق ولا تُدمج
+
+
 def tf(slug, a):
-    return json.load(open(f'{T}/tafsir/{slug}/{SURAH}/{a}.json', encoding='utf-8'))['text']
+    path = f'{T}/tafsir/{slug}/{SURAH}/{a}.json'
+    if not os.path.isfile(path):
+        MISSING_SRC.append((slug, a))
+        return None
+    return json.load(open(path, encoding='utf-8'))['text']
 
 
 NOTE = 'النص منقول حرفيًا من النسخة الرقمية دون تعديل.'
@@ -60,13 +67,18 @@ BOOKS = [
 records = []
 for sid, slug, book, author, url in BOOKS:
     texts = [tf(slug, a) for a in range(1, N + 1)]
+    if sid == 'muyassar':
+        assert None not in texts, 'الميسّر ناقص'
+    nn = [t for t in texts if t is not None]
     base = {'bookAr': book, 'authorAr': author, 'dataset': 'spa5k/tafsir_api', 'origin': url,
             'licenseStatus': 'unverified', 'attributionReview': 'pending'}
-    if len(set(texts)) == 1 and sid != 'muyassar':  # النسخة الرقمية تكرّر نص السورة في كل آية: سجل واحد للسورة
-        records.append({**base, 'id': sid, 'scope': 'surah', 'ayahs': list(range(1, N + 1)), 'text': texts[0],
+    if len(set(nn)) == 1 and sid != 'muyassar':  # النسخة الرقمية تكرّر نص السورة في كل آية: سجل واحد للسورة
+        records.append({**base, 'id': sid, 'scope': 'surah', 'ayahs': list(range(1, N + 1)), 'text': nn[0],
                         'attribution': NOTE, 'sourceNotes': []})
     else:
         for a in range(1, N + 1):
+            if texts[a - 1] is None:
+                continue
             extra = ' وتتضمن الآية 1 تمهيدًا عن اسم السورة ومقاصدها.' if (sid == 'muyassar' and a == 1) else ''
             records.append({**base, 'id': f'{sid}-{a}', 'scope': 'ayah', 'ayahs': [a], 'text': texts[a - 1],
                             'attribution': NOTE + extra, 'sourceNotes': []})
@@ -134,6 +146,7 @@ blockers = [
     'الصور النهائية لم تصل بعد (بلا صور بديلة): ' + '، '.join(s for s, _ in SHOTS_ALL) + ' — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs',
     *spec.get('extraBlockers', []),
     'التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع',
+    *[f'{slug}: لا نص للآية {a} في النسخة الرقمية المصدرية (لم يُختلق شيء)' for slug, a in MISSING_SRC],
     'مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)',
     'مراجعة صاحب المشروع البصرية للقطات (review.status = draft)',
     'مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع',

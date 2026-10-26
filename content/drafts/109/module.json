@@ -1,0 +1,88 @@
+{
+ "formatVersion": 1,
+ "surah": 109,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الكافرون",
+ "ayahCount": 6,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "الصور النهائية لم تصل بعد (بلا صور بديلة): kafirun_01_nida، kafirun_02_asnam، kafirun_03_wahid، kafirun_04_batil، kafirun_05_tariqan، kafirun_06_dinukum — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs",
+   "سورة تتعلق بالتوحيد ورفض عبادة غير الله: تُعرض الأصنام والمعالم رمزيًا بلا أشخاص ولا تصوير لله ولا للنبي ﷺ؛ اللقطات مقترحة من Claude وتحتاج مراجعتك",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "ar-tafseer-al-saddi: لا نص للآية 4 في النسخة الرقمية المصدرية (لم يُختلق شيء)",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "f77e76efff16c5941e26e35374dbc0aab3f350a2fba7954e6b5cefc0f88a25c4",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "قُلْ يَٰٓأَيُّهَا ٱلْكَٰفِرُونَ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "لَآ أَعْبُدُ مَا تَعْبُدُونَ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "وَلَآ أَنَا۠ عَابِدٌ مَّا عَبَدتُّمْ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "لَكُمْ دِينُكُمْ وَلِىَ دِينِ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

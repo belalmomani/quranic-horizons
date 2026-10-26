@@ -42,3 +42,15 @@
 ## سورة المسد (111)
 - المواصفات: content/specs/111.json؛ المسودة: content/drafts/111 (لم تُنشر: لا صور).
 - أوصاف الصور: docs/image-briefs/masad.proposal.txt (5 لقطات رمزية بلا أشخاص). ترجمات الميسّر: content/translations-src/111 (آلية غير مراجَعة).
+
+## سورة النصر (110)
+- المواصفات: content/specs/110.json؛ المسودة: content/drafts/110 (لا صور بعد). الأوصاف: docs/image-briefs/nasr.proposal.txt. ترجمات الميسّر: content/translations-src/110.
+
+## سورة الكافرون (109)
+- المواصفات: content/specs/109.json؛ المسودة: content/drafts/109 (لا صور بعد). الأوصاف: docs/image-briefs/kafirun.proposal.txt. ترجمات الميسّر: content/translations-src/109.
+
+## طبقة البيانات النصية لكل القرآن (1..108)
+- أداة: tools/build_data.py ثم tools/validate_data.py (تتحقق أن كل سجل تفسير يطابق ملف المصدر حرفيًا، وأن نص الآيات يطابق Tanzil).
+- المخرجات: content/data/<سورة>/{module.json,tafsir.json} (~80MB؛ خارج الـAPK ولا تُضمَّن في ZIP المشروع، وتُسلَّم منفصلة في quranic-data-1-108.zip). وحدات status=text_only بلا مشاهد.
+- المشاهد والصور تُبنى لكل سورة على حدة بـ specs + build_surah.py، وتنتقل من content/data إلى bootstrap/خادم المحتوى عند نشرها.
+- الآيات الفارغة في مصدر معيّن تُسجَّل في missingTafsir ولا تُملأ.
