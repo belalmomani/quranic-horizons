@@ -102,7 +102,7 @@ fun PlayerScreen(
 
     // التلاوة تُبثّ أونلاين من Quran.Foundation عبر الخدمة الوسيطة؛ وإن تعذّرت يستمر وضع القراءة
     var manifest by remember(number) { mutableStateOf<StreamManifest?>(null) }
-    LaunchedEffect(number) { if (OnlineAudio.configured) { manifest = OnlineAudio.fetch(number); if (manifest == null) audioFailed = "manifest" } }
+    LaunchedEffect(number) { if (!SurahStream.enabled && OnlineAudio.configured) { manifest = OnlineAudio.fetch(number); if (manifest == null) audioFailed = "manifest" } }
     val streamUrl = manifest?.files?.firstOrNull { it.verseKey == "$number:${ayahs[index].number}" }?.url
     val audioMode = !SurahStream.enabled && OnlineAudio.configured && manifest != null && streamUrl != null && audioFailed == null
     val active = playing && !showTafsir && !showSettings && !finished
@@ -166,7 +166,14 @@ fun PlayerScreen(
     LaunchedEffect(number, replayKey, surahMode) {
         if (surahMode) {
             val u = SurahStream.url(number)
-            if (u != null) { sp.play(u); if (index > 0) { kotlinx.coroutines.delay(1500); val d = sp.durationMs(); if (d > 0) sp.seekToMs((SurahStream.startOf(streamEnds, index) * d).toInt()) } }
+            if (u == null) { audioFailed = "رقم سورة غير صالح"; return@LaunchedEffect }
+            sp.play(u)
+            // مهلة تحميل: إن لم تُعرف مدة الملف خلال 20 ثانية نعود لوضع القراءة مع إظهار السبب
+            var waited = 0
+            while (sp.durationMs() == 0 && waited < 20_000) { kotlinx.coroutines.delay(250); waited += 250 }
+            if (sp.durationMs() == 0) { audioFailed = "انتهت مهلة تحميل الصوت من ${SurahStream.SOURCE}"; return@LaunchedEffect }
+            if (index > 0) { sp.seekToMs((SurahStream.startOf(streamEnds, index) * sp.durationMs()).toInt()) }
+            if (playing) sp.resume()
         }
     }
     LaunchedEffect(active, surahMode) { if (surahMode) { if (active) sp.resume() else sp.pause() } }
@@ -313,9 +320,15 @@ fun PlayerScreen(
                     )
                 }
             }
+            if (SurahStream.enabled && audioFailed != null) {
+                Text("الصوت تعذّر: $audioFailed — وضع القراءة", color = QhColors.Muted, fontSize = 11.sp,
+                    modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            }
             if (surahMode) {
+                val dur = sp.durationMs()
+                val dbg = if (dur == 0) "جارٍ التحميل…" else "${timeMs.let { sp.positionMs() / 1000 }}/${dur / 1000}s"
                 Text(
-                    tr("audioCreditMp3", SurahStream.RECITER_AR, SurahStream.SOURCE),
+                    tr("audioCreditMp3", SurahStream.RECITER_AR, SurahStream.SOURCE) + " — " + dbg,
                     color = QhColors.Muted, fontSize = 11.sp,
                     modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
                 )
@@ -327,7 +340,7 @@ fun PlayerScreen(
                     modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center,
                 )
             }
-            if (OnlineAudio.configured && manifest == null && audioFailed != null) {
+            if (!SurahStream.enabled && OnlineAudio.configured && manifest == null && audioFailed != null) {
                 Text(tr("audioOffline"), color = QhColors.Muted, fontSize = 11.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
             }
             Slider(
