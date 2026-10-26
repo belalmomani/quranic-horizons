@@ -10,6 +10,7 @@ import android.media.MediaPlayer
 class AudioPlayer(
     private val onCompleted: () -> Unit,
     private val onFailed: (String) -> Unit,
+    private val context: android.content.Context? = null,
 ) {
     private var mp: MediaPlayer? = null
     private var volume = 1f
@@ -25,6 +26,7 @@ class AudioPlayer(
                     .build(),
             )
             p.setDataSource(url)
+            context?.let { try { p.setWakeMode(it, android.os.PowerManager.PARTIAL_WAKE_LOCK) } catch (_: Exception) { } }
             p.setVolume(volume, volume)
             p.setOnPreparedListener { it.start() }
             p.setOnCompletionListener { onCompleted() }

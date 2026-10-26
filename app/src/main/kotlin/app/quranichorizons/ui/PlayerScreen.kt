@@ -112,11 +112,14 @@ fun PlayerScreen(
 
     // بثّ السورة كاملة (mp3quran.net): ملف واحد؛ الآية الحالية تُستنتج من موضع التشغيل بنسبة أطوال الآيات
     val surahMode = SurahStream.enabled && audioFailed == null
-    val streamEnds = remember(mod) { SurahStream.ends(mod.module.basmala, ayahs.map { it.text }) }
+    val timing = remember(mod) { repo.loadTiming(mod) }
+    val estimatedEnds = remember(mod) { SurahStream.ends(mod.module.basmala, ayahs.map { it.text }) }
+    var streamEnds by remember(mod) { mutableStateOf(timing?.let { SurahStream.endsFromTiming(it) } ?: estimatedEnds) }
     var seekGuardUntil by remember { mutableLongStateOf(0L) }
     val indexNow = rememberUpdatedState(index)
     val repeatNow = rememberUpdatedState(repeatAyah)
     val spHolder = remember { arrayOfNulls<AudioPlayer>(1) }
+    val appCtx = LocalContext.current
     val sp = remember {
         AudioPlayer(
             onCompleted = {
@@ -126,6 +129,7 @@ fun PlayerScreen(
                 } else finished = true
             },
             onFailed = { audioFailed = it },
+            context = appCtx.applicationContext,
         ).also { spHolder[0] = it }
     }
     DisposableEffect(Unit) { onDispose { sp.release() } }
@@ -172,6 +176,8 @@ fun PlayerScreen(
             var waited = 0
             while (sp.durationMs() == 0 && waited < 20_000) { kotlinx.coroutines.delay(250); waited += 250 }
             if (sp.durationMs() == 0) { audioFailed = "انتهت مهلة تحميل الصوت من ${SurahStream.SOURCE}"; return@LaunchedEffect }
+            // مواقيت مقيسة لا تُستعمل إن اختلفت مدة الملف الفعلي عنها (>3%): نعود للتقدير
+            timing?.let { if (kotlin.math.abs(sp.durationMs() - it.durationMs) > 0.03 * it.durationMs) streamEnds = estimatedEnds }
             if (index > 0) { sp.seekToMs((SurahStream.startOf(streamEnds, index) * sp.durationMs()).toInt()) }
             if (playing) sp.resume()
         }
@@ -243,11 +249,25 @@ fun PlayerScreen(
         if (finished && autoNext && nextSurah != null) { kotlinx.coroutines.delay(1800); onSurah(nextSurah) }
     }
 
-    // إيقاف عند خروج التطبيق للخلفية
+    // التلاوة تستمر في الخلفية عبر خدمة أمامية؛ وضع القراءة (بلا صوت) يتوقف عند الخروج
+    val keepInBackground = rememberUpdatedState(surahMode || audioMode)
     val ctx = LocalContext.current
+    val notifLauncher = androidx.activity.compose.rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.RequestPermission()) { }
+    LaunchedEffect(Unit) {
+        if (android.os.Build.VERSION.SDK_INT >= 33 &&
+            androidx.core.content.ContextCompat.checkSelfPermission(ctx, android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED
+        ) notifLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+    }
+    DisposableEffect(surahMode || audioMode, active) {
+        val on = (surahMode || audioMode) && active
+        if (on) {
+            try { androidx.core.content.ContextCompat.startForegroundService(ctx, android.content.Intent(ctx, app.quranichorizons.player.PlaybackService::class.java)) } catch (_: Exception) { }
+        }
+        onDispose { if (on) try { ctx.stopService(android.content.Intent(ctx, app.quranichorizons.player.PlaybackService::class.java)) } catch (_: Exception) { } }
+    }
     DisposableEffect(ctx) {
         val lc = (ctx as? ComponentActivity)?.lifecycle
-        val obs = LifecycleEventObserver { _, e -> if (e == Lifecycle.Event.ON_STOP) playing = false }
+        val obs = LifecycleEventObserver { _, e -> if (e == Lifecycle.Event.ON_STOP && !keepInBackground.value) playing = false }
         lc?.addObserver(obs)
         onDispose { lc?.removeObserver(obs) }
     }
@@ -326,7 +346,7 @@ fun PlayerScreen(
             }
             if (surahMode) {
                 val dur = sp.durationMs()
-                val dbg = if (dur == 0) "جارٍ التحميل…" else "${timeMs.let { sp.positionMs() / 1000 }}/${dur / 1000}s"
+                val dbg = (if (timing != null && streamEnds !== estimatedEnds) "" else "~ ") + if (dur == 0) "جارٍ التحميل…" else "${timeMs.let { sp.positionMs() / 1000 }}/${dur / 1000}s"
                 Text(
                     tr("audioCreditMp3", SurahStream.RECITER_AR, SurahStream.SOURCE) + " — " + dbg,
                     color = QhColors.Muted, fontSize = 11.sp,

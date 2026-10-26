@@ -192,3 +192,14 @@ data class TranslationFile(
     /** معرّف سجل التفسير → ترجمة نصه (ما بعد [التفسير])؛ لا تُترجم الآيات القرآنية أبدًا. */
     val tafsir: Map<String, String> = emptyMap(),
 )
+
+
+/** مواقيت آيات تلاوة سورة (مقيسة من الملف الصوتي): نهاية كل آية بالملّي ثانية من بداية الملف (آخر قيمة = المدة). */
+@Serializable
+data class TimingFile(
+    val reciter: String = "",
+    val source: String = "",
+    val durationMs: Long = 0,
+    val endsMs: List<Long> = emptyList(),
+    val status: String = "measured",
+)

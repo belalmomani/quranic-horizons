@@ -62,6 +62,16 @@ class ContentRepository(private val context: Context) {
         return try { json.decodeFromString(TranslationFile.serializer(), String(b, Charsets.UTF_8)) } catch (e: Exception) { null }
     }
 
+    /** مواقيت الآيات لتلاوة السورة الكاملة (timing_ajmi.json) إن وُجدت في الكتالوج ومطابقة لبصمتها؛ وإلا null فيُقدَّر التوقيت. */
+    fun loadTiming(module: SurahModule): TimingFile? {
+        val path = "${module.catalog.dir}/timing_ajmi.json"
+        val fe = module.catalog.files.firstOrNull { it.path == path } ?: return null
+        val b = try { downloaded(module.catalog, path) ?: asset(path) } catch (e: Exception) { return null }
+        if (!ContentVerifier.fileMatches(fe, b)) return null
+        val t = try { json.decodeFromString(TimingFile.serializer(), String(b, Charsets.UTF_8)) } catch (e: Exception) { return null }
+        return if (t.durationMs > 0 && t.endsMs.size == module.module.ayahs.size && t.endsMs.last() <= t.durationMs + 50) t else null
+    }
+
     /** صور عناصر المشهد (kind = image): تُحمَّل بعد التحقق من بصمة كل ملف؛ المفتاح هو معرّف العنصر. */
     fun loadImages(module: SurahModule): Map<String, ImageBitmap> {
         val out = HashMap<String, ImageBitmap>()

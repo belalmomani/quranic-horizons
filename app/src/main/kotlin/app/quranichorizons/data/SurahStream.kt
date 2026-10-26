@@ -32,6 +32,9 @@ object SurahStream {
         return DoubleArray(w.size) { acc += w[it]; acc / total }
     }
 
+    /** نهايات الآيات كنسب من مدة الملف، من مواقيت مقيسة. */
+    fun endsFromTiming(t: TimingFile): DoubleArray = DoubleArray(t.endsMs.size) { (t.endsMs[it].toDouble() / t.durationMs).coerceIn(0.0, 1.0) }.also { it[it.size - 1] = 1.0 }
+
     fun indexAt(ends: DoubleArray, fraction: Double): Int {
         for (i in ends.indices) if (fraction < ends[i]) return i
         return ends.size - 1
