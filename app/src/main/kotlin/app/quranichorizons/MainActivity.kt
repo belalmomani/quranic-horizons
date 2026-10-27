@@ -66,6 +66,10 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     var selected by rememberSaveable { mutableStateOf(0) }
     var startAyah by rememberSaveable { mutableStateOf(1) }
 
+    // مغادرة شاشة التشغيل عمدًا (رجوع/قائمة السور) توقف التلاوة؛ أما إغلاق/إعادة إنشاء النشاط فلا
+    val actCtx = androidx.compose.ui.platform.LocalContext.current
+    androidx.compose.runtime.LaunchedEffect(screen) { if (screen != PLAYER) app.quranichorizons.player.PlaybackEngine.stop(actCtx) }
+
     BackHandler(enabled = screen != HOME) {
         screen = if (screen == PLAYER) SURAH else HOME
     }

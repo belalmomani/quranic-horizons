@@ -1,0 +1,12 @@
+{
+ "lang": "es",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Te hemos dado, oh Profeta, abundante bien en esta vida y en la otra; entre ello, el río Al-Kawzar en el Paraíso, cuyas orillas son tiendas de perla hueca y cuyo barro es almizcle.",
+  "muyassar-2": "Dedica, pues, toda tu oración con sinceridad a tu Señor, y sacrifica tu ofrenda solo para Él y en Su nombre.",
+  "muyassar-3": "En verdad, quien te aborrece a ti y aborrece la guía y la luz que trajiste es quien queda sin descendencia ni huella, cortado de todo bien."
+ }
+}

@@ -105,6 +105,16 @@ fun SettingsScreen(
             color = QhColors.Muted, fontSize = 13.sp,
         )
         AudioTestSection(prefs)
+        run {
+            val c = androidx.compose.ui.platform.LocalContext.current
+            androidx.compose.material3.TextButton(onClick = {
+                try { c.startActivity(android.content.Intent(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                catch (_: Exception) {
+                    try { c.startActivity(android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, android.net.Uri.parse("package:" + c.packageName)).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)) } catch (_: Exception) { }
+                }
+            }) { Text(tr("bgBattery"), color = QhColors.GoldSoft, fontSize = 14.sp) }
+            Text(tr("bgBatteryNote"), color = QhColors.Muted, fontSize = 12.sp)
+        }
         Text(tr(if (BuildConfig.ADS_ENABLED) "adsTest" else "adsOff"), color = QhColors.Muted, fontSize = 13.sp)
         Text(tr("versionLine", BuildConfig.VERSION_NAME), color = QhColors.Muted, fontSize = 12.sp)
     }

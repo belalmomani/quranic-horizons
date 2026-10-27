@@ -1,0 +1,15 @@
+{
+ "lang": "en",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Say, O Messenger, to those who disbelieved in Allah and His Messenger: O disbelievers in Allah!",
+  "muyassar-2": "I do not worship what you worship of idols and false gods.",
+  "muyassar-3": "Nor will you worship what I worship — the One God, Allah, Lord of the worlds, Who alone deserves worship.",
+  "muyassar-4": "Nor do I worship what you have worshipped of idols and false gods.",
+  "muyassar-5": "Nor will you, in the future, worship what I worship. This verse was revealed about specific individuals among the polytheists whom Allah knew would never believe.",
+  "muyassar-6": "You have your religion, which you insisted on following, and I have my religion, which I seek no other than."
+ }
+}

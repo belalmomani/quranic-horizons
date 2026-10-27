@@ -1,0 +1,93 @@
+{
+ "formatVersion": 1,
+ "surah": 109,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الكافرون",
+ "ayahCount": 6,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "سورة تتعلق بالتوحيد ورفض عبادة غير الله: تُعرض الأصنام (صنم بصورة ثور) ونيران خلفها؛ اللقطات مقدَّمة منك وتحتاج مراجعتك؛ لا يُصوَّر الله ولا النبي ﷺ",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "ar-tafseer-al-saddi: لا نص للآية 4 في النسخة الرقمية المصدرية (لم يُختلق شيء)",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة kafirun_01_nida غير مطابقة (920x300): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة kafirun_02_asnam غير مطابقة (880x165): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة kafirun_03_wahid غير مطابقة (870x185): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة kafirun_04_batil غير مطابقة (870x143): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة kafirun_05_tariqan غير مطابقة (870x185): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة kafirun_06_dinukum غير مطابقة (880x194): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "f77e76efff16c5941e26e35374dbc0aab3f350a2fba7954e6b5cefc0f88a25c4",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "قُلْ يَٰٓأَيُّهَا ٱلْكَٰفِرُونَ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "لَآ أَعْبُدُ مَا تَعْبُدُونَ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "وَلَآ أَنَا۠ عَابِدٌ مَّا عَبَدتُّمْ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "لَكُمْ دِينُكُمْ وَلِىَ دِينِ",
+   "sceneId": "k-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "formatVersion": 1,
+ "surah": 107,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الماعون",
+ "ayahCount": 7,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية؛ وفي اللوحة الأصلية مشهد نار وسط أشخاص لم يُستخدم؛ والربط بين اللقطات والآيات اجتهادي ويحتاج تأكيدك",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة maun_01_yukadhib غير مطابقة (270x300): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_02_yaudu غير مطابقة (270x290): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_03_miskin غير مطابقة (430x240): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_04_musallin غير مطابقة (480x270): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_05_sahun غير مطابقة (280x380): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_06_yuraun غير مطابقة (380x230): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة maun_07_maun غير مطابقة (450x200): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "ec661ac4c1790c5ef38fec4a91ce52d413f437ef2876896e2ee38bb0c0daeaef",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "أَرَءَيْتَ ٱلَّذِى يُكَذِّبُ بِٱلدِّينِ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "وَلَا يَحُضُّ عَلَىٰ طَعَامِ ٱلْمِسْكِينِ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "فَوَيْلٌ لِّلْمُصَلِّينَ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "ٱلَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "ٱلَّذِينَ هُمْ يُرَآءُونَ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "وَيَمْنَعُونَ ٱلْمَاعُونَ",
+   "sceneId": "x-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "lang": "fr",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Nous t'avons donné, ô Prophète, un bien abondant en ce monde et dans l'au-delà — dont le fleuve Al-Kawthar au Paradis, dont les rives sont des tentes de perle creuse et dont la boue est du musc.",
+  "muyassar-2": "Consacre donc toute ta prière avec sincérité à ton Seigneur, et sacrifie ton offrande pour Lui seul, en Son nom uniquement.",
+  "muyassar-3": "Celui qui te hait, toi et la guidée et la lumière que tu as apportées, est en vérité celui dont la trace est coupée, privé de tout bien."
+ }
+}

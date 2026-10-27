@@ -56,6 +56,7 @@ import app.quranichorizons.data.ContentRepository
 import app.quranichorizons.data.Prefs
 import app.quranichorizons.data.SurahsFile
 import app.quranichorizons.player.AudioPlayer
+import app.quranichorizons.player.PlaybackEngine
 import app.quranichorizons.scene.SceneCanvas
 import app.quranichorizons.scene.SceneFrame
 import app.quranichorizons.scene.SceneTimeline
@@ -118,21 +119,28 @@ fun PlayerScreen(
     var seekGuardUntil by remember { mutableLongStateOf(0L) }
     val indexNow = rememberUpdatedState(index)
     val repeatNow = rememberUpdatedState(repeatAyah)
-    val spHolder = remember { arrayOfNulls<AudioPlayer>(1) }
     val appCtx = LocalContext.current
-    val sp = remember {
-        AudioPlayer(
-            onCompleted = {
-                val p = spHolder[0]
-                if (repeatNow.value && p != null) {
-                    p.seekToMs((SurahStream.startOf(streamEnds, indexNow.value) * p.durationMs()).toInt()); p.resume()
-                } else finished = true
-            },
-            onFailed = { audioFailed = it },
-            context = appCtx.applicationContext,
-        ).also { spHolder[0] = it }
+    val sp = remember { PlaybackEngine.player(appCtx) }
+    // الصوت يملكه PlaybackEngine (يستمر في الخلفية)؛ الشاشة تتولى فقط تكرار الآية عند انتهاء الملف
+    DisposableEffect(Unit) {
+        PlaybackEngine.hook = {
+            if (repeatNow.value) {
+                sp.seekToMs((SurahStream.startOf(streamEnds, indexNow.value) * sp.durationMs()).toInt()); sp.resume(); true
+            } else false
+        }
+        onDispose { PlaybackEngine.hook = null }
     }
-    DisposableEffect(Unit) { onDispose { sp.release() } }
+    LaunchedEffect(autoNext) { PlaybackEngine.autoNext = autoNext }
+    LaunchedEffect(Unit) {
+        PlaybackEngine.nextProvider = { cur -> ((cur + 1)..114).firstOrNull { repo.availability(catalog, it) != SurahAvailability.IN_PREPARATION } }
+        while (true) {
+            kotlinx.coroutines.delay(300)
+            PlaybackEngine.error?.let { if (audioFailed == null) audioFailed = it }
+            val es = PlaybackEngine.surah
+            if (es != 0 && es != number) { onSurah(es); return@LaunchedEffect }
+            if (es == number && PlaybackEngine.finished && !finished) finished = true
+        }
+    }
 
     fun goTo(i: Int) {
         ayahMs = 0L
@@ -171,14 +179,16 @@ fun PlayerScreen(
         if (surahMode) {
             val u = SurahStream.url(number)
             if (u == null) { audioFailed = "رقم سورة غير صالح"; return@LaunchedEffect }
-            sp.play(u)
+            // إن كان الصوت يعمل أصلًا لهذه السورة (عدنا من الخلفية) نرتبط به دون إعادة تشغيل
+            val attach = replayKey == 0 && PlaybackEngine.surah == number
+            if (!attach) PlaybackEngine.start(appCtx, number, u)
             // مهلة تحميل: إن لم تُعرف مدة الملف خلال 20 ثانية نعود لوضع القراءة مع إظهار السبب
             var waited = 0
             while (sp.durationMs() == 0 && waited < 20_000) { kotlinx.coroutines.delay(250); waited += 250 }
             if (sp.durationMs() == 0) { audioFailed = "انتهت مهلة تحميل الصوت من ${SurahStream.SOURCE}"; return@LaunchedEffect }
             // مواقيت مقيسة لا تُستعمل إن اختلفت مدة الملف الفعلي عنها (>3%): نعود للتقدير
             timing?.let { if (kotlin.math.abs(sp.durationMs() - it.durationMs) > 0.03 * it.durationMs) streamEnds = estimatedEnds }
-            if (index > 0) { sp.seekToMs((SurahStream.startOf(streamEnds, index) * sp.durationMs()).toInt()) }
+            if (!attach && index > 0) { sp.seekToMs((SurahStream.startOf(streamEnds, index) * sp.durationMs()).toInt()) }
             if (playing) sp.resume()
         }
     }
@@ -246,7 +256,8 @@ fun PlayerScreen(
 
     // تشغيل السور تباعًا: بعد انتهاء السورة تبدأ التالية المتاحة
     LaunchedEffect(finished) {
-        if (finished && autoNext && nextSurah != null) { kotlinx.coroutines.delay(1800); onSurah(nextSurah) }
+        // في بثّ السورة الكاملة يتولى PlaybackEngine الانتقال (حتى في الخلفية)؛ هذا لوضع القراءة فقط
+        if (finished && autoNext && nextSurah != null && !surahMode) { kotlinx.coroutines.delay(1800); onSurah(nextSurah) }
     }
 
     // التلاوة تستمر في الخلفية عبر خدمة أمامية؛ وضع القراءة (بلا صوت) يتوقف عند الخروج
@@ -258,12 +269,9 @@ fun PlayerScreen(
             androidx.core.content.ContextCompat.checkSelfPermission(ctx, android.Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED
         ) notifLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
     }
-    DisposableEffect(surahMode || audioMode, active) {
-        val on = (surahMode || audioMode) && active
-        if (on) {
-            try { androidx.core.content.ContextCompat.startForegroundService(ctx, android.content.Intent(ctx, app.quranichorizons.player.PlaybackService::class.java)) } catch (_: Exception) { }
-        }
-        onDispose { if (on) try { ctx.stopService(android.content.Intent(ctx, app.quranichorizons.player.PlaybackService::class.java)) } catch (_: Exception) { } }
+    // الخدمة الأمامية تعمل ما دام الصوت يعمل؛ إيقاف مؤقت = تُزال، والخروج الكامل يوقفها عبر PlaybackEngine.stop
+    LaunchedEffect(surahMode || audioMode, active) {
+        if ((surahMode || audioMode) && active) PlaybackEngine.startService(ctx) else if (surahMode || audioMode) PlaybackEngine.stopService(ctx)
     }
     DisposableEffect(ctx) {
         val lc = (ctx as? ComponentActivity)?.lifecycle

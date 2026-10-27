@@ -1,0 +1,12 @@
+{
+ "lang": "es",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "Cuando se te complete la victoria, oh Mensajero, sobre los incrédulos de Quraysh y se te haya concedido la conquista de La Meca,",
+  "muyassar-2": "y veas a muchas personas entrar en el Islam en multitudes,",
+  "muyassar-3": "prepárate para el encuentro con tu Señor glorificándolo con alabanza en abundancia y pidiéndole perdón en abundancia. Él acepta mucho el arrepentimiento de quienes lo glorifican y le piden perdón: acepta su arrepentimiento y les concede misericordia."
+ }
+}
