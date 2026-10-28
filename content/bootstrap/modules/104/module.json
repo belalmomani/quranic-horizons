@@ -1,0 +1,125 @@
+{
+ "formatVersion": 1,
+ "surah": 104,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الهمزة",
+ "ayahCount": 9,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية ومشاهد نار وعذاب؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة humazah_01_humaza غير مطابقة (600x285): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_02_jamaa غير مطابقة (280x210): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_03_akhladah غير مطابقة (400x230): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_04_hutama غير مطابقة (485x195): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_05_adraka غير مطابقة (480x150): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_06_nar غير مطابقة (370x260): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_07_afida غير مطابقة (490x140): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_08_mu_sada غير مطابقة (245x140): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة humazah_09_amad غير مطابقة (385x309): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "e4e0d39accb14cd6793af57a9e9c88303a172784cf6766b4e10e9b67336af821",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "ٱلَّذِى جَمَعَ مَالًا وَعَدَّدَهُۥ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "يَحْسَبُ أَنَّ مَالَهُۥٓ أَخْلَدَهُۥ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "كَلَّا لَيُنۢبَذَنَّ فِى ٱلْحُطَمَةِ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "وَمَآ أَدْرَىٰكَ مَا ٱلْحُطَمَةُ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "نَارُ ٱللَّهِ ٱلْمُوقَدَةُ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "ٱلَّتِى تَطَّلِعُ عَلَى ٱلْأَفْـِٔدَةِ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 8,
+   "text": "إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 9,
+   "text": "فِى عَمَدٍ مُّمَدَّدَةٍۭ",
+   "sceneId": "h-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

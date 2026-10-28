@@ -1281,6 +1281,105 @@
     }
    ],
    "totalBytes": 652839
+  },
+  {
+   "surah": 104,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/104",
+   "files": [
+    {
+     "path": "modules/104/module.json",
+     "sha256": "8c1a8dda3189b3e2e5860df20a2aff66bc40fba25996d8edd7acc78edba388be",
+     "bytes": 4455
+    },
+    {
+     "path": "modules/104/tafsir.json",
+     "sha256": "20210a95ad25975b97b3fb43677b048593c0f330243926ad95a0b4068b53a175",
+     "bytes": 39468
+    },
+    {
+     "path": "modules/104/scenes.json",
+     "sha256": "c03f2466deb3f8700d7237f7a86ee2710f1e15e5f0e6429c24207f29f1d15c7f",
+     "bytes": 11139
+    },
+    {
+     "path": "modules/104/img/humazah_01_humaza.jpg",
+     "sha256": "22eea93c2f82eeeabfc5e1e2ad8de47e9e7668ea6f80a3157b13fca71738e3e9",
+     "bytes": 70359
+    },
+    {
+     "path": "modules/104/img/humazah_02_jamaa.jpg",
+     "sha256": "888c96c5dcfa6f3d5b74f364c7bc8ff65558d8b631f2908e20692e4edae4a535",
+     "bytes": 22715
+    },
+    {
+     "path": "modules/104/img/humazah_03_akhladah.jpg",
+     "sha256": "5af324b87268f85f97cf608d1196638657a2044dd8ca53a9cc7f2e9658da410f",
+     "bytes": 34492
+    },
+    {
+     "path": "modules/104/img/humazah_04_hutama.jpg",
+     "sha256": "7cfcb5320bc3fed0ad84127a3af7b3c348b4808db9595bcd5521f45276972fbd",
+     "bytes": 44019
+    },
+    {
+     "path": "modules/104/img/humazah_05_adraka.jpg",
+     "sha256": "c53d82a1c7ccb225529d877e39ef921af4b8ca91cc43ccad9a0137863548a9e4",
+     "bytes": 34766
+    },
+    {
+     "path": "modules/104/img/humazah_06_nar.jpg",
+     "sha256": "b68635c4743dbd299b63b28554d4917278c5fead711b1481c5724d8e7af6d265",
+     "bytes": 39341
+    },
+    {
+     "path": "modules/104/img/humazah_07_afida.jpg",
+     "sha256": "9eff13255a01eed858c739d91b8cae9c112ed456e22b3a31b419eb20a2c2b048",
+     "bytes": 27439
+    },
+    {
+     "path": "modules/104/img/humazah_08_mu_sada.jpg",
+     "sha256": "2a1d97333d58d12e95e0648e6259ecbecb5e21962aa8029a981a56c189628c54",
+     "bytes": 15699
+    },
+    {
+     "path": "modules/104/img/humazah_09_amad.jpg",
+     "sha256": "74a1b2a227a89c97cc6205b9bdf48576c03084bea4f585ba616ae01f372b0d23",
+     "bytes": 49657
+    },
+    {
+     "path": "modules/104/translations/bn.json",
+     "sha256": "808273d10e6f08bf9bdbcff51ffbf051718275e8f975e6c90cd308e66f261657",
+     "bytes": 2703
+    },
+    {
+     "path": "modules/104/translations/en.json",
+     "sha256": "d8a116e5ac32d3e6c29969866331e9bb49638b58d6edc92274ad0c190b7ab4b7",
+     "bytes": 1466
+    },
+    {
+     "path": "modules/104/translations/es.json",
+     "sha256": "0f28f4eaeed698a6c3d13bfaea2048e0a1a69832af45cd650a7b2c2419681b23",
+     "bytes": 1456
+    },
+    {
+     "path": "modules/104/translations/fr.json",
+     "sha256": "4c242252c742f5f1be64e3bf190de461fd43293847d9c91c8543b87179acd3b0",
+     "bytes": 1506
+    },
+    {
+     "path": "modules/104/translations/hi.json",
+     "sha256": "1b1b33f2af64df23b51b5a4507ba514110cb88272c6b53896511218853c04761",
+     "bytes": 2694
+    },
+    {
+     "path": "modules/104/translations/zh.json",
+     "sha256": "7479bb58d0019aa190a258d46fe5f116e80f3a61fdc4e964917b1f705d32127d",
+     "bytes": 1369
+    }
+   ],
+   "totalBytes": 404743
   }
  ]
 }
