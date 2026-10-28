@@ -1,0 +1,493 @@
+{
+ "formatVersion": 2,
+ "surah": 101,
+ "scenes": [
+  {
+   "id": "q-images",
+   "ayahs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "kind": "image",
+   "title": "سورة القارعة — لقطة لكل آية",
+   "env": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#050B1F",
+    "stars": 0,
+    "twinkle": 0.0,
+    "ridges": [],
+    "mist": 0.0,
+    "drift": 0.0
+   },
+   "actors": [
+    {
+     "id": "img1",
+     "kind": "image",
+     "file": "modules/101/img/qaria_01_qaria.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img2",
+     "kind": "image",
+     "file": "modules/101/img/qaria_02_ma.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img3",
+     "kind": "image",
+     "file": "modules/101/img/qaria_03_adraka.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img4",
+     "kind": "image",
+     "file": "modules/101/img/qaria_04_farash.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img5",
+     "kind": "image",
+     "file": "modules/101/img/qaria_05_ihn.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img6",
+     "kind": "image",
+     "file": "modules/101/img/qaria_06_mawazin.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img7",
+     "kind": "image",
+     "file": "modules/101/img/qaria_07_ishatin.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img8",
+     "kind": "image",
+     "file": "modules/101/img/qaria_08_khaffat.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img9",
+     "kind": "image",
+     "file": "modules/101/img/qaria_09_hawiya.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img10",
+     "kind": "image",
+     "file": "modules/101/img/qaria_10_adraka.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img11",
+     "kind": "image",
+     "file": "modules/101/img/qaria_11_hamiya.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    }
+   ],
+   "beats": [
+    {
+     "ayah": 1,
+     "tafsirRecord": "muyassar-1",
+     "tafsirQuote": "الساعة التي تقرع قلوب الناس بأهوالها.",
+     "meaning": "القارعة.",
+     "visualEvent": "كوكب الأرض متصدّع بشقوق ملتهبة.",
+     "rationale": "القرع بالهول.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "القارعة لا تُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img1": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 2,
+     "tafsirRecord": "muyassar-2",
+     "tafsirQuote": "أيُّ شيء هذه القارعة؟",
+     "meaning": "ما القارعة؟",
+     "visualEvent": "أبنية منهارة وناس يهربون.",
+     "rationale": "هول القارعة.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "السؤال لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 0.0
+        },
+        "img2": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img2": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 3,
+     "tafsirRecord": "muyassar-3",
+     "tafsirQuote": "وأيُّ شيء أعلمك بها؟",
+     "meaning": "وما أدراك ما القارعة؟",
+     "visualEvent": "رجل من الخلف يتأمل المدينة.",
+     "rationale": "الحيرة بالتأمل.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img2": {
+         "a": 0.0
+        },
+        "img3": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img3": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 4,
+     "tafsirRecord": "muyassar-4",
+     "tafsirQuote": "في ذلك اليوم يكون الناس في كثرتهم وتفرقهم وحركتهم كالفراش المنتشر، وهو الذي يتساقط في النار.",
+     "meaning": "الناس كالفراش المبثوث.",
+     "visualEvent": "جموع كثيرة منتشرة في ساحة.",
+     "rationale": "الانتشار.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الفراش لا يظهر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img3": {
+         "a": 0.0
+        },
+        "img4": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img4": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 5,
+     "tafsirRecord": "muyassar-5",
+     "tafsirQuote": "وتكون الجبال كالصوف المتعدِّدِ الألوان الذي يُنْفَش باليد، فيصير هباء ويزول.",
+     "meaning": "الجبال كالعهن المنفوش.",
+     "visualEvent": "جبال تتصدع وتتطاير.",
+     "rationale": "تفتت الجبال.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "العهن (الصوف) لا يظهر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img4": {
+         "a": 0.0
+        },
+        "img5": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img5": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 6,
+     "tafsirRecord": "muyassar-6",
+     "tafsirQuote": "فأما من رجحت موازين حسناته، فهو في حياة مرضية في الجنة.",
+     "meaning": "من ثقلت موازينه.",
+     "visualEvent": "ميزان ثقيل بكتب ونور.",
+     "rationale": "الميزان.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "الموازين رمز.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img5": {
+         "a": 0.0
+        },
+        "img6": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img6": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 7,
+     "tafsirRecord": "muyassar-7",
+     "tafsirQuote": "فأما من رجحت موازين حسناته، فهو في حياة مرضية في الجنة.",
+     "meaning": "فهو في عيشة راضية.",
+     "visualEvent": "جنة وشلال وأنهار.",
+     "rationale": "العيشة الراضية بجنة رمزية.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "الجنة لا تُصوَّر بدقة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img6": {
+         "a": 0.0
+        },
+        "img7": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img7": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 8,
+     "tafsirRecord": "muyassar-8",
+     "tafsirQuote": "وأما من خفت موازين حسناته، ورجحت موازين سيئاته، فمأواه جهنم.",
+     "meaning": "من خفت موازينه.",
+     "visualEvent": "رجل من الخلف في مكان مظلم.",
+     "rationale": "الخفة بالظلمة.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الميزان لا يظهر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img7": {
+         "a": 0.0
+        },
+        "img8": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img8": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 9,
+     "tafsirRecord": "muyassar-9",
+     "tafsirQuote": "وأما من خفت موازين حسناته، ورجحت موازين سيئاته، فمأواه جهنم.",
+     "meaning": "فأمه هاوية.",
+     "visualEvent": "أشخاص ظلال على جسر فوق حمم.",
+     "rationale": "الهاوية.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "جهنم لا تُصوَّر بدقة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img8": {
+         "a": 0.0
+        },
+        "img9": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img9": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 10,
+     "tafsirRecord": "muyassar-10",
+     "tafsirQuote": "وما أدراك -أيها الرسول- ما هذه الهاوية؟",
+     "meaning": "وما أدراك ما هيه؟",
+     "visualEvent": "الصورة نفسها المستخدمة للآية 3 (رجل يتأمل).",
+     "rationale": "لا لقطة مخصصة للآية؛ إعادة استخدام.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "لا لقطة للآية 10 في اللوحة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img9": {
+         "a": 0.0
+        },
+        "img10": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img10": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 11,
+     "tafsirRecord": "muyassar-11",
+     "tafsirQuote": "إنها نار قد حَمِيت من الوقود عليها.",
+     "meaning": "نار حامية.",
+     "visualEvent": "حمم ونار.",
+     "rationale": "النار.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "لا لقطة للآية 11 في اللوحة؛ اجتهاد.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img10": {
+         "a": 0.0
+        },
+        "img11": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img11": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "review": {
+    "status": "draft",
+    "note": "معاينة: لقطات مقصوصة من لوحات مجمَّعة قدّمها صاحب المشروع بدقة منخفضة؛ بانتظار الأصول النهائية."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  }
+ ]
+}

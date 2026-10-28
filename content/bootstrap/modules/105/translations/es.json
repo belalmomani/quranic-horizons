@@ -1,0 +1,14 @@
+{
+ "lang": "es",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "¿No has visto, Mensajero, cómo obró tu Señor con la gente del Elefante —Abraha el abisinio y su ejército—, que quisieron destruir la bendita Kaaba?",
+  "muyassar-2": "¿No convirtió Él lo que tramaron de mal en fracaso y pérdida?",
+  "muyassar-3": "Y envió sobre ellos aves en bandadas sucesivas, que los golpeaban con piedras de arcilla endurecida.",
+  "muyassar-4": "Y envió sobre ellos aves en bandadas sucesivas, que los golpeaban con piedras de arcilla endurecida.",
+  "muyassar-5": "Así los dejó destrozados como hojas secas de cultivo que el ganado ha comido y luego desechado."
+ }
+}

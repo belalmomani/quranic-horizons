@@ -1,0 +1,14 @@
+{
+ "lang": "fr",
+ "status": "machine_unreviewed",
+ "source": "ترجمة آلية أعدّها Claude لنص: التفسير الميسّر (الجزء بعد علامة [التفسير])",
+ "translator": "Claude (Anthropic) — غير مراجَعة من مترجم بشري",
+ "scopeNote": "ترجمة للتفسير فقط؛ لا تُترجم الآيات القرآنية. الأصل العربي الحرفي هو المرجع.",
+ "tafsir": {
+  "muyassar-1": "N'as-tu pas vu, ô Messager, comment ton Seigneur a agi envers les gens de l'Éléphant — Abraha l'Abyssin et son armée — qui voulaient détruire la Kaaba bénie ?",
+  "muyassar-2": "N'a-t-Il pas fait tourner le mal qu'ils avaient machiné en échec et en perte ?",
+  "muyassar-3": "Et Il envoya sur eux des oiseaux en volées successives, qui les frappaient de pierres d'argile durcie.",
+  "muyassar-4": "Et Il envoya sur eux des oiseaux en volées successives, qui les frappaient de pierres d'argile durcie.",
+  "muyassar-5": "Ainsi les rendit-Il comme des feuilles de culture desséchées que le bétail a mangées puis rejetées."
+ }
+}

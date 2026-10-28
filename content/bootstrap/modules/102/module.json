@@ -1,0 +1,115 @@
+{
+ "formatVersion": 1,
+ "surah": 102,
+ "moduleVersion": "0.1.0",
+ "nameAr": "التكاثر",
+ "ayahCount": 8,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
+   "مشاهد نار؛ مراجعتك مطلوبة",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة takathur_01_alhakum غير مطابقة (345x137): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_02_maqabir غير مطابقة (340x137): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_03_kalla غير مطابقة (345x135): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_04_thumma غير مطابقة (318x137): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_05_yaqin غير مطابقة (320x143): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_06_jahim غير مطابقة (348x135): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_07_ayn غير مطابقة (328x130): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة takathur_08_naim غير مطابقة (320x113): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "d5038260821d2847033c764fba01a05cf5f75ac7508a5f7af9c2fd218963c275",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "أَلْهَىٰكُمُ ٱلتَّكَاثُرُ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "كَلَّا سَوْفَ تَعْلَمُونَ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "لَتَرَوُنَّ ٱلْجَحِيمَ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "ثُمَّ لَتَرَوُنَّهَا عَيْنَ ٱلْيَقِينِ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 8,
+   "text": "ثُمَّ لَتُسْـَٔلُنَّ يَوْمَئِذٍ عَنِ ٱلنَّعِيمِ",
+   "sceneId": "t-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

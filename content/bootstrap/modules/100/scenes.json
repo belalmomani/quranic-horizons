@@ -1,0 +1,493 @@
+{
+ "formatVersion": 2,
+ "surah": 100,
+ "scenes": [
+  {
+   "id": "a-images",
+   "ayahs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "kind": "image",
+   "title": "سورة العاديات — لقطة لكل آية",
+   "env": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#050B1F",
+    "stars": 0,
+    "twinkle": 0.0,
+    "ridges": [],
+    "mist": 0.0,
+    "drift": 0.0
+   },
+   "actors": [
+    {
+     "id": "img1",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_01_dabha.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img2",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_02_qadha.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img3",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_03_subha.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img4",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_04_naqa.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img5",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_05_jam.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img6",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_06_kanud.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img7",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_07_shahid.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img8",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_08_khayr.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img9",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_09_qubur.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img10",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_10_sudur.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img11",
+     "kind": "image",
+     "file": "modules/100/img/adiyat_11_khabir.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    }
+   ],
+   "beats": [
+    {
+     "ayah": 1,
+     "tafsirRecord": "muyassar-1",
+     "tafsirQuote": "أقسم الله تعالى بالخيل الجاريات في سبيله نحو العدوِّ، حين يظهر صوت أنفاسها من سرعة عَدْوِها. ولا يجوز للمخلوق أن يقسم إلا بالله؛ فإن القسم بغير الله شرك.",
+     "meaning": "القسم بالخيل العاديات ضبحًا.",
+     "visualEvent": "خيل تعدو في غبار الصحراء.",
+     "rationale": "الآية صورة خيل عادية.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "الضبح (صوت الأنفاس) لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img1": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 2,
+     "tafsirRecord": "muyassar-2",
+     "tafsirQuote": "فالخيلِ اللاتي تنقدح النار من صلابة حوافرها؛ لشدَّة عَدْوها.",
+     "meaning": "الموريات قدحًا: خيل تقدح النار بحوافرها.",
+     "visualEvent": "خيل تعدو وتتطاير الشرارات والغبار.",
+     "rationale": "القدح يُعرض بتطاير الشرر.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "الشرر خافت.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 0.0
+        },
+        "img2": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img2": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 3,
+     "tafsirRecord": "muyassar-3",
+     "tafsirQuote": "فالخيلِ التي تُغير برُكْبانها على الأعداء عند الصبح.",
+     "meaning": "المغيرات صبحًا على الأعداء.",
+     "visualEvent": "خيل تعدو في صحراء جبلية وقت الصباح.",
+     "rationale": "الإغارة صباحًا.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "الأعداء لا يظهرون.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img2": {
+         "a": 0.0
+        },
+        "img3": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img3": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 4,
+     "tafsirRecord": "muyassar-4",
+     "tafsirQuote": "فهيَّجْنَ بهذا العَدْو غبارًا.",
+     "meaning": "فأثرن به نقعًا: غبارًا.",
+     "visualEvent": "حوافر الخيل تثير غبارًا وتناثر التراب.",
+     "rationale": "النقع غبار.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img3": {
+         "a": 0.0
+        },
+        "img4": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img4": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 5,
+     "tafsirRecord": "muyassar-5",
+     "tafsirQuote": "فتوسَّطن بركبانهن جموع الأعداء.",
+     "meaning": "فوسطن به جمعًا: توسطن جموع الأعداء.",
+     "visualEvent": "فارس من الخلف على فرسه عند الغروب.",
+     "rationale": "التوسط يُعرض بفارس وحده؛ الجمع لا يظهر.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الجمع لا يظهر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img4": {
+         "a": 0.0
+        },
+        "img5": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img5": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 6,
+     "tafsirRecord": "muyassar-6",
+     "tafsirQuote": "إن الإنسان لِنعم ربه لَجحود، وإنه بجحوده ذلك لمقر. وإنه لحب المال لشديد.",
+     "meaning": "إن الإنسان لربه لكنود: جحود لنعمه.",
+     "visualEvent": "رجل يضع يده على رأسه متعبًا.",
+     "rationale": "الجحود يُعبَّر بوجه متألم؛ تفسير اجتهادي.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الجحود لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img5": {
+         "a": 0.0
+        },
+        "img6": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img6": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 7,
+     "tafsirRecord": "muyassar-7",
+     "tafsirQuote": "إن الإنسان لِنعم ربه لَجحود، وإنه بجحوده ذلك لمقر. وإنه لحب المال لشديد.",
+     "meaning": "وإنه على ذلك لشهيد: بجحوده مقر.",
+     "visualEvent": "رجل جالس تحت سماء ملبدة.",
+     "rationale": "الإقرار يُعرض بجلسة متأملة.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الشهادة لا تُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img6": {
+         "a": 0.0
+        },
+        "img7": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img7": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 8,
+     "tafsirRecord": "muyassar-8",
+     "tafsirQuote": "إن الإنسان لِنعم ربه لَجحود، وإنه بجحوده ذلك لمقر. وإنه لحب المال لشديد.",
+     "meaning": "وإنه لحب المال لشديد.",
+     "visualEvent": "يدان تقبضان على عملات ذهبية.",
+     "rationale": "حب المال بعملات ذهبية.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "الحب لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img7": {
+         "a": 0.0
+        },
+        "img8": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img8": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 9,
+     "tafsirRecord": "muyassar-9",
+     "tafsirQuote": "أفلا يعلم الإنسان ما ينتظره إذا أخرج الله الأموات من القبور للحساب والجزاء؟",
+     "meaning": "بعثرة ما في القبور.",
+     "visualEvent": "مقبرة ليلًا تحت نجوم.",
+     "rationale": "القبور مباشرة.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "البعث لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img8": {
+         "a": 0.0
+        },
+        "img9": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img9": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 10,
+     "tafsirRecord": "muyassar-10",
+     "tafsirQuote": "واستُخرج ما استتر في الصدور من خير أو شر.",
+     "meaning": "تحصيل ما في الصدور.",
+     "visualEvent": "رجل من الخلف أمام نور وجموع بعيدة.",
+     "rationale": "ما في الصدور لا يُرى؛ لقطة رمزية.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "ما في الصدور لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img9": {
+         "a": 0.0
+        },
+        "img10": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img10": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 11,
+     "tafsirRecord": "muyassar-11",
+     "tafsirQuote": "إن ربهم بهم وبأعمالهم يومئذ لخبير، لا يخفى عليه شيء من ذلك.",
+     "meaning": "إن ربهم بهم يومئذ لخبير.",
+     "visualEvent": "منظر مدينة وجبال عند الغروب.",
+     "rationale": "العلم الإلهي لا يُصوَّر؛ لقطة هادئة.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "علم الله لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img10": {
+         "a": 0.0
+        },
+        "img11": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img11": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "review": {
+    "status": "draft",
+    "note": "معاينة: لقطات مقصوصة من لوحات مجمَّعة قدّمها صاحب المشروع بدقة منخفضة؛ بانتظار الأصول النهائية."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  }
+ ]
+}

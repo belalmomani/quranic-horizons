@@ -1,0 +1,241 @@
+{
+ "formatVersion": 2,
+ "surah": 105,
+ "scenes": [
+  {
+   "id": "f-images",
+   "ayahs": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "kind": "image",
+   "title": "سورة الفيل — لقطة لكل آية",
+   "env": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#050B1F",
+    "stars": 0,
+    "twinkle": 0.0,
+    "ridges": [],
+    "mist": 0.0,
+    "drift": 0.0
+   },
+   "actors": [
+    {
+     "id": "img1",
+     "kind": "image",
+     "file": "modules/105/img/fil_01_ashab.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img2",
+     "kind": "image",
+     "file": "modules/105/img/fil_02_kayd.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img3",
+     "kind": "image",
+     "file": "modules/105/img/fil_03_tayr.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img4",
+     "kind": "image",
+     "file": "modules/105/img/fil_04_sijjil.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img5",
+     "kind": "image",
+     "file": "modules/105/img/fil_05_asf.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    }
+   ],
+   "beats": [
+    {
+     "ayah": 1,
+     "tafsirRecord": "muyassar-1",
+     "tafsirQuote": "ألم تعلم -أيها الرسول- كيف فعل ربك بأصحاب الفيل: أبرهةَ الحبشيِّ وجيشِه الذين أرادوا تدمير الكعبة المباركة؟",
+     "meaning": "كيف فعل ربك بأصحاب الفيل.",
+     "visualEvent": "جيش على الفيلة يقترب من الكعبة.",
+     "rationale": "المشهد التاريخي.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img1": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 2,
+     "tafsirRecord": "muyassar-2",
+     "tafsirQuote": "ألم يجعل ما دبَّروه من شر في إبطال وتضييع؟",
+     "meaning": "ألم يجعل كيدهم في تضليل.",
+     "visualEvent": "قائد حزين بين جنوده أمام الكعبة.",
+     "rationale": "الكيد الباطل.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 0.0
+        },
+        "img2": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img2": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 3,
+     "tafsirRecord": "muyassar-3",
+     "tafsirQuote": "وبعث عليهم طيرًا في جماعات متتابعة، تقذفهم بحجارة من طين متحجِّر.",
+     "meaning": "وأرسل عليهم طيرًا أبابيل.",
+     "visualEvent": "أسراب طيور فوق الكعبة.",
+     "rationale": "الطير.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img2": {
+         "a": 0.0
+        },
+        "img3": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img3": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 4,
+     "tafsirRecord": "muyassar-4",
+     "tafsirQuote": "وبعث عليهم طيرًا في جماعات متتابعة، تقذفهم بحجارة من طين متحجِّر.",
+     "meaning": "ترميهم بحجارة من سجيل.",
+     "visualEvent": "طيور وحجارة تتساقط على الجنود.",
+     "rationale": "الرمي.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "عنف؛ مراجعة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img3": {
+         "a": 0.0
+        },
+        "img4": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img4": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 5,
+     "tafsirRecord": "muyassar-5",
+     "tafsirQuote": "فجعلهم به محطمين كأوراق الزرع اليابسة التي أكلتها البهائم ثم رمت بها.",
+     "meaning": "فجعلهم كعصف مأكول.",
+     "visualEvent": "فيل وجنود صرعى أمام الكعبة.",
+     "rationale": "الهلاك.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "مشهد هلاك؛ مراجعة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img4": {
+         "a": 0.0
+        },
+        "img5": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img5": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "review": {
+    "status": "draft",
+    "note": "معاينة: لقطات مقصوصة من لوحات مجمَّعة قدّمها صاحب المشروع بدقة منخفضة؛ بانتظار الأصول النهائية."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  }
+ ]
+}

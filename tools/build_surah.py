@@ -127,7 +127,11 @@ for a in range(1, N + 1):
     if len(cur) == 1:
         keys.append(fade(shown, cur[0], 0.2)); shown = [cur[0]]
     else:
-        keys.append(fade(shown, cur[0], 0.12)); keys.append(fade([cur[0]], cur[1], 0.55)); shown = [cur[1]]
+        k = len(cur)
+        keys.append(fade(shown, cur[0], 0.12))
+        for i in range(1, k):
+            keys.append(fade([cur[i - 1]], cur[i], round(0.12 + i * (0.78 / k), 3)))
+        shown = [cur[-1]]
     keys.append(K(0.95, **{shown[0]: {'z': 1.0}}))
     d = spec['beats'][str(a)]
     rid, q = spec['quotes'][str(a)]

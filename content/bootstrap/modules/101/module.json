@@ -1,0 +1,149 @@
+{
+ "formatVersion": 1,
+ "surah": 101,
+ "moduleVersion": "0.1.0",
+ "nameAr": "القارعة",
+ "ayahCount": 11,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
+   "مشاهد نار وعذاب؛ مراجعتك مطلوبة",
+   "الآيتان 10 و11 بلا لقطتين مخصصتين",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة qaria_01_qaria غير مطابقة (395x140): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_02_ma غير مطابقة (385x142): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_03_adraka غير مطابقة (345x136): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_04_farash غير مطابقة (280x130): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_05_ihn غير مطابقة (300x145): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_06_mawazin غير مطابقة (350x155): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_07_ishatin غير مطابقة (324x135): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_08_khaffat غير مطابقة (340x125): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_09_hawiya غير مطابقة (324x130): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_10_adraka غير مطابقة (345x136): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة qaria_11_hamiya غير مطابقة (324x121): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "99d164079d45a79dbf306cb06221de5a9f656cc0894ac6b9174a1df94cd7331c",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "ٱلْقَارِعَةُ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "مَا ٱلْقَارِعَةُ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "وَمَآ أَدْرَىٰكَ مَا ٱلْقَارِعَةُ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "يَوْمَ يَكُونُ ٱلنَّاسُ كَٱلْفَرَاشِ ٱلْمَبْثُوثِ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "وَتَكُونُ ٱلْجِبَالُ كَٱلْعِهْنِ ٱلْمَنفُوشِ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "فَأَمَّا مَن ثَقُلَتْ مَوَٰزِينُهُۥ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "فَهُوَ فِى عِيشَةٍ رَّاضِيَةٍ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 8,
+   "text": "وَأَمَّا مَنْ خَفَّتْ مَوَٰزِينُهُۥ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 9,
+   "text": "فَأُمُّهُۥ هَاوِيَةٌ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 10,
+   "text": "وَمَآ أَدْرَىٰكَ مَا هِيَهْ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 11,
+   "text": "نَارٌ حَامِيَةٌۢ",
+   "sceneId": "q-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

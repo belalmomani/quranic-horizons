@@ -1,0 +1,116 @@
+{
+ "formatVersion": 1,
+ "surah": 99,
+ "moduleVersion": "0.1.0",
+ "nameAr": "الزلزلة",
+ "ayahCount": 8,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
+   "مشاهد نار وعذاب؛ مراجعتك مطلوبة",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة zalzalah_01_zalzala غير مطابقة (392x136): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_02_athqal غير مطابقة (392x130): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_03_insan غير مطابقة (392x118): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_04_akhbar غير مطابقة (379x114): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_05_awha غير مطابقة (379x126): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_06_ashtat غير مطابقة (380x123): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_06_kitab غير مطابقة (380x119): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_07_khayr غير مطابقة (385x178): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة zalzalah_08_sharr غير مطابقة (394x178): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "0b4f6279e28467a60fa2ddc4da4b16016718e0ef734da411655e6893251931cc",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "إِذَا زُلْزِلَتِ ٱلْأَرْضُ زِلْزَالَهَا",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "وَأَخْرَجَتِ ٱلْأَرْضُ أَثْقَالَهَا",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "وَقَالَ ٱلْإِنسَٰنُ مَا لَهَا",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "يَوْمَئِذٍ يَصْدُرُ ٱلنَّاسُ أَشْتَاتًا لِّيُرَوْا۟ أَعْمَٰلَهُمْ",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 8,
+   "text": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُۥ",
+   "sceneId": "z-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}

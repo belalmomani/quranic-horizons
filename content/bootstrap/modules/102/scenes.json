@@ -1,0 +1,367 @@
+{
+ "formatVersion": 2,
+ "surah": 102,
+ "scenes": [
+  {
+   "id": "t-images",
+   "ayahs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "kind": "image",
+   "title": "سورة التكاثر — لقطة لكل آية",
+   "env": {
+    "skyTop": "#050B1F",
+    "skyBottom": "#050B1F",
+    "stars": 0,
+    "twinkle": 0.0,
+    "ridges": [],
+    "mist": 0.0,
+    "drift": 0.0
+   },
+   "actors": [
+    {
+     "id": "img1",
+     "kind": "image",
+     "file": "modules/102/img/takathur_01_alhakum.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img2",
+     "kind": "image",
+     "file": "modules/102/img/takathur_02_maqabir.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img3",
+     "kind": "image",
+     "file": "modules/102/img/takathur_03_kalla.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img4",
+     "kind": "image",
+     "file": "modules/102/img/takathur_04_thumma.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img5",
+     "kind": "image",
+     "file": "modules/102/img/takathur_05_yaqin.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img6",
+     "kind": "image",
+     "file": "modules/102/img/takathur_06_jahim.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img7",
+     "kind": "image",
+     "file": "modules/102/img/takathur_07_ayn.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    },
+    {
+     "id": "img8",
+     "kind": "image",
+     "file": "modules/102/img/takathur_08_naim.jpg",
+     "init": {
+      "a": 0.0,
+      "z": 0.0
+     }
+    }
+   ],
+   "beats": [
+    {
+     "ayah": 1,
+     "tafsirRecord": "muyassar-1",
+     "tafsirQuote": "شغلكم عن طاعة الله التفاخر بكثرة الأموال والأولاد.",
+     "meaning": "ألهاكم التكاثر.",
+     "visualEvent": "رجل من الخلف أمام سيارات فارهة ومنزل.",
+     "rationale": "التكاثر بالمال.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img1": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 2,
+     "tafsirRecord": "muyassar-2",
+     "tafsirQuote": "واستمر اشتغالكم بذلك إلى أن صرتم إلى المقابر، ودُفنتم فيها.",
+     "meaning": "حتى زرتم المقابر.",
+     "visualEvent": "مقبرة عند الغروب.",
+     "rationale": "المقابر.",
+     "symbolic": true,
+     "symbolicNote": 0,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img1": {
+         "a": 0.0
+        },
+        "img2": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img2": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 3,
+     "tafsirRecord": "muyassar-3",
+     "tafsirQuote": "ما هكذا ينبغي أن يُلْهيكم التكاثر بالأموال، سوف تتبيَّنون أن الدار الآخرة خير لكم.",
+     "meaning": "كلا سوف تعلمون.",
+     "visualEvent": "ظلال أشخاص في ضباب أزرق.",
+     "rationale": "التهديد بالعلم.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img2": {
+         "a": 0.0
+        },
+        "img3": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img3": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 4,
+     "tafsirRecord": "muyassar-4",
+     "tafsirQuote": "ثم احذروا سوف تعلمون سوء عاقبة انشغالكم عنها.",
+     "meaning": "ثم كلا سوف تعلمون.",
+     "visualEvent": "ظلال أشخاص أمام لهب.",
+     "rationale": "التكرار.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "نار؛ مراجعة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img3": {
+         "a": 0.0
+        },
+        "img4": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img4": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 5,
+     "tafsirRecord": "muyassar-5",
+     "tafsirQuote": "ما هكذا ينبغي أن يلهيكم التكاثر بالأموال، لو تعلمون حق العلم لانزجرتم، ولبادرتم إلى إنقاذ أنفسكم من الهلاك. لتبصرُنَّ الجحيم، ثم لتبصرُنَّها دون ريب، ثم لتُسألُنَّ يوم القيامة عن كل أنواع النعيم.",
+     "meaning": "لو تعلمون علم اليقين.",
+     "visualEvent": "رجل نادم يضع رأسه بين يديه.",
+     "rationale": "الندم.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "علم اليقين لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img4": {
+         "a": 0.0
+        },
+        "img5": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img5": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 6,
+     "tafsirRecord": "muyassar-6",
+     "tafsirQuote": "ما هكذا ينبغي أن يلهيكم التكاثر بالأموال، لو تعلمون حق العلم لانزجرتم، ولبادرتم إلى إنقاذ أنفسكم من الهلاك. لتبصرُنَّ الجحيم، ثم لتبصرُنَّها دون ريب، ثم لتُسألُنَّ يوم القيامة عن كل أنواع النعيم.",
+     "meaning": "لترون الجحيم.",
+     "visualEvent": "ظلال أشخاص على صخور ونار.",
+     "rationale": "الجحيم.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "نار؛ مراجعة.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img5": {
+         "a": 0.0
+        },
+        "img6": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img6": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 7,
+     "tafsirRecord": "muyassar-7",
+     "tafsirQuote": "ما هكذا ينبغي أن يلهيكم التكاثر بالأموال، لو تعلمون حق العلم لانزجرتم، ولبادرتم إلى إنقاذ أنفسكم من الهلاك. لتبصرُنَّ الجحيم، ثم لتبصرُنَّها دون ريب، ثم لتُسألُنَّ يوم القيامة عن كل أنواع النعيم.",
+     "meaning": "ثم لترونها عين اليقين.",
+     "visualEvent": "أشخاص من الخلف أمام نار.",
+     "rationale": "المعاينة.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "—",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img6": {
+         "a": 0.0
+        },
+        "img7": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img7": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    },
+    {
+     "ayah": 8,
+     "tafsirRecord": "muyassar-8",
+     "tafsirQuote": "ما هكذا ينبغي أن يلهيكم التكاثر بالأموال، لو تعلمون حق العلم لانزجرتم، ولبادرتم إلى إنقاذ أنفسكم من الهلاك. لتبصرُنَّ الجحيم، ثم لتبصرُنَّها دون ريب، ثم لتُسألُنَّ يوم القيامة عن كل أنواع النعيم.",
+     "meaning": "ثم لتسألن عن النعيم.",
+     "visualEvent": "مائدة طعام وفاكهة وكؤوس.",
+     "rationale": "النعيم.",
+     "symbolic": true,
+     "symbolicNote": 1,
+     "gap": "السؤال لا يُصوَّر.",
+     "keys": [
+      {
+       "t": 0.2,
+       "set": {
+        "img7": {
+         "a": 0.0
+        },
+        "img8": {
+         "a": 1.0
+        }
+       }
+      },
+      {
+       "t": 0.95,
+       "set": {
+        "img8": {
+         "z": 1.0
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "review": {
+    "status": "draft",
+    "note": "معاينة: لقطات مقصوصة من لوحات مجمَّعة قدّمها صاحب المشروع بدقة منخفضة؛ بانتظار الأصول النهائية."
+   },
+   "transition": {
+    "type": "crossfade",
+    "ms": 1600
+   }
+  }
+ ]
+}

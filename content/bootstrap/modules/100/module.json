@@ -1,0 +1,147 @@
+{
+ "formatVersion": 1,
+ "surah": 100,
+ "moduleVersion": "0.1.0",
+ "nameAr": "العاديات",
+ "ayahCount": 11,
+ "review": {
+  "status": "draft",
+  "blockers": [
+   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
+   "التلاوة: بثّ أونلاين من Quran.Foundation بانتظار موافقة الإنتاج، وتحديد ياسر الدوسري ورقم تلاوته وترخيصه؛ لا ملفات صوت في المشروع",
+   "مراجعة نسبة نصوص التفاسير وحقوقها (attributionReview = pending)",
+   "مراجعة صاحب المشروع البصرية للقطات (review.status = draft)",
+   "مصدر الصور وحقوقها: توثيق الأداة وشروط الاستخدام التجاري قبل التوزيع",
+   "مدد الآيات غير مقيسة (تُقاس من التلاوة المبثوثة)",
+   "دقة/نسبة صورة adiyat_01_dabha غير مطابقة (485x103): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_02_qadha غير مطابقة (485x86): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_03_subha غير مطابقة (485x94): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_04_naqa غير مطابقة (485x87): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_05_jam غير مطابقة (485x104): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_06_kanud غير مطابقة (460x102): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_07_shahid غير مطابقة (465x97): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_08_khayr غير مطابقة (359x102): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_09_qubur غير مطابقة (334x97): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_10_sudur غير مطابقة (410x83): المطلوب عرض ≥ 1080 px ونسبة 9:16",
+   "دقة/نسبة صورة adiyat_11_khabir غير مطابقة (425x102): المطلوب عرض ≥ 1080 px ونسبة 9:16"
+  ]
+ },
+ "basmala": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+ "text": {
+  "source": "Tanzil Uthmani",
+  "sha256OfSourceLines": "ff07ccaa31e2fad80e3b2afe2696355bfbff446b1e09c82f7d3801d42e42c065",
+  "note": "سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط"
+ },
+ "ayahs": [
+  {
+   "number": 1,
+   "text": "وَٱلْعَٰدِيَٰتِ ضَبْحًا",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 2,
+   "text": "فَٱلْمُورِيَٰتِ قَدْحًا",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 3,
+   "text": "فَٱلْمُغِيرَٰتِ صُبْحًا",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 4,
+   "text": "فَأَثَرْنَ بِهِۦ نَقْعًا",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 5,
+   "text": "فَوَسَطْنَ بِهِۦ جَمْعًا",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 6,
+   "text": "إِنَّ ٱلْإِنسَٰنَ لِرَبِّهِۦ لَكَنُودٌ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 7,
+   "text": "وَإِنَّهُۥ عَلَىٰ ذَٰلِكَ لَشَهِيدٌ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 8,
+   "text": "وَإِنَّهُۥ لِحُبِّ ٱلْخَيْرِ لَشَدِيدٌ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 9,
+   "text": "أَفَلَا يَعْلَمُ إِذَا بُعْثِرَ مَا فِى ٱلْقُبُورِ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 10,
+   "text": "وَحُصِّلَ مَا فِى ٱلصُّدُورِ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  },
+  {
+   "number": 11,
+   "text": "إِنَّ رَبَّهُم بِهِمْ يَوْمَئِذٍ لَّخَبِيرٌۢ",
+   "sceneId": "a-images",
+   "audio": {
+    "url": "",
+    "durationMs": null,
+    "status": "online_only"
+   }
+  }
+ ]
+}
