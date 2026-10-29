@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "237443152900-1unq9896ps4ium93vpssts3guh8de1hv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.quranichorizons",
+            "certificate_hash": "bd18ee260bcbc2aa7d02c6be9a26afc3e5e56b5d"
+          }
+        },
+        {
           "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -43,6 +51,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "237443152900-dds1dq9hcu5i9ebko6gn0m39ffmlk50g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diskati.pcmanager",
+            "certificate_hash": "bd18ee260bcbc2aa7d02c6be9a26afc3e5e56b5d"
+          }
+        },
         {
           "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
           "client_type": 3

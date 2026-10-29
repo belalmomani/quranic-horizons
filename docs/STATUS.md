@@ -101,3 +101,6 @@
 - AuthManager: Credential Manager + Firebase signInWithCredential؛ البريد من حساب Firebase. لوحة الإدارة تظهر لـbilalalmomani90@gmail.com.
 - يلزم تسجيل بصمة SHA-1 لمفتاح التوقيع في Firebase (إعدادات التطبيق) وإلا يفشل الدخول؛ الملف الحالي بلا عميل أندرويد (client_type 1).
 - لم يُبنَ هنا؛ البناء الأول على CI هو الاختبار.
+
+## v33 — google-services.json محدَّث (عميل أندرويد + SHA-1)
+- أُضيف client_type 1 للحزمة app.quranichorizons. يجب أن تطابق بصمته (certificate_hash) بصمة مفتاح التوقيع qh المستخدم في CI، وإلا يفشل الدخول. لم أستطع التحقق من المطابقة هنا (كلمة المرور على جهاز المستخدم).
