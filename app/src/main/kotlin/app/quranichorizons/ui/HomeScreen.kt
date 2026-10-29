@@ -50,6 +50,9 @@ fun HomeScreen(
     onOpen: (Int) -> Unit,
     onContinue: (Int, Int) -> Unit,
     onSettings: () -> Unit,
+    listState: androidx.compose.foundation.lazy.LazyListState,
+    query: String,
+    onQuery: (String) -> Unit,
 ) {
     var notice by remember { mutableStateOf("") }
     val last = prefs.lastSurah
@@ -61,6 +64,7 @@ fun HomeScreen(
     ) {
         LazyColumn(
             Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
@@ -95,7 +99,22 @@ fun HomeScreen(
                 item { Text(notice, color = QhColors.GoldSoft, fontSize = 14.sp) }
             }
             item { Text(tr("surahs"), color = QhColors.Muted, fontSize = 13.sp, modifier = Modifier.padding(top = 6.dp)) }
-            items(surahs.surahs, key = { it.number }) { s ->
+            item {
+                androidx.compose.material3.OutlinedTextField(
+                    value = query, onValueChange = onQuery, singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
+                    placeholder = { Text(tr("searchHint"), color = QhColors.Muted) },
+                    colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = QhColors.Ink, unfocusedTextColor = QhColors.Ink,
+                        focusedBorderColor = QhColors.Gold, unfocusedBorderColor = QhColors.Muted,
+                        cursorColor = QhColors.Gold,
+                    ),
+                )
+            }
+            val q = normalizeAr(query)
+            val shown = if (q.isEmpty()) surahs.surahs else surahs.surahs.filter { normalizeAr(it.nameAr).contains(q) || it.number.toString() == q }
+            if (shown.isEmpty()) item { Text(tr("noResults"), color = QhColors.Muted, fontSize = 14.sp) }
+            items(shown, key = { it.number }) { s ->
                 val av = repo.availability(catalog, s.number)
                 val inPrepNotice = tr("inPrepNotice", s.nameAr)
                 Card(
@@ -128,4 +147,19 @@ fun HomeScreen(
             }
         }
     }
+}
+
+/** توحيد النص العربي للبحث: حذف التشكيل والتطويل وبادئة «سورة» وتوحيد الألف والياء والتاء المربوطة. */
+internal fun normalizeAr(s: String): String {
+    val sb = StringBuilder()
+    for (c in s.trim()) {
+        when {
+            c in '\u064B'..'\u065F' || c == '\u0670' || c == '\u0640' -> {}
+            c == 'أ' || c == 'إ' || c == 'آ' || c == 'ٱ' -> sb.append('ا')
+            c == 'ى' -> sb.append('ي')
+            c == 'ة' -> sb.append('ه')
+            else -> sb.append(c)
+        }
+    }
+    return sb.toString().removePrefix("سوره").trim()
 }

@@ -65,6 +65,9 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     var screen by rememberSaveable { mutableStateOf(HOME) }
     var selected by rememberSaveable { mutableStateOf(0) }
     var startAyah by rememberSaveable { mutableStateOf(1) }
+    // حالة قائمة السور والبحث ترتفع إلى هنا كي لا تعود القائمة إلى أولها عند الرجوع من سورة
+    val homeListState = androidx.compose.foundation.lazy.rememberLazyListState()
+    var homeQuery by rememberSaveable { mutableStateOf("") }
 
     // مغادرة شاشة التشغيل عمدًا (رجوع/قائمة السور) توقف التلاوة؛ أما إغلاق/إعادة إنشاء النشاط فلا
     val actCtx = androidx.compose.ui.platform.LocalContext.current
@@ -87,6 +90,7 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             onOpen = { selected = it; screen = SURAH },
             onContinue = { s, a -> selected = s; startAyah = a; screen = PLAYER },
             onSettings = { screen = SETTINGS },
+            listState = homeListState, query = homeQuery, onQuery = { homeQuery = it },
         )
         SURAH -> SurahScreen(
             repo = repo, surahs = surahs, catalog = catalog, number = selected,

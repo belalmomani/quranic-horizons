@@ -87,6 +87,8 @@ def check_scene_semantics(n, scene, tafsir, err):
         elif prev_changes is not None and changes == prev_changes and not b.get('continuity'):
             err(f'{sid} آية {ay}: نفس حدث الآية السابقة دون تبرير استمرار (continuity)')
         prev_changes = changes
+        if not isinstance(b.get('symbolic'), bool) or not isinstance(b.get('symbolicNote', ''), str):
+            err(f'{sid} آية {ay}: أنواع حقول symbolic/symbolicNote غير صحيحة')
         if b.get('symbolic') and not str(b.get('symbolicNote', '')).strip():
             err(f'{sid} آية {ay}: تمثيل رمزي بلا توضيح (symbolicNote)')
 

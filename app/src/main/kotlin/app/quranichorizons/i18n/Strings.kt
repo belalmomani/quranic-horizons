@@ -22,6 +22,8 @@ object Strings {
         "settings" to e("Settings & content status", "设置与内容状态", "सेटिंग्स और सामग्री की स्थिति",
             "Ajustes y estado del contenido", "الإعدادات وحالة المحتوى", "Réglages et état du contenu", "সেটিংস ও বিষয়বস্তুর অবস্থা"),
         "settingsTitle" to e("Settings", "设置", "सेटिंग्स", "Ajustes", "الإعدادات", "Réglages", "সেটিংস"),
+        "searchHint" to e("Search a surah (name or number)", "搜索章名或编号", "सूरह खोजें (नाम या संख्या)", "Buscar sura (nombre o número)", "ابحث عن سورة (الاسم أو الرقم)", "Rechercher une sourate (nom ou numéro)", "সূরা খুঁজুন (নাম বা নম্বর)"),
+        "noResults" to e("No matching surah", "没有匹配的章", "कोई मेल खाती सूरह नहीं", "Ninguna sura coincide", "لا توجد سورة مطابقة", "Aucune sourate correspondante", "কোনো মিলে যাওয়া সূরা নেই"),
         "back" to e("Back", "返回", "वापस", "Atrás", "رجوع", "Retour", "ফিরে যান"),
         "ayahsCount" to e("{0} verses", "{0} 节", "{0} आयतें", "{0} versículos", "{0} آية", "{0} versets", "{0}টি আয়াত"),
         "surahNamed" to e("Surah {0}", "第{0}章", "सूरह {0}", "Sura {0}", "سورة {0}", "Sourate {0}", "সূরা {0}"),

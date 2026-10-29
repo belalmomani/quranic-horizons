@@ -709,580 +709,6 @@
    "totalBytes": 422177
   },
   {
-   "surah": 99,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/99",
-   "files": [
-    {
-     "path": "modules/99/module.json",
-     "sha256": "364720e0da4a40252e4f98e56836d35b1f94ccf3848dc29e5b817e5bef2e89e9",
-     "bytes": 4412
-    },
-    {
-     "path": "modules/99/tafsir.json",
-     "sha256": "2a3f5e7b4eb2d62fea4b76ee7111fd6071f60696f10eb1c389cc0937b56ba983",
-     "bytes": 71458
-    },
-    {
-     "path": "modules/99/scenes.json",
-     "sha256": "6c3715c3fdedf1facc054c32691de670f43070f4880bd328be35ee591d682d43",
-     "bytes": 9476
-    },
-    {
-     "path": "modules/99/img/zalzalah_01_zalzala.jpg",
-     "sha256": "669befa8d6f56db670bb9ce79c9cc50684f82660e69239b6d0e45c2ad151eb58",
-     "bytes": 27524
-    },
-    {
-     "path": "modules/99/img/zalzalah_02_athqal.jpg",
-     "sha256": "3ef20b7ccb3138e39a0e9589f726d049132fd8848f61fbf51a176061b9f66b9e",
-     "bytes": 24493
-    },
-    {
-     "path": "modules/99/img/zalzalah_03_insan.jpg",
-     "sha256": "3350dcd443d480ec41c72785c84c0ba81970a383f324c8ee005cafd6d4ae1c91",
-     "bytes": 20233
-    },
-    {
-     "path": "modules/99/img/zalzalah_04_akhbar.jpg",
-     "sha256": "7ba0a4deb06af8da181d85404260e9bb6f322da11964cc4e49d94cbba7143c2c",
-     "bytes": 7945
-    },
-    {
-     "path": "modules/99/img/zalzalah_05_awha.jpg",
-     "sha256": "9cbdfa43c40885bee941f2fa0519f97059ab339f77a9179b62bdb10c59e4ad4f",
-     "bytes": 19092
-    },
-    {
-     "path": "modules/99/img/zalzalah_06_ashtat.jpg",
-     "sha256": "a3869daab614f42c4e02e3a9f1b535c70875c8cd5f6d5a0c6df0477fecb2bdaa",
-     "bytes": 18552
-    },
-    {
-     "path": "modules/99/img/zalzalah_06_kitab.jpg",
-     "sha256": "62617ef02e3aac289effcd5664657c20e0c78f615c6e15bc76bac316ef73ce6a",
-     "bytes": 13274
-    },
-    {
-     "path": "modules/99/img/zalzalah_07_khayr.jpg",
-     "sha256": "7a2d5616418e3e03e7dee05ec8632a11a14cada5bb9986fa81e80faff8738f96",
-     "bytes": 41753
-    },
-    {
-     "path": "modules/99/img/zalzalah_08_sharr.jpg",
-     "sha256": "5975433885f0275d3111c30d405bd5e9c7b305bbd19406d91d68ebd8d789e389",
-     "bytes": 29861
-    },
-    {
-     "path": "modules/99/translations/bn.json",
-     "sha256": "bfeb08fddf02f91b9a6a094db8ed99018171274925723d4e3429674714891be6",
-     "bytes": 3175
-    },
-    {
-     "path": "modules/99/translations/en.json",
-     "sha256": "8bbf78523a380542437d2748a393d15340be01e1c633cfddc90a1ba5c3c6725c",
-     "bytes": 1930
-    },
-    {
-     "path": "modules/99/translations/es.json",
-     "sha256": "b980684b20c41b5b2b2f27ea39b6547053f7a373b95a89e888a588d93dece7d8",
-     "bytes": 1886
-    },
-    {
-     "path": "modules/99/translations/fr.json",
-     "sha256": "96c3c5731bf95a2f5179f1123c15ed5c2cca6680b98192d0a359be14f8b937be",
-     "bytes": 1980
-    },
-    {
-     "path": "modules/99/translations/hi.json",
-     "sha256": "0f37890d910a9df359574f345dfdbc81f1d8f9ce7506d14e55ddf6551351c714",
-     "bytes": 3288
-    },
-    {
-     "path": "modules/99/translations/zh.json",
-     "sha256": "c82d78ba6d13ed7d6326a74baa5408c5299ee9c5757c229d318371bd512ba6ff",
-     "bytes": 1541
-    }
-   ],
-   "totalBytes": 301873
-  },
-  {
-   "surah": 100,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/100",
-   "files": [
-    {
-     "path": "modules/100/module.json",
-     "sha256": "20f25d71a8b4935cb72ecef5e6b34079cd9d3c921b119c61df1ba04abf900a1a",
-     "bytes": 5083
-    },
-    {
-     "path": "modules/100/tafsir.json",
-     "sha256": "08d6c5ca5eed7df64df4259cc63860654eb12ff1dea22e87b0dac23ddc862806",
-     "bytes": 116135
-    },
-    {
-     "path": "modules/100/scenes.json",
-     "sha256": "aa6077116f3dd998d82bef8e18e05c5c2a4b4e6d262df3aa01b2e35d2e6c2f78",
-     "bytes": 11242
-    },
-    {
-     "path": "modules/100/img/adiyat_01_dabha.jpg",
-     "sha256": "e6b850f79882238b95b48c72529f833eaebd3a9364d708a3bb24f82dde9aff07",
-     "bytes": 23107
-    },
-    {
-     "path": "modules/100/img/adiyat_02_qadha.jpg",
-     "sha256": "2e665b70215868ce77849ae817cc0a180300293a01a77200e9de7f56611afebe",
-     "bytes": 19928
-    },
-    {
-     "path": "modules/100/img/adiyat_03_subha.jpg",
-     "sha256": "2102e8f7a7f75d5c24ff027d25c029a506ea15d040f471c31706417c2036889a",
-     "bytes": 19713
-    },
-    {
-     "path": "modules/100/img/adiyat_04_naqa.jpg",
-     "sha256": "095b5bbd2b589c6d23c12184e34d89dea71f05137119ce90dca22b3ff8e147f6",
-     "bytes": 22304
-    },
-    {
-     "path": "modules/100/img/adiyat_05_jam.jpg",
-     "sha256": "cabebd8a4306c0dfa51051527d5a7bfde610bf393d349575f9111b6ee19b2750",
-     "bytes": 13810
-    },
-    {
-     "path": "modules/100/img/adiyat_06_kanud.jpg",
-     "sha256": "19c98f8b9089b5335ef7f87f6570a787b95ff012988727700c80c158f7b4575e",
-     "bytes": 10745
-    },
-    {
-     "path": "modules/100/img/adiyat_07_shahid.jpg",
-     "sha256": "05912053eb42b09dbaff3cb4bad96021d14fd26e37c62470510dbccaa38c5732",
-     "bytes": 16352
-    },
-    {
-     "path": "modules/100/img/adiyat_08_khayr.jpg",
-     "sha256": "ee288d14690fb8bd780c3a4e63f34b5c211976d7e0975544b1c31f80feb04d9f",
-     "bytes": 10700
-    },
-    {
-     "path": "modules/100/img/adiyat_09_qubur.jpg",
-     "sha256": "bc8e744c07f59ce19017598ace2d805cdf2f87ad870680b8b05624d2c8142b0c",
-     "bytes": 13378
-    },
-    {
-     "path": "modules/100/img/adiyat_10_sudur.jpg",
-     "sha256": "7b17aa40a8b711a1cf36a32251d6601a27c1de22e9c15194953241a18ded2800",
-     "bytes": 14441
-    },
-    {
-     "path": "modules/100/img/adiyat_11_khabir.jpg",
-     "sha256": "c1d5b87b1598be1f6508a412c2b27af45dbd5f01f7e121508078d4f7a7642fa8",
-     "bytes": 17292
-    },
-    {
-     "path": "modules/100/translations/bn.json",
-     "sha256": "323e9eebcf1c7f1e0c31466efe8d7e980c3135ab6aa8da32b955867fc85c277c",
-     "bytes": 3577
-    },
-    {
-     "path": "modules/100/translations/en.json",
-     "sha256": "ad49da4b257b0c16c67cd8538f4be2adcb9844ea74523ca45b09205ec4df5cf6",
-     "bytes": 1907
-    },
-    {
-     "path": "modules/100/translations/es.json",
-     "sha256": "a89684d7f49c0038480f94fb40300c6cb7474af9fa601a11c4f2dbbc0e140187",
-     "bytes": 1992
-    },
-    {
-     "path": "modules/100/translations/fr.json",
-     "sha256": "a42bb6d440a3ac08562a444d2a21746926ba9e411776fd5890db09523ae180f1",
-     "bytes": 2042
-    },
-    {
-     "path": "modules/100/translations/hi.json",
-     "sha256": "801e0fdc2e71f87af2dd41e8b407422fd4f53a9853de7400612a5cce1b5156e0",
-     "bytes": 3568
-    },
-    {
-     "path": "modules/100/translations/zh.json",
-     "sha256": "274905db1899e3ddc51150a8bf26df6971900cb796f4009dbc830a419e13e65f",
-     "bytes": 1669
-    }
-   ],
-   "totalBytes": 328985
-  },
-  {
-   "surah": 101,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/101",
-   "files": [
-    {
-     "path": "modules/101/module.json",
-     "sha256": "6ca69eec93d341b1cc4cd05722262d0710c1b70ec56babd4610fe62084a65d92",
-     "bytes": 5152
-    },
-    {
-     "path": "modules/101/tafsir.json",
-     "sha256": "34d45f2691613dd8fc5c4a3cd1b30fea51cbf71b4b5ae26f9ccc319871297610",
-     "bytes": 43403
-    },
-    {
-     "path": "modules/101/scenes.json",
-     "sha256": "95bb84e6c363f1a28970106e90c16757212cb276569685bc47a29ff2ba880e0d",
-     "bytes": 10401
-    },
-    {
-     "path": "modules/101/img/qaria_01_qaria.jpg",
-     "sha256": "b6691b44be39a3bba484ca479ed3e919a5f277d06a4a1c6aecfefe5b6bd4a226",
-     "bytes": 32279
-    },
-    {
-     "path": "modules/101/img/qaria_02_ma.jpg",
-     "sha256": "450b2122580d42331273b025ba5010e6f1124ceafea774559759d47378b2261e",
-     "bytes": 29330
-    },
-    {
-     "path": "modules/101/img/qaria_03_adraka.jpg",
-     "sha256": "e5ef2a18b81706bd1011c7711b663f53498873aa154ecf7662aaa088589e7cec",
-     "bytes": 15137
-    },
-    {
-     "path": "modules/101/img/qaria_04_farash.jpg",
-     "sha256": "d197cd53edbe3bc075de12d187f184da601fa43df6cd1c8113dc847f5f99214d",
-     "bytes": 16572
-    },
-    {
-     "path": "modules/101/img/qaria_05_ihn.jpg",
-     "sha256": "727bd00090643d08ca46ea7d8858e15bdaf85d62cffb71c364a479aa85bf9147",
-     "bytes": 20764
-    },
-    {
-     "path": "modules/101/img/qaria_06_mawazin.jpg",
-     "sha256": "78d4ecba6e42cfaff4a30139ec437f03991a2418d05bd116033d857f175367fd",
-     "bytes": 29358
-    },
-    {
-     "path": "modules/101/img/qaria_07_ishatin.jpg",
-     "sha256": "cce2a3c700302c6776a6def40d81c26ee8a31212ddadeb96d99fa9bba83912bf",
-     "bytes": 27741
-    },
-    {
-     "path": "modules/101/img/qaria_08_khaffat.jpg",
-     "sha256": "0ced638fdc1f3ae5fe28bbb285f33f6782852e776c9a33b65869c7581aff1330",
-     "bytes": 9447
-    },
-    {
-     "path": "modules/101/img/qaria_09_hawiya.jpg",
-     "sha256": "b75b7e5178a2377e8ac9ef879605ea21616a99d3efc06d44a2e5ce64a968d10c",
-     "bytes": 19466
-    },
-    {
-     "path": "modules/101/img/qaria_10_adraka.jpg",
-     "sha256": "e5ef2a18b81706bd1011c7711b663f53498873aa154ecf7662aaa088589e7cec",
-     "bytes": 15137
-    },
-    {
-     "path": "modules/101/img/qaria_11_hamiya.jpg",
-     "sha256": "15e4aaca4db12211d516c9434addcc617e5b9791ba6588346417e7eca684e6ed",
-     "bytes": 21091
-    },
-    {
-     "path": "modules/101/translations/bn.json",
-     "sha256": "cbcf09a5213ac88790e13fcc8709810f235dae4c796a88a626d62221d710305c",
-     "bytes": 2565
-    },
-    {
-     "path": "modules/101/translations/en.json",
-     "sha256": "aaa39ed6124d6583f97fd9b899e5a96e9a86de6e8707d0eacdf623317f104870",
-     "bytes": 1543
-    },
-    {
-     "path": "modules/101/translations/es.json",
-     "sha256": "a330dcc25a3d6134f1ccecf515c0f1c9b02e20b06b43c162d3f193f97d0af1c4",
-     "bytes": 1575
-    },
-    {
-     "path": "modules/101/translations/fr.json",
-     "sha256": "202624eab00c0f274ee30f094da4fd67517f7a0c804fd6ff15cb51948bda6e6c",
-     "bytes": 1705
-    },
-    {
-     "path": "modules/101/translations/hi.json",
-     "sha256": "fab878b9ba3ed127508c34fc423e0283e5678efa9a681e2fe2446a0c4d1a96d9",
-     "bytes": 2574
-    },
-    {
-     "path": "modules/101/translations/zh.json",
-     "sha256": "194c695987eb87a88fa69a838b76c3d810e4a4d417db4c20e3b89abfd1f5d46e",
-     "bytes": 1339
-    }
-   ],
-   "totalBytes": 306579
-  },
-  {
-   "surah": 102,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/102",
-   "files": [
-    {
-     "path": "modules/102/module.json",
-     "sha256": "1b7baf19a8f2e5c0f4dad960839bc968c4ce5010409006a6b061569a3e6c807b",
-     "bytes": 4142
-    },
-    {
-     "path": "modules/102/tafsir.json",
-     "sha256": "61f9b2b445ee7a3beb7b8d4a2f98edfc376fdfd17454661644d4e9eb8b71dbd1",
-     "bytes": 76520
-    },
-    {
-     "path": "modules/102/scenes.json",
-     "sha256": "bbc0440cf11b7f91e530bd048a983d96679aad0f9cd115a044e2a25a93b0e5cc",
-     "bytes": 8694
-    },
-    {
-     "path": "modules/102/img/takathur_01_alhakum.jpg",
-     "sha256": "57cc89996da63cd632993bf4e5dfe2f7ada7d53e0d5e263e3b96462f4d4812e7",
-     "bytes": 22376
-    },
-    {
-     "path": "modules/102/img/takathur_02_maqabir.jpg",
-     "sha256": "f50c93c005af155e17bec530988073b2a51340b3ab4457b1e16ffc0a5e0deea5",
-     "bytes": 19745
-    },
-    {
-     "path": "modules/102/img/takathur_03_kalla.jpg",
-     "sha256": "bc75ef70f721fb8cfcce97e081145f20284a994915a5871ed3e43ec75139eee0",
-     "bytes": 14395
-    },
-    {
-     "path": "modules/102/img/takathur_04_thumma.jpg",
-     "sha256": "ed8e01e8da952ccd5e496cac7d63706ce11de3cb03533980626298b8e5f3de91",
-     "bytes": 18044
-    },
-    {
-     "path": "modules/102/img/takathur_05_yaqin.jpg",
-     "sha256": "6ff1c01cdcf3a3094611938a2f335ef9afbe826e1a301262a6d2ff43c4099162",
-     "bytes": 10095
-    },
-    {
-     "path": "modules/102/img/takathur_06_jahim.jpg",
-     "sha256": "23a7fc33bc188c89250a5e2193368711d89ef99392138465c3ad4de56ba2e1bb",
-     "bytes": 23251
-    },
-    {
-     "path": "modules/102/img/takathur_07_ayn.jpg",
-     "sha256": "9292fada478f0e82bd892c0622053bfa4021a89b8d5483680aa0443bceb45415",
-     "bytes": 21471
-    },
-    {
-     "path": "modules/102/img/takathur_08_naim.jpg",
-     "sha256": "cacd1b140c52a8537d148a790b2c3626c55de9cff93e69de136252054641a5a4",
-     "bytes": 19756
-    },
-    {
-     "path": "modules/102/translations/bn.json",
-     "sha256": "8192b942ab6f72cad44572141990170f77c75c98ded16824686f735d3b6f85e8",
-     "bytes": 4483
-    },
-    {
-     "path": "modules/102/translations/en.json",
-     "sha256": "b744e6dd8e17923daf87461da370616a653edcef185ddca94263c0514126d995",
-     "bytes": 2415
-    },
-    {
-     "path": "modules/102/translations/es.json",
-     "sha256": "3292751a5fb07d887f7f536bd7bdceaa7874f25dee09b90354db193f31dba0f0",
-     "bytes": 2291
-    },
-    {
-     "path": "modules/102/translations/fr.json",
-     "sha256": "e24a2361c752ce355424eb67d4a0f4f11fd93b6a90ddba90d4bdd8445213b470",
-     "bytes": 2472
-    },
-    {
-     "path": "modules/102/translations/hi.json",
-     "sha256": "7864ad25549d81c21bc0df35899e61d2cce0c7e7445ea547493febf64b280ae5",
-     "bytes": 4285
-    },
-    {
-     "path": "modules/102/translations/zh.json",
-     "sha256": "f023a73a65a69a490eb8c1f34b936696bb049a79c24419c074043680ce4d8f9a",
-     "bytes": 1970
-    }
-   ],
-   "totalBytes": 256405
-  },
-  {
-   "surah": 103,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/103",
-   "files": [
-    {
-     "path": "modules/103/module.json",
-     "sha256": "a059ec5a09aee92e904e061955e14cb6f562d75b15ead8299671efbe7c5cba73",
-     "bytes": 2811
-    },
-    {
-     "path": "modules/103/tafsir.json",
-     "sha256": "3208c3d5bba88cde1e4b4895011a2593127b04415f5cf563caced68a60d1229a",
-     "bytes": 20210
-    },
-    {
-     "path": "modules/103/scenes.json",
-     "sha256": "072fb32ecadd12e98750979e1fae07f944a91af3ebdeb402b9d2774488f716c0",
-     "bytes": 4609
-    },
-    {
-     "path": "modules/103/img/asr_01_asr.jpg",
-     "sha256": "33a6ab1d188e2ff258f80c1de9270d47b132bb1ff5896d746bc5b7f790fb1821",
-     "bytes": 42157
-    },
-    {
-     "path": "modules/103/img/asr_02_khusr.jpg",
-     "sha256": "cbd8de8c0556f47f1f4427b6e194342d3fded803b5fe6bf80fccde4cf9da09d4",
-     "bytes": 31713
-    },
-    {
-     "path": "modules/103/img/asr_03_amanu.jpg",
-     "sha256": "c075df0ab65155d2c5df9b86f416ebd84ac34cf62c3cbd9f0f1eb5f479fcc20f",
-     "bytes": 16820
-    },
-    {
-     "path": "modules/103/img/asr_03_amilu.jpg",
-     "sha256": "4014d48660cc5127fcee883d80604875fe6ce5145c536a89d0b881f1504ed769",
-     "bytes": 17974
-    },
-    {
-     "path": "modules/103/img/asr_03_haqq.jpg",
-     "sha256": "6bb0e6f621d1940ccd45ad865d6abe21d512253ce5a95f3c56d83c92fc0057f5",
-     "bytes": 20436
-    },
-    {
-     "path": "modules/103/img/asr_03_sabr.jpg",
-     "sha256": "1d42905241c62ce2d7dec4ba8b280d8bc436fc5ce23a337dc3aebbc25e1e74bb",
-     "bytes": 22938
-    },
-    {
-     "path": "modules/103/translations/bn.json",
-     "sha256": "cd89b80e6c2fddefcf1631adbe3b5cd4a493f2eb7e3f24adeff0004183f53510",
-     "bytes": 2065
-    },
-    {
-     "path": "modules/103/translations/en.json",
-     "sha256": "3a85c1a41092eb943512ece5c81de4feb5bdb780944d1ca11062aca12e1b5799",
-     "bytes": 1158
-    },
-    {
-     "path": "modules/103/translations/es.json",
-     "sha256": "de32ad59b18aee919476b1b4fb9060bd3b26d2f9ebe2cdf68d6d15d9c98917cc",
-     "bytes": 1117
-    },
-    {
-     "path": "modules/103/translations/fr.json",
-     "sha256": "1f51d0545c2e28dd2fd0835af28f4285e0587df06d295161ccc111ecaabc265f",
-     "bytes": 1243
-    },
-    {
-     "path": "modules/103/translations/hi.json",
-     "sha256": "8a1eb2e3aa0bcaea4a7a7a98dd0db495691c6b1b0af9994f32dd45e0a082cd8b",
-     "bytes": 2056
-    },
-    {
-     "path": "modules/103/translations/zh.json",
-     "sha256": "295dccbd1b809f1b9fce8a03b72907b3401468d0ea2c2413073bd6f77bc83446",
-     "bytes": 1021
-    }
-   ],
-   "totalBytes": 188328
-  },
-  {
-   "surah": 105,
-   "version": "0.1.0",
-   "status": "draft",
-   "dir": "modules/105",
-   "files": [
-    {
-     "path": "modules/105/module.json",
-     "sha256": "18834e6c8cb1c448ee4709ec4303a561fddd04b0c53a4c03ac8815642179e2ec",
-     "bytes": 3100
-    },
-    {
-     "path": "modules/105/tafsir.json",
-     "sha256": "85895d3f30550e78cead5215feee284a6461ebefdceb479bce2fdb3f97dd0183",
-     "bytes": 91535
-    },
-    {
-     "path": "modules/105/scenes.json",
-     "sha256": "ed2f0c48ff89f14d9c8236ac2d11cb47994e0828d63977c1d438fea01ee2b06a",
-     "bytes": 5179
-    },
-    {
-     "path": "modules/105/img/fil_01_ashab.jpg",
-     "sha256": "fc305ae40ef5154f2572a29db7628936cc8b525e902e43b03ffd589813cc668c",
-     "bytes": 155972
-    },
-    {
-     "path": "modules/105/img/fil_02_kayd.jpg",
-     "sha256": "033965bd6a652bbcf77f3ba96738312964ef987dfd63ff84bfd941ac2c15a165",
-     "bytes": 104963
-    },
-    {
-     "path": "modules/105/img/fil_03_tayr.jpg",
-     "sha256": "c3ec493fde3089b03dd3a9aebda83f26a08286db417310be952967ea5f97fb2c",
-     "bytes": 92102
-    },
-    {
-     "path": "modules/105/img/fil_04_sijjil.jpg",
-     "sha256": "c121ce4ffcf28c5646b19dc0882d0743718d36fbd93446b4356cf854744a098d",
-     "bytes": 95101
-    },
-    {
-     "path": "modules/105/img/fil_05_asf.jpg",
-     "sha256": "a42d8f0061f10dbd30fcda651b6323005eb77bf8998ed535f6460df45996e2a9",
-     "bytes": 97132
-    },
-    {
-     "path": "modules/105/translations/bn.json",
-     "sha256": "6a536ee0c33a894d22701682f74836db7e78ae6b879e67e24edce04fd20e8e99",
-     "bytes": 1791
-    },
-    {
-     "path": "modules/105/translations/en.json",
-     "sha256": "c0a12f36477c64cec5f6eaa7323fd093b08b6405e8f8116aa3f2477f2f53b46d",
-     "bytes": 1047
-    },
-    {
-     "path": "modules/105/translations/es.json",
-     "sha256": "6454a0ff4eb618c323027be520bc45c13650640678b30d7fc36e4488452c2677",
-     "bytes": 1071
-    },
-    {
-     "path": "modules/105/translations/fr.json",
-     "sha256": "d1dca722e391a74a6ed84993e851bda30c7a29f498a9b0984dc71601bafbfccc",
-     "bytes": 1109
-    },
-    {
-     "path": "modules/105/translations/hi.json",
-     "sha256": "c40a9b5b4c24fd4470e92aa12eb00465d72f1f6624f8051b15ce5da940b46e2d",
-     "bytes": 1733
-    },
-    {
-     "path": "modules/105/translations/zh.json",
-     "sha256": "17a76dbb80f497ecffedd682d77368ef50572b40337715ab9b29951f19bb874c",
-     "bytes": 1004
-    }
-   ],
-   "totalBytes": 652839
-  },
-  {
    "surah": 104,
    "version": "0.1.0",
    "status": "draft",
@@ -1380,6 +806,912 @@
     }
    ],
    "totalBytes": 404743
+  },
+  {
+   "surah": 94,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/94",
+   "files": [
+    {
+     "path": "modules/94/module.json",
+     "sha256": "15447392cdf20a6ac1b800507b480fede6ad097691dfe7d55544da94ba1d1963",
+     "bytes": 4728
+    },
+    {
+     "path": "modules/94/tafsir.json",
+     "sha256": "e26af3ace141ce45e0a047b233733375c84a2ad29dc98f69e36a8254f16fba8b",
+     "bytes": 56350
+    },
+    {
+     "path": "modules/94/scenes.json",
+     "sha256": "943af1d7f0227207101ddb580974e211a0df17acfbe2a9c313a917452dde8e1a",
+     "bytes": 11647
+    },
+    {
+     "path": "modules/94/img/sharh_01_sadr.jpg",
+     "sha256": "6e8c0ea31f17566fb8ff72c93caf29bc3b457c0574b8410811c68a4bcc3e1a99",
+     "bytes": 14394
+    },
+    {
+     "path": "modules/94/img/sharh_01_after.jpg",
+     "sha256": "dff68234f2d075bd509420c5ea62b6b2a1e7d6341a7ebc215db50e2ee81de9c3",
+     "bytes": 20778
+    },
+    {
+     "path": "modules/94/img/sharh_02_wizr.jpg",
+     "sha256": "3f33a542117c0df86eeb8c6549652a3e42f4d68f159a2be21aa216c4c912216f",
+     "bytes": 19965
+    },
+    {
+     "path": "modules/94/img/sharh_03_zahr.jpg",
+     "sha256": "6ee2bcdd2018c45e9be64ce62731d95a7c513bdb5e3721304de390227b20ccb0",
+     "bytes": 8595
+    },
+    {
+     "path": "modules/94/img/sharh_03_after.jpg",
+     "sha256": "a5f51b9c02bedb0bda8756661fbe858e68237d1d5d42eea112deb4a5114e1b5d",
+     "bytes": 15736
+    },
+    {
+     "path": "modules/94/img/sharh_04_dhikr.jpg",
+     "sha256": "32d027c3775a50288c0c2c2b51d4d05e89fb3773719eb20882f5e8ecf923503d",
+     "bytes": 14710
+    },
+    {
+     "path": "modules/94/img/sharh_04_after.jpg",
+     "sha256": "f84e6f9e8b9c46faecf8608b5a44087f953356d8267540bd543b62cbcd53a6bb",
+     "bytes": 13299
+    },
+    {
+     "path": "modules/94/img/sharh_05_usr.jpg",
+     "sha256": "2fc3d7a479d93a54debf4e0caa1def2da2801d71d171000a882ee9c766cc736e",
+     "bytes": 13593
+    },
+    {
+     "path": "modules/94/img/sharh_05_after.jpg",
+     "sha256": "b678adfd7223f49125e5aaf756206f58a246c9e3990e4819bdb4a5d02fb469d7",
+     "bytes": 17299
+    },
+    {
+     "path": "modules/94/img/sharh_06_yusr.jpg",
+     "sha256": "4c867d5c413e886c28b908ae1cec99397f0f253b684fd825d1bcb76ee0dab339",
+     "bytes": 15787
+    },
+    {
+     "path": "modules/94/img/sharh_06_after.jpg",
+     "sha256": "18013a57fbd69dd443f2092f81251cec00558ebb86e2ec6d0a5086e52ac9b21f",
+     "bytes": 19256
+    },
+    {
+     "path": "modules/94/img/sharh_07_faraghta.jpg",
+     "sha256": "c3c67c848d97b72a168f2c3ee65eae6152ac719aa416d9eac2a27fb356468d4f",
+     "bytes": 13891
+    },
+    {
+     "path": "modules/94/img/sharh_08_raghab.jpg",
+     "sha256": "94223850f009744ff264e2ce839e9bee401279a99fb1461a7435e3a46a38da25",
+     "bytes": 27411
+    },
+    {
+     "path": "modules/94/img/sharh_08_after.jpg",
+     "sha256": "6caf217a49bc14dce621040d811dc80004ddf51309e561ce4a8e1e10150c1da0",
+     "bytes": 26271
+    },
+    {
+     "path": "modules/94/translations/bn.json",
+     "sha256": "c89183013fe1e8cf57732a2f775e98b5500cc2d276d497f7700669678d445aa0",
+     "bytes": 3467
+    },
+    {
+     "path": "modules/94/translations/en.json",
+     "sha256": "574d0c70118e4b89d3483fd51a8ad8f751520d465bdb9a9bd71523f76f17a3f9",
+     "bytes": 1841
+    },
+    {
+     "path": "modules/94/translations/es.json",
+     "sha256": "eafe397574144a450e0aac7bcbfb220ac4f53ce579af1e628612d7e39ef6cfd3",
+     "bytes": 1823
+    },
+    {
+     "path": "modules/94/translations/fr.json",
+     "sha256": "915ef168bddd77194fcc0a5b82e3739cae73816ddd5cf13adfcf0f86282d2756",
+     "bytes": 1873
+    },
+    {
+     "path": "modules/94/translations/hi.json",
+     "sha256": "8d9e2dd91599d04bd700f09e7dec516cecf27a56b25b99787323f653c4494ca6",
+     "bytes": 3343
+    },
+    {
+     "path": "modules/94/translations/zh.json",
+     "sha256": "d9d4ab3f239c3d4cb1dca162a460cba9c81d25d75e9c3bae1c77466cedbfc02b",
+     "bytes": 1571
+    }
+   ],
+   "totalBytes": 327628
+  },
+  {
+   "surah": 95,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/95",
+   "files": [
+    {
+     "path": "modules/95/module.json",
+     "sha256": "3b3b6d65e08309205e42015098914e22c41a04d5aecc0c7e2954f350fa8921fb",
+     "bytes": 4640
+    },
+    {
+     "path": "modules/95/tafsir.json",
+     "sha256": "49fe59f00bf822d1500fcf0de7112cf7007b00c133c92bf06bab45de2867116f",
+     "bytes": 278795
+    },
+    {
+     "path": "modules/95/scenes.json",
+     "sha256": "4320a5f2f4f7d39c877f846694bec53ff24b9d056d8f451ee7aff0aac0c37128",
+     "bytes": 13451
+    },
+    {
+     "path": "modules/95/img/tin_01_tin.jpg",
+     "sha256": "d1caa2b0b5666ffe85f629ed92c8fd2416c8595d7141e239f682adf3b3901602",
+     "bytes": 84301
+    },
+    {
+     "path": "modules/95/img/tin_02_tur.jpg",
+     "sha256": "cef5c19f96a1bb5bb6f2f237c9e89ae094f6a6fe0ff18f4d7615f384cb970d8c",
+     "bytes": 61451
+    },
+    {
+     "path": "modules/95/img/tin_03_hold.jpg",
+     "sha256": "cef5c19f96a1bb5bb6f2f237c9e89ae094f6a6fe0ff18f4d7615f384cb970d8c",
+     "bytes": 61451
+    },
+    {
+     "path": "modules/95/img/tin_04_taqwim.jpg",
+     "sha256": "505e3443e7631b38936b314eae058fd233df1746c44fe0c73da39dd361d79553",
+     "bytes": 45019
+    },
+    {
+     "path": "modules/95/img/tin_05_asfal.jpg",
+     "sha256": "457ce3517684f23d53c26d696aaa257bca029f894166cb8d99564c5c4ac98c4b",
+     "bytes": 14530
+    },
+    {
+     "path": "modules/95/img/tin_06_amanu.jpg",
+     "sha256": "dc810c2917ef5e98c71f8c4a7358ea6ea8a58b6baaf7d26ea94bb3de8df289c3",
+     "bytes": 24565
+    },
+    {
+     "path": "modules/95/img/tin_06_salah.jpg",
+     "sha256": "2b0eed88ae98f848401a04f824b43b4d0e18c8709743027ee8d7da15cb0f63a6",
+     "bytes": 18428
+    },
+    {
+     "path": "modules/95/img/tin_06_sadaqa.jpg",
+     "sha256": "f36b8bbf296386c89d4de50ee0a63b70ce2e197a27ac69a9b64a9cebd5bb26b3",
+     "bytes": 14987
+    },
+    {
+     "path": "modules/95/img/tin_06_usra.jpg",
+     "sha256": "867f47566aef79c22a473570a2966d866cd7dc434bba93e4f93ab6abbdd10b66",
+     "bytes": 24792
+    },
+    {
+     "path": "modules/95/img/tin_07_yukadhib.jpg",
+     "sha256": "7b7ad957ce4c62ffa02576721456f800f5b14097ceb8a677b1e930bcd1eea801",
+     "bytes": 34766
+    },
+    {
+     "path": "modules/95/img/tin_08_hukm.jpg",
+     "sha256": "9e48999c9a8cc85153101d3ee550ca3252083778d0a47511c41f491eed25b342",
+     "bytes": 28830
+    },
+    {
+     "path": "modules/95/translations/bn.json",
+     "sha256": "491913704ef9e5477163c92f18762a10a04fac949adfb9c64b8e390b75e096bb",
+     "bytes": 8150
+    },
+    {
+     "path": "modules/95/translations/en.json",
+     "sha256": "8b5215d56122d0a01b9104279c660e5aede5dc2ff2859af9cdc3435d29053a39",
+     "bytes": 3664
+    },
+    {
+     "path": "modules/95/translations/es.json",
+     "sha256": "ebd9e14298778cc6982f37b526fea3df6950377acb8c59166e5995d83a573e85",
+     "bytes": 3632
+    },
+    {
+     "path": "modules/95/translations/fr.json",
+     "sha256": "7a2e068e78e7113e2f00c36104dd759358ce4a86233290436017bcdf7a6e9c27",
+     "bytes": 3976
+    },
+    {
+     "path": "modules/95/translations/hi.json",
+     "sha256": "b9fc7b466ce6024645ba4722cf23d76e8a5df06e07af9d8937c408bfc204c9f5",
+     "bytes": 7334
+    },
+    {
+     "path": "modules/95/translations/zh.json",
+     "sha256": "45f38223885a259a338e66c289f4103e4451318bb3140306f2629ff738ef14b7",
+     "bytes": 3455
+    }
+   ],
+   "totalBytes": 740217
+  },
+  {
+   "surah": 98,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/98",
+   "files": [
+    {
+     "path": "modules/98/module.json",
+     "sha256": "42563a78363ef13a2cd1b3970b61d8af042b5b12a455b4d0f463cc140483cd7c",
+     "bytes": 5381
+    },
+    {
+     "path": "modules/98/tafsir.json",
+     "sha256": "5b9234db6ef44d526fe5c6b586ff26c561550d94fe60521d7e29587ed95a9676",
+     "bytes": 172376
+    },
+    {
+     "path": "modules/98/scenes.json",
+     "sha256": "fe49f81b32471f47802c1124da6e9764ebce73df7d5887eff8b8d866aafc9333",
+     "bytes": 11028
+    },
+    {
+     "path": "modules/98/img/bayyina_01_ahl.jpg",
+     "sha256": "7304da4579e3a77189f023e8ecb2d671a4711ccec0aeccfa45174a2233afb3e6",
+     "bytes": 80268
+    },
+    {
+     "path": "modules/98/img/bayyina_02_hold.jpg",
+     "sha256": "7304da4579e3a77189f023e8ecb2d671a4711ccec0aeccfa45174a2233afb3e6",
+     "bytes": 80268
+    },
+    {
+     "path": "modules/98/img/bayyina_03_kutub.jpg",
+     "sha256": "b5cd945973982d8e1d379a2670e5850ba284dd9edd3baa31eef17e253f781e66",
+     "bytes": 45806
+    },
+    {
+     "path": "modules/98/img/bayyina_04_tafarraq.jpg",
+     "sha256": "e426e61ab5c1dcdcdd5f9632d9b508c036d1f294dbc4ec682b915607cafe304b",
+     "bytes": 37325
+    },
+    {
+     "path": "modules/98/img/bayyina_05_salat.jpg",
+     "sha256": "68e6f69f2e85fb8fb7294c48094d4b7fa2a4ea98345afffeef915d5b35d0e7c9",
+     "bytes": 36312
+    },
+    {
+     "path": "modules/98/img/bayyina_05_zakat.jpg",
+     "sha256": "7a0289e5fce6aa714ba5bc52379457cce3a3aa0b07bc0eae56b4198ed98c2331",
+     "bytes": 46699
+    },
+    {
+     "path": "modules/98/img/bayyina_06_nar.jpg",
+     "sha256": "969380db132f1143f055af64eceae05acc7724a838487c7b140790ce9b0907f7",
+     "bytes": 46925
+    },
+    {
+     "path": "modules/98/img/bayyina_07_khayr.jpg",
+     "sha256": "ad12d67566c4ba33acd936e3c825d66705a101fae83f6efe617259f76ad75ce2",
+     "bytes": 42374
+    },
+    {
+     "path": "modules/98/img/bayyina_08_jannat.jpg",
+     "sha256": "1311d2378aa83a4bee85a3dfadd51296ba6a2e2d559f00bd5ba4be216f732e33",
+     "bytes": 127441
+    },
+    {
+     "path": "modules/98/translations/bn.json",
+     "sha256": "6a0a98f44f548e51e50b54a6796f103a2c1bd112731493a893d7192f12ad7e23",
+     "bytes": 4728
+    },
+    {
+     "path": "modules/98/translations/en.json",
+     "sha256": "02544ef0f2f76296a057f96508462d4368bf73b294710a85e3b2d91916609ea0",
+     "bytes": 2266
+    },
+    {
+     "path": "modules/98/translations/es.json",
+     "sha256": "4189082c58c95f9f9e0f7ca190084270d3cb5a189cb611f0b7a727a19f5e7efc",
+     "bytes": 2341
+    },
+    {
+     "path": "modules/98/translations/fr.json",
+     "sha256": "92e7c2811604ab78ffe60c1ae97d68c7c4204bac6be9bcaee1969eb02488ec2c",
+     "bytes": 2550
+    },
+    {
+     "path": "modules/98/translations/hi.json",
+     "sha256": "d72060c97e139fa9531446eee421868a2f9d6f73d97c8155989bd5847fffa9ea",
+     "bytes": 4522
+    },
+    {
+     "path": "modules/98/translations/zh.json",
+     "sha256": "80d46de117f9c89ede7690b23e83b2916430587298f7975a513bda96ed6cb453",
+     "bytes": 2042
+    }
+   ],
+   "totalBytes": 750652
+  },
+  {
+   "surah": 99,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/99",
+   "files": [
+    {
+     "path": "modules/99/module.json",
+     "sha256": "364720e0da4a40252e4f98e56836d35b1f94ccf3848dc29e5b817e5bef2e89e9",
+     "bytes": 4412
+    },
+    {
+     "path": "modules/99/tafsir.json",
+     "sha256": "2a3f5e7b4eb2d62fea4b76ee7111fd6071f60696f10eb1c389cc0937b56ba983",
+     "bytes": 71458
+    },
+    {
+     "path": "modules/99/scenes.json",
+     "sha256": "e7f61bfaf7c80576087d57658f75d798f7ee7fd858ecaa8b7ec57a3229a28d03",
+     "bytes": 10988
+    },
+    {
+     "path": "modules/99/img/zalzalah_01_zalzala.jpg",
+     "sha256": "669befa8d6f56db670bb9ce79c9cc50684f82660e69239b6d0e45c2ad151eb58",
+     "bytes": 27524
+    },
+    {
+     "path": "modules/99/img/zalzalah_02_athqal.jpg",
+     "sha256": "3ef20b7ccb3138e39a0e9589f726d049132fd8848f61fbf51a176061b9f66b9e",
+     "bytes": 24493
+    },
+    {
+     "path": "modules/99/img/zalzalah_03_insan.jpg",
+     "sha256": "3350dcd443d480ec41c72785c84c0ba81970a383f324c8ee005cafd6d4ae1c91",
+     "bytes": 20233
+    },
+    {
+     "path": "modules/99/img/zalzalah_04_akhbar.jpg",
+     "sha256": "7ba0a4deb06af8da181d85404260e9bb6f322da11964cc4e49d94cbba7143c2c",
+     "bytes": 7945
+    },
+    {
+     "path": "modules/99/img/zalzalah_05_awha.jpg",
+     "sha256": "9cbdfa43c40885bee941f2fa0519f97059ab339f77a9179b62bdb10c59e4ad4f",
+     "bytes": 19092
+    },
+    {
+     "path": "modules/99/img/zalzalah_06_ashtat.jpg",
+     "sha256": "a3869daab614f42c4e02e3a9f1b535c70875c8cd5f6d5a0c6df0477fecb2bdaa",
+     "bytes": 18552
+    },
+    {
+     "path": "modules/99/img/zalzalah_06_kitab.jpg",
+     "sha256": "62617ef02e3aac289effcd5664657c20e0c78f615c6e15bc76bac316ef73ce6a",
+     "bytes": 13274
+    },
+    {
+     "path": "modules/99/img/zalzalah_07_khayr.jpg",
+     "sha256": "7a2d5616418e3e03e7dee05ec8632a11a14cada5bb9986fa81e80faff8738f96",
+     "bytes": 41753
+    },
+    {
+     "path": "modules/99/img/zalzalah_08_sharr.jpg",
+     "sha256": "5975433885f0275d3111c30d405bd5e9c7b305bbd19406d91d68ebd8d789e389",
+     "bytes": 29861
+    },
+    {
+     "path": "modules/99/translations/bn.json",
+     "sha256": "bfeb08fddf02f91b9a6a094db8ed99018171274925723d4e3429674714891be6",
+     "bytes": 3175
+    },
+    {
+     "path": "modules/99/translations/en.json",
+     "sha256": "8bbf78523a380542437d2748a393d15340be01e1c633cfddc90a1ba5c3c6725c",
+     "bytes": 1930
+    },
+    {
+     "path": "modules/99/translations/es.json",
+     "sha256": "b980684b20c41b5b2b2f27ea39b6547053f7a373b95a89e888a588d93dece7d8",
+     "bytes": 1886
+    },
+    {
+     "path": "modules/99/translations/fr.json",
+     "sha256": "96c3c5731bf95a2f5179f1123c15ed5c2cca6680b98192d0a359be14f8b937be",
+     "bytes": 1980
+    },
+    {
+     "path": "modules/99/translations/hi.json",
+     "sha256": "0f37890d910a9df359574f345dfdbc81f1d8f9ce7506d14e55ddf6551351c714",
+     "bytes": 3288
+    },
+    {
+     "path": "modules/99/translations/zh.json",
+     "sha256": "c82d78ba6d13ed7d6326a74baa5408c5299ee9c5757c229d318371bd512ba6ff",
+     "bytes": 1541
+    }
+   ],
+   "totalBytes": 303385
+  },
+  {
+   "surah": 100,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/100",
+   "files": [
+    {
+     "path": "modules/100/module.json",
+     "sha256": "20f25d71a8b4935cb72ecef5e6b34079cd9d3c921b119c61df1ba04abf900a1a",
+     "bytes": 5083
+    },
+    {
+     "path": "modules/100/tafsir.json",
+     "sha256": "08d6c5ca5eed7df64df4259cc63860654eb12ff1dea22e87b0dac23ddc862806",
+     "bytes": 116135
+    },
+    {
+     "path": "modules/100/scenes.json",
+     "sha256": "c0ec386c00ea8158342c015e452f01c506a5a19940c9f55c5638017f226286bc",
+     "bytes": 12386
+    },
+    {
+     "path": "modules/100/img/adiyat_01_dabha.jpg",
+     "sha256": "e6b850f79882238b95b48c72529f833eaebd3a9364d708a3bb24f82dde9aff07",
+     "bytes": 23107
+    },
+    {
+     "path": "modules/100/img/adiyat_02_qadha.jpg",
+     "sha256": "2e665b70215868ce77849ae817cc0a180300293a01a77200e9de7f56611afebe",
+     "bytes": 19928
+    },
+    {
+     "path": "modules/100/img/adiyat_03_subha.jpg",
+     "sha256": "2102e8f7a7f75d5c24ff027d25c029a506ea15d040f471c31706417c2036889a",
+     "bytes": 19713
+    },
+    {
+     "path": "modules/100/img/adiyat_04_naqa.jpg",
+     "sha256": "095b5bbd2b589c6d23c12184e34d89dea71f05137119ce90dca22b3ff8e147f6",
+     "bytes": 22304
+    },
+    {
+     "path": "modules/100/img/adiyat_05_jam.jpg",
+     "sha256": "cabebd8a4306c0dfa51051527d5a7bfde610bf393d349575f9111b6ee19b2750",
+     "bytes": 13810
+    },
+    {
+     "path": "modules/100/img/adiyat_06_kanud.jpg",
+     "sha256": "19c98f8b9089b5335ef7f87f6570a787b95ff012988727700c80c158f7b4575e",
+     "bytes": 10745
+    },
+    {
+     "path": "modules/100/img/adiyat_07_shahid.jpg",
+     "sha256": "05912053eb42b09dbaff3cb4bad96021d14fd26e37c62470510dbccaa38c5732",
+     "bytes": 16352
+    },
+    {
+     "path": "modules/100/img/adiyat_08_khayr.jpg",
+     "sha256": "ee288d14690fb8bd780c3a4e63f34b5c211976d7e0975544b1c31f80feb04d9f",
+     "bytes": 10700
+    },
+    {
+     "path": "modules/100/img/adiyat_09_qubur.jpg",
+     "sha256": "bc8e744c07f59ce19017598ace2d805cdf2f87ad870680b8b05624d2c8142b0c",
+     "bytes": 13378
+    },
+    {
+     "path": "modules/100/img/adiyat_10_sudur.jpg",
+     "sha256": "7b17aa40a8b711a1cf36a32251d6601a27c1de22e9c15194953241a18ded2800",
+     "bytes": 14441
+    },
+    {
+     "path": "modules/100/img/adiyat_11_khabir.jpg",
+     "sha256": "c1d5b87b1598be1f6508a412c2b27af45dbd5f01f7e121508078d4f7a7642fa8",
+     "bytes": 17292
+    },
+    {
+     "path": "modules/100/translations/bn.json",
+     "sha256": "323e9eebcf1c7f1e0c31466efe8d7e980c3135ab6aa8da32b955867fc85c277c",
+     "bytes": 3577
+    },
+    {
+     "path": "modules/100/translations/en.json",
+     "sha256": "ad49da4b257b0c16c67cd8538f4be2adcb9844ea74523ca45b09205ec4df5cf6",
+     "bytes": 1907
+    },
+    {
+     "path": "modules/100/translations/es.json",
+     "sha256": "a89684d7f49c0038480f94fb40300c6cb7474af9fa601a11c4f2dbbc0e140187",
+     "bytes": 1992
+    },
+    {
+     "path": "modules/100/translations/fr.json",
+     "sha256": "a42bb6d440a3ac08562a444d2a21746926ba9e411776fd5890db09523ae180f1",
+     "bytes": 2042
+    },
+    {
+     "path": "modules/100/translations/hi.json",
+     "sha256": "801e0fdc2e71f87af2dd41e8b407422fd4f53a9853de7400612a5cce1b5156e0",
+     "bytes": 3568
+    },
+    {
+     "path": "modules/100/translations/zh.json",
+     "sha256": "274905db1899e3ddc51150a8bf26df6971900cb796f4009dbc830a419e13e65f",
+     "bytes": 1669
+    }
+   ],
+   "totalBytes": 330129
+  },
+  {
+   "surah": 101,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/101",
+   "files": [
+    {
+     "path": "modules/101/module.json",
+     "sha256": "6ca69eec93d341b1cc4cd05722262d0710c1b70ec56babd4610fe62084a65d92",
+     "bytes": 5152
+    },
+    {
+     "path": "modules/101/tafsir.json",
+     "sha256": "34d45f2691613dd8fc5c4a3cd1b30fea51cbf71b4b5ae26f9ccc319871297610",
+     "bytes": 43403
+    },
+    {
+     "path": "modules/101/scenes.json",
+     "sha256": "67edd28f5ca97dceb4ac92c57e32d6b24eccaca6511a3e9e53667bda17656578",
+     "bytes": 11545
+    },
+    {
+     "path": "modules/101/img/qaria_01_qaria.jpg",
+     "sha256": "b6691b44be39a3bba484ca479ed3e919a5f277d06a4a1c6aecfefe5b6bd4a226",
+     "bytes": 32279
+    },
+    {
+     "path": "modules/101/img/qaria_02_ma.jpg",
+     "sha256": "450b2122580d42331273b025ba5010e6f1124ceafea774559759d47378b2261e",
+     "bytes": 29330
+    },
+    {
+     "path": "modules/101/img/qaria_03_adraka.jpg",
+     "sha256": "e5ef2a18b81706bd1011c7711b663f53498873aa154ecf7662aaa088589e7cec",
+     "bytes": 15137
+    },
+    {
+     "path": "modules/101/img/qaria_04_farash.jpg",
+     "sha256": "d197cd53edbe3bc075de12d187f184da601fa43df6cd1c8113dc847f5f99214d",
+     "bytes": 16572
+    },
+    {
+     "path": "modules/101/img/qaria_05_ihn.jpg",
+     "sha256": "727bd00090643d08ca46ea7d8858e15bdaf85d62cffb71c364a479aa85bf9147",
+     "bytes": 20764
+    },
+    {
+     "path": "modules/101/img/qaria_06_mawazin.jpg",
+     "sha256": "78d4ecba6e42cfaff4a30139ec437f03991a2418d05bd116033d857f175367fd",
+     "bytes": 29358
+    },
+    {
+     "path": "modules/101/img/qaria_07_ishatin.jpg",
+     "sha256": "cce2a3c700302c6776a6def40d81c26ee8a31212ddadeb96d99fa9bba83912bf",
+     "bytes": 27741
+    },
+    {
+     "path": "modules/101/img/qaria_08_khaffat.jpg",
+     "sha256": "0ced638fdc1f3ae5fe28bbb285f33f6782852e776c9a33b65869c7581aff1330",
+     "bytes": 9447
+    },
+    {
+     "path": "modules/101/img/qaria_09_hawiya.jpg",
+     "sha256": "b75b7e5178a2377e8ac9ef879605ea21616a99d3efc06d44a2e5ce64a968d10c",
+     "bytes": 19466
+    },
+    {
+     "path": "modules/101/img/qaria_10_adraka.jpg",
+     "sha256": "e5ef2a18b81706bd1011c7711b663f53498873aa154ecf7662aaa088589e7cec",
+     "bytes": 15137
+    },
+    {
+     "path": "modules/101/img/qaria_11_hamiya.jpg",
+     "sha256": "15e4aaca4db12211d516c9434addcc617e5b9791ba6588346417e7eca684e6ed",
+     "bytes": 21091
+    },
+    {
+     "path": "modules/101/translations/bn.json",
+     "sha256": "cbcf09a5213ac88790e13fcc8709810f235dae4c796a88a626d62221d710305c",
+     "bytes": 2565
+    },
+    {
+     "path": "modules/101/translations/en.json",
+     "sha256": "aaa39ed6124d6583f97fd9b899e5a96e9a86de6e8707d0eacdf623317f104870",
+     "bytes": 1543
+    },
+    {
+     "path": "modules/101/translations/es.json",
+     "sha256": "a330dcc25a3d6134f1ccecf515c0f1c9b02e20b06b43c162d3f193f97d0af1c4",
+     "bytes": 1575
+    },
+    {
+     "path": "modules/101/translations/fr.json",
+     "sha256": "202624eab00c0f274ee30f094da4fd67517f7a0c804fd6ff15cb51948bda6e6c",
+     "bytes": 1705
+    },
+    {
+     "path": "modules/101/translations/hi.json",
+     "sha256": "fab878b9ba3ed127508c34fc423e0283e5678efa9a681e2fe2446a0c4d1a96d9",
+     "bytes": 2574
+    },
+    {
+     "path": "modules/101/translations/zh.json",
+     "sha256": "194c695987eb87a88fa69a838b76c3d810e4a4d417db4c20e3b89abfd1f5d46e",
+     "bytes": 1339
+    }
+   ],
+   "totalBytes": 307723
+  },
+  {
+   "surah": 102,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/102",
+   "files": [
+    {
+     "path": "modules/102/module.json",
+     "sha256": "1b7baf19a8f2e5c0f4dad960839bc968c4ce5010409006a6b061569a3e6c807b",
+     "bytes": 4142
+    },
+    {
+     "path": "modules/102/tafsir.json",
+     "sha256": "61f9b2b445ee7a3beb7b8d4a2f98edfc376fdfd17454661644d4e9eb8b71dbd1",
+     "bytes": 76520
+    },
+    {
+     "path": "modules/102/scenes.json",
+     "sha256": "cc11b00b110eca7eb8d8854afc54b8cd0c6dccd7d69637d518b2c19260031898",
+     "bytes": 10019
+    },
+    {
+     "path": "modules/102/img/takathur_01_alhakum.jpg",
+     "sha256": "57cc89996da63cd632993bf4e5dfe2f7ada7d53e0d5e263e3b96462f4d4812e7",
+     "bytes": 22376
+    },
+    {
+     "path": "modules/102/img/takathur_02_maqabir.jpg",
+     "sha256": "f50c93c005af155e17bec530988073b2a51340b3ab4457b1e16ffc0a5e0deea5",
+     "bytes": 19745
+    },
+    {
+     "path": "modules/102/img/takathur_03_kalla.jpg",
+     "sha256": "bc75ef70f721fb8cfcce97e081145f20284a994915a5871ed3e43ec75139eee0",
+     "bytes": 14395
+    },
+    {
+     "path": "modules/102/img/takathur_04_thumma.jpg",
+     "sha256": "ed8e01e8da952ccd5e496cac7d63706ce11de3cb03533980626298b8e5f3de91",
+     "bytes": 18044
+    },
+    {
+     "path": "modules/102/img/takathur_05_yaqin.jpg",
+     "sha256": "6ff1c01cdcf3a3094611938a2f335ef9afbe826e1a301262a6d2ff43c4099162",
+     "bytes": 10095
+    },
+    {
+     "path": "modules/102/img/takathur_06_jahim.jpg",
+     "sha256": "23a7fc33bc188c89250a5e2193368711d89ef99392138465c3ad4de56ba2e1bb",
+     "bytes": 23251
+    },
+    {
+     "path": "modules/102/img/takathur_07_ayn.jpg",
+     "sha256": "9292fada478f0e82bd892c0622053bfa4021a89b8d5483680aa0443bceb45415",
+     "bytes": 21471
+    },
+    {
+     "path": "modules/102/img/takathur_08_naim.jpg",
+     "sha256": "cacd1b140c52a8537d148a790b2c3626c55de9cff93e69de136252054641a5a4",
+     "bytes": 19756
+    },
+    {
+     "path": "modules/102/translations/bn.json",
+     "sha256": "8192b942ab6f72cad44572141990170f77c75c98ded16824686f735d3b6f85e8",
+     "bytes": 4483
+    },
+    {
+     "path": "modules/102/translations/en.json",
+     "sha256": "b744e6dd8e17923daf87461da370616a653edcef185ddca94263c0514126d995",
+     "bytes": 2415
+    },
+    {
+     "path": "modules/102/translations/es.json",
+     "sha256": "3292751a5fb07d887f7f536bd7bdceaa7874f25dee09b90354db193f31dba0f0",
+     "bytes": 2291
+    },
+    {
+     "path": "modules/102/translations/fr.json",
+     "sha256": "e24a2361c752ce355424eb67d4a0f4f11fd93b6a90ddba90d4bdd8445213b470",
+     "bytes": 2472
+    },
+    {
+     "path": "modules/102/translations/hi.json",
+     "sha256": "7864ad25549d81c21bc0df35899e61d2cce0c7e7445ea547493febf64b280ae5",
+     "bytes": 4285
+    },
+    {
+     "path": "modules/102/translations/zh.json",
+     "sha256": "f023a73a65a69a490eb8c1f34b936696bb049a79c24419c074043680ce4d8f9a",
+     "bytes": 1970
+    }
+   ],
+   "totalBytes": 257730
+  },
+  {
+   "surah": 103,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/103",
+   "files": [
+    {
+     "path": "modules/103/module.json",
+     "sha256": "a059ec5a09aee92e904e061955e14cb6f562d75b15ead8299671efbe7c5cba73",
+     "bytes": 2811
+    },
+    {
+     "path": "modules/103/tafsir.json",
+     "sha256": "3208c3d5bba88cde1e4b4895011a2593127b04415f5cf563caced68a60d1229a",
+     "bytes": 20210
+    },
+    {
+     "path": "modules/103/scenes.json",
+     "sha256": "0346ec1818ef70d4f226e051a4aee3a036d395f35f60252a0a8b6fadf905e884",
+     "bytes": 4989
+    },
+    {
+     "path": "modules/103/img/asr_01_asr.jpg",
+     "sha256": "33a6ab1d188e2ff258f80c1de9270d47b132bb1ff5896d746bc5b7f790fb1821",
+     "bytes": 42157
+    },
+    {
+     "path": "modules/103/img/asr_02_khusr.jpg",
+     "sha256": "cbd8de8c0556f47f1f4427b6e194342d3fded803b5fe6bf80fccde4cf9da09d4",
+     "bytes": 31713
+    },
+    {
+     "path": "modules/103/img/asr_03_amanu.jpg",
+     "sha256": "c075df0ab65155d2c5df9b86f416ebd84ac34cf62c3cbd9f0f1eb5f479fcc20f",
+     "bytes": 16820
+    },
+    {
+     "path": "modules/103/img/asr_03_amilu.jpg",
+     "sha256": "4014d48660cc5127fcee883d80604875fe6ce5145c536a89d0b881f1504ed769",
+     "bytes": 17974
+    },
+    {
+     "path": "modules/103/img/asr_03_haqq.jpg",
+     "sha256": "6bb0e6f621d1940ccd45ad865d6abe21d512253ce5a95f3c56d83c92fc0057f5",
+     "bytes": 20436
+    },
+    {
+     "path": "modules/103/img/asr_03_sabr.jpg",
+     "sha256": "1d42905241c62ce2d7dec4ba8b280d8bc436fc5ce23a337dc3aebbc25e1e74bb",
+     "bytes": 22938
+    },
+    {
+     "path": "modules/103/translations/bn.json",
+     "sha256": "cd89b80e6c2fddefcf1631adbe3b5cd4a493f2eb7e3f24adeff0004183f53510",
+     "bytes": 2065
+    },
+    {
+     "path": "modules/103/translations/en.json",
+     "sha256": "3a85c1a41092eb943512ece5c81de4feb5bdb780944d1ca11062aca12e1b5799",
+     "bytes": 1158
+    },
+    {
+     "path": "modules/103/translations/es.json",
+     "sha256": "de32ad59b18aee919476b1b4fb9060bd3b26d2f9ebe2cdf68d6d15d9c98917cc",
+     "bytes": 1117
+    },
+    {
+     "path": "modules/103/translations/fr.json",
+     "sha256": "1f51d0545c2e28dd2fd0835af28f4285e0587df06d295161ccc111ecaabc265f",
+     "bytes": 1243
+    },
+    {
+     "path": "modules/103/translations/hi.json",
+     "sha256": "8a1eb2e3aa0bcaea4a7a7a98dd0db495691c6b1b0af9994f32dd45e0a082cd8b",
+     "bytes": 2056
+    },
+    {
+     "path": "modules/103/translations/zh.json",
+     "sha256": "295dccbd1b809f1b9fce8a03b72907b3401468d0ea2c2413073bd6f77bc83446",
+     "bytes": 1021
+    }
+   ],
+   "totalBytes": 188708
+  },
+  {
+   "surah": 105,
+   "version": "0.1.0",
+   "status": "draft",
+   "dir": "modules/105",
+   "files": [
+    {
+     "path": "modules/105/module.json",
+     "sha256": "18834e6c8cb1c448ee4709ec4303a561fddd04b0c53a4c03ac8815642179e2ec",
+     "bytes": 3100
+    },
+    {
+     "path": "modules/105/tafsir.json",
+     "sha256": "85895d3f30550e78cead5215feee284a6461ebefdceb479bce2fdb3f97dd0183",
+     "bytes": 91535
+    },
+    {
+     "path": "modules/105/scenes.json",
+     "sha256": "0d085cf34c7943b944fce02593e79a9270d20e1b325e4ac0c50eb95e33358251",
+     "bytes": 5937
+    },
+    {
+     "path": "modules/105/img/fil_01_ashab.jpg",
+     "sha256": "fc305ae40ef5154f2572a29db7628936cc8b525e902e43b03ffd589813cc668c",
+     "bytes": 155972
+    },
+    {
+     "path": "modules/105/img/fil_02_kayd.jpg",
+     "sha256": "033965bd6a652bbcf77f3ba96738312964ef987dfd63ff84bfd941ac2c15a165",
+     "bytes": 104963
+    },
+    {
+     "path": "modules/105/img/fil_03_tayr.jpg",
+     "sha256": "c3ec493fde3089b03dd3a9aebda83f26a08286db417310be952967ea5f97fb2c",
+     "bytes": 92102
+    },
+    {
+     "path": "modules/105/img/fil_04_sijjil.jpg",
+     "sha256": "c121ce4ffcf28c5646b19dc0882d0743718d36fbd93446b4356cf854744a098d",
+     "bytes": 95101
+    },
+    {
+     "path": "modules/105/img/fil_05_asf.jpg",
+     "sha256": "a42d8f0061f10dbd30fcda651b6323005eb77bf8998ed535f6460df45996e2a9",
+     "bytes": 97132
+    },
+    {
+     "path": "modules/105/translations/bn.json",
+     "sha256": "6a536ee0c33a894d22701682f74836db7e78ae6b879e67e24edce04fd20e8e99",
+     "bytes": 1791
+    },
+    {
+     "path": "modules/105/translations/en.json",
+     "sha256": "c0a12f36477c64cec5f6eaa7323fd093b08b6405e8f8116aa3f2477f2f53b46d",
+     "bytes": 1047
+    },
+    {
+     "path": "modules/105/translations/es.json",
+     "sha256": "6454a0ff4eb618c323027be520bc45c13650640678b30d7fc36e4488452c2677",
+     "bytes": 1071
+    },
+    {
+     "path": "modules/105/translations/fr.json",
+     "sha256": "d1dca722e391a74a6ed84993e851bda30c7a29f498a9b0984dc71601bafbfccc",
+     "bytes": 1109
+    },
+    {
+     "path": "modules/105/translations/hi.json",
+     "sha256": "c40a9b5b4c24fd4470e92aa12eb00465d72f1f6624f8051b15ce5da940b46e2d",
+     "bytes": 1733
+    },
+    {
+     "path": "modules/105/translations/zh.json",
+     "sha256": "17a76dbb80f497ecffedd682d77368ef50572b40337715ab9b29951f19bb874c",
+     "bytes": 1004
+    }
+   ],
+   "totalBytes": 653597
   }
  ]
 }

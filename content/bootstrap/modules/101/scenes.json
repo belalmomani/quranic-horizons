@@ -137,8 +137,8 @@
      "meaning": "القارعة.",
      "visualEvent": "كوكب الأرض متصدّع بشقوق ملتهبة.",
      "rationale": "القرع بالهول.",
-     "symbolic": true,
-     "symbolicNote": 0,
+     "symbolic": false,
+     "symbolicNote": "",
      "gap": "القارعة لا تُصوَّر.",
      "keys": [
       {
@@ -167,7 +167,7 @@
      "visualEvent": "أبنية منهارة وناس يهربون.",
      "rationale": "هول القارعة.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "السؤال لا يُصوَّر.",
      "keys": [
       {
@@ -199,7 +199,7 @@
      "visualEvent": "رجل من الخلف يتأمل المدينة.",
      "rationale": "الحيرة بالتأمل.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "—",
      "keys": [
       {
@@ -231,7 +231,7 @@
      "visualEvent": "جموع كثيرة منتشرة في ساحة.",
      "rationale": "الانتشار.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "الفراش لا يظهر.",
      "keys": [
       {
@@ -262,8 +262,8 @@
      "meaning": "الجبال كالعهن المنفوش.",
      "visualEvent": "جبال تتصدع وتتطاير.",
      "rationale": "تفتت الجبال.",
-     "symbolic": true,
-     "symbolicNote": 0,
+     "symbolic": false,
+     "symbolicNote": "",
      "gap": "العهن (الصوف) لا يظهر.",
      "keys": [
       {
@@ -294,8 +294,8 @@
      "meaning": "من ثقلت موازينه.",
      "visualEvent": "ميزان ثقيل بكتب ونور.",
      "rationale": "الميزان.",
-     "symbolic": true,
-     "symbolicNote": 0,
+     "symbolic": false,
+     "symbolicNote": "",
      "gap": "الموازين رمز.",
      "keys": [
       {
@@ -326,8 +326,8 @@
      "meaning": "فهو في عيشة راضية.",
      "visualEvent": "جنة وشلال وأنهار.",
      "rationale": "العيشة الراضية بجنة رمزية.",
-     "symbolic": true,
-     "symbolicNote": 0,
+     "symbolic": false,
+     "symbolicNote": "",
      "gap": "الجنة لا تُصوَّر بدقة.",
      "keys": [
       {
@@ -359,7 +359,7 @@
      "visualEvent": "رجل من الخلف في مكان مظلم.",
      "rationale": "الخفة بالظلمة.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "الميزان لا يظهر.",
      "keys": [
       {
@@ -391,7 +391,7 @@
      "visualEvent": "أشخاص ظلال على جسر فوق حمم.",
      "rationale": "الهاوية.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "جهنم لا تُصوَّر بدقة.",
      "keys": [
       {
@@ -423,7 +423,7 @@
      "visualEvent": "الصورة نفسها المستخدمة للآية 3 (رجل يتأمل).",
      "rationale": "لا لقطة مخصصة للآية؛ إعادة استخدام.",
      "symbolic": true,
-     "symbolicNote": 1,
+     "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
      "gap": "لا لقطة للآية 10 في اللوحة.",
      "keys": [
       {
@@ -454,8 +454,8 @@
      "meaning": "نار حامية.",
      "visualEvent": "حمم ونار.",
      "rationale": "النار.",
-     "symbolic": true,
-     "symbolicNote": 0,
+     "symbolic": false,
+     "symbolicNote": "",
      "gap": "لا لقطة للآية 11 في اللوحة؛ اجتهاد.",
      "keys": [
       {

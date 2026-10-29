@@ -46,8 +46,8 @@
    "meaning": "القسم بالعصر.",
    "visualEvent": "ساعة رملية عند الغروب.",
    "rationale": "العصر زمنًا.",
-   "symbolic": true,
-   "symbolicNote": 0,
+   "symbolic": false,
+   "symbolicNote": "",
    "gap": "—"
   },
   "2": {
@@ -55,7 +55,7 @@
    "visualEvent": "رجل يضع يده على رأسه حزنًا.",
    "rationale": "الخسر.",
    "symbolic": true,
-   "symbolicNote": 1,
+   "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
    "gap": "—"
   },
   "3": {
@@ -63,7 +63,7 @@
    "visualEvent": "رجل من الخلف يتجه إلى مسجد عند الغروب.",
    "rationale": "الإيمان.",
    "symbolic": true,
-   "symbolicNote": 1,
+   "symbolicNote": "لقطة مقدَّمة من صاحب المشروع وفيها أشخاص عامون بلا هوية؛ لا يُقصد بأي شخص فيها النبي ﷺ؛ مراجعتك مطلوبة.",
    "gap": "—"
   }
  },
