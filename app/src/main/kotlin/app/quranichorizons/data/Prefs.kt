@@ -42,4 +42,19 @@ class Prefs(context: Context) {
     var autoNextSurah: Boolean
         get() = sp.getBoolean("auto_next", true)
         set(v) = sp.edit().putBoolean("auto_next", v).apply()
+
+    /** قائمة تطبيقات «متجري» (JSON) */
+    var storeJson: String
+        get() = sp.getString("store_json", "") ?: ""
+        set(v) = sp.edit().putString("store_json", v).apply()
+
+    /** مستودع GitHub (owner/name) للتحديث المباشر للتطبيق */
+    var updateRepo: String
+        get() = sp.getString("update_repo", "") ?: ""
+        set(v) = sp.edit().putString("update_repo", v).apply()
+
+    /** بريد الحساب المسجَّل دخوله (يُملأ بعد ربط تسجيل الدخول)؛ لا يُعدّ ضمانًا أمنيًا */
+    var accountEmail: String
+        get() = sp.getString("account_email", "") ?: ""
+        set(v) = sp.edit().putString("account_email", v).apply()
 }

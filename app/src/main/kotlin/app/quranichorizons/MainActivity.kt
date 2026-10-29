@@ -29,6 +29,11 @@ import androidx.compose.ui.Modifier
 import app.quranichorizons.ui.AdSlot
 import app.quranichorizons.ui.QhColors
 import app.quranichorizons.ui.HomeScreen
+import app.quranichorizons.ui.DrawerContent
+import app.quranichorizons.ui.StoreScreen
+import app.quranichorizons.ui.UpdateScreen
+import app.quranichorizons.ui.isAdmin
+import kotlinx.coroutines.launch
 import app.quranichorizons.ui.PlayerScreen
 import app.quranichorizons.ui.QhTheme
 import app.quranichorizons.ui.SettingsScreen
@@ -55,6 +60,9 @@ private const val HOME = 0
 private const val SURAH = 1
 private const val PLAYER = 2
 private const val SETTINGS = 3
+private const val STORE = 4
+private const val ADMIN = 5
+private const val UPDATE = 6
 
 @Composable
 private fun App(repo: ContentRepository, prefs: Prefs) {
@@ -69,10 +77,17 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     val homeListState = androidx.compose.foundation.lazy.rememberLazyListState()
     var homeQuery by rememberSaveable { mutableStateOf("") }
 
+    val drawerState = androidx.compose.material3.rememberDrawerState(androidx.compose.material3.DrawerValue.Closed)
+    val drawerScope = androidx.compose.runtime.rememberCoroutineScope()
+    var email by remember { mutableStateOf(app.quranichorizons.auth.AuthManager.currentEmail()) }
+    var authMsg by remember { mutableStateOf("") }
+    fun go(s: Int) { screen = s; drawerScope.launch { drawerState.close() } }
+
     // مغادرة شاشة التشغيل عمدًا (رجوع/قائمة السور) توقف التلاوة؛ أما إغلاق/إعادة إنشاء النشاط فلا
     val actCtx = androidx.compose.ui.platform.LocalContext.current
     androidx.compose.runtime.LaunchedEffect(screen) { if (screen != PLAYER) app.quranichorizons.player.PlaybackEngine.stop(actCtx) }
 
+    BackHandler(enabled = drawerState.isOpen) { drawerScope.launch { drawerState.close() } }
     BackHandler(enabled = screen != HOME) {
         screen = if (screen == PLAYER) SURAH else HOME
     }
@@ -80,6 +95,21 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     CompositionLocalProvider(
         LocalLang provides lang,
         LocalLayoutDirection provides (if (lang == Lang.AR) LayoutDirection.Rtl else LayoutDirection.Ltr),
+    ) {
+    androidx.compose.material3.ModalNavigationDrawer(
+        drawerState = drawerState,
+        gesturesEnabled = screen != PLAYER,
+        drawerContent = {
+            androidx.compose.material3.ModalDrawerSheet(drawerContainerColor = QhColors.NavyDeep) {
+                DrawerContent(
+                    prefs = prefs, langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },
+                    onHome = { go(HOME) }, onSettings = { go(SETTINGS) }, onUpdate = { go(UPDATE) }, onStore = { go(STORE) }, onAdmin = { go(ADMIN) },
+                    email = email, authMsg = authMsg,
+                    onSignIn = { authMsg = "…"; drawerScope.launch { authMsg = try { email = app.quranichorizons.auth.AuthManager.signIn(actCtx); prefs.accountEmail = email; "" } catch (e: Exception) { e.message ?: e.javaClass.simpleName } } },
+                    onSignOut = { app.quranichorizons.auth.AuthManager.signOut(); email = ""; prefs.accountEmail = ""; authMsg = "" },
+                )
+            }
+        },
     ) {
     // الشاشات الجانبية: المحتوى كله فوق، وشريط الإعلان المحجوز في أسفلها لا يغطي شيئًا؛ شاشة التشغيل بلا إعلان
     Column(Modifier.fillMaxSize().background(QhColors.Navy).then(if (screen == PLAYER) Modifier else Modifier.systemBarsPadding())) {
@@ -90,6 +120,7 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             onOpen = { selected = it; screen = SURAH },
             onContinue = { s, a -> selected = s; startAyah = a; screen = PLAYER },
             onSettings = { screen = SETTINGS },
+            onMenu = { drawerScope.launch { drawerState.open() } },
             listState = homeListState, query = homeQuery, onQuery = { homeQuery = it },
         )
         SURAH -> SurahScreen(
@@ -105,6 +136,9 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
                 onSurah = { n -> selected = n; startAyah = 1 },
             )
         }
+        STORE -> StoreScreen(prefs = prefs, admin = false, onBack = { screen = HOME })
+        ADMIN -> StoreScreen(prefs = prefs, admin = isAdmin(email), onBack = { screen = HOME })
+        UPDATE -> UpdateScreen(prefs = prefs, onBack = { screen = HOME })
         SETTINGS -> SettingsScreen(
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME },
             langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },
@@ -112,6 +146,7 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     }
     }
     if (screen != PLAYER) AdSlot()
+    }
     }
     }
 }

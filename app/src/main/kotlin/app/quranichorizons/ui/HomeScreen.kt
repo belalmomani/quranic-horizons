@@ -50,6 +50,7 @@ fun HomeScreen(
     onOpen: (Int) -> Unit,
     onContinue: (Int, Int) -> Unit,
     onSettings: () -> Unit,
+    onMenu: () -> Unit,
     listState: androidx.compose.foundation.lazy.LazyListState,
     query: String,
     onQuery: (String) -> Unit,
@@ -68,8 +69,9 @@ fun HomeScreen(
             contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
+            item { TextButton(onClick = onMenu) { Text("☰  " + tr("menu"), color = QhColors.GoldSoft, fontSize = 16.sp) } }
             item {
-                Column(Modifier.fillMaxWidth().padding(top = 28.dp, bottom = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Image(
                         painter = androidx.compose.ui.res.painterResource(app.quranichorizons.R.drawable.ic_launcher_foreground),
                         contentDescription = null,

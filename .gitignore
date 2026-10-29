@@ -4,7 +4,6 @@ local.properties
 *.jks
 *.keystore
 *.p12
-google-services.json
 .env
 .env.*
 *.local.*

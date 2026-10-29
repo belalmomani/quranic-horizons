@@ -6,7 +6,7 @@ package app.quranichorizons.i18n
  */
 object Strings {
     fun get(lang: Lang, key: String, vararg args: Any): String {
-        var s = table[key]?.get(lang) ?: table[key]?.get(Lang.AR) ?: key
+        var s = table[key]?.get(lang) ?: table[key]?.get(Lang.EN) ?: table[key]?.get(Lang.AR) ?: key
         args.forEachIndexed { i, a -> s = s.replace("{$i}", a.toString()) }
         return s
     }
@@ -14,7 +14,53 @@ object Strings {
     private fun e(en: String, zh: String, hi: String, es: String, ar: String, fr: String, bn: String) =
         mapOf(Lang.EN to en, Lang.ZH to zh, Lang.HI to hi, Lang.ES to es, Lang.AR to ar, Lang.FR to fr, Lang.BN to bn)
 
+    /** نصوص القائمة/المتجر الجديدة: عربي + إنجليزي؛ بقية اللغات تعرض الإنجليزية مؤقتًا حتى تُترجم. */
+    private fun ae(ar: String, en: String) = mapOf(Lang.AR to ar, Lang.EN to en, Lang.ZH to en, Lang.HI to en, Lang.ES to en, Lang.FR to en, Lang.BN to en)
+
     val table: Map<String, Map<Lang, String>> = mapOf(
+        "menu" to ae("القائمة", "Menu"),
+        "menuHome" to ae("الرئيسية", "Home"),
+        "menuUpdate" to ae("تحديث مباشر من GitHub", "Live update from GitHub"),
+        "menuStore" to ae("متجري", "My Store"),
+        "menuAdmin" to ae("لوحة الإدارة", "Admin panel"),
+        "menuSignIn" to ae("تسجيل الدخول (Google)", "Sign in (Google)"),
+        "menuSignOut" to ae("تسجيل الخروج", "Sign out"),
+        "signInNote" to ae("تسجيل الدخول غير مفعّل بعد: يحتاج إعداد Firebase (ملف google-services.json). لوحة الإدارة تظهر عند الدخول بحساب المدير.", "Sign-in is not enabled yet: it needs Firebase setup (google-services.json). The admin panel appears for the admin account."),
+        "updRepo" to ae("مستودع التحديث (owner/name أو رابط GitHub)", "Update repository (owner/name or GitHub URL)"),
+        "updCheck" to ae("فحص آخر إصدار", "Check latest release"),
+        "updLatest" to ae("آخر إصدار: {0} — {1}", "Latest release: {0} — {1}"),
+        "updNoApk" to ae("لا يوجد ملف APK في آخر إصدار", "The latest release has no APK file"),
+        "updDownload" to ae("تنزيل وتثبيت", "Download & install"),
+        "updProgress" to ae("جارٍ التنزيل… {0}%", "Downloading… {0}%"),
+        "updAllow" to ae("اسمح للتطبيق بالتثبيت من هذا المصدر ثم اضغط التنزيل مرة أخرى", "Allow installing from this source, then tap download again"),
+        "updError" to ae("تعذّر: {0}", "Failed: {0}"),
+        "updCurrent" to ae("الإصدار الحالي: {0} ({1})", "Current version: {0} ({1})"),
+        "updOnlyDebug" to ae("ملاحظة: يجب أن يكون الـAPK المنشور موقَّعًا بنفس المفتاح كي يُقبل كتحديث.", "Note: the published APK must be signed with the same key to install as an update."),
+        "storeTitle" to ae("متجري", "My Store"),
+        "storeAll" to ae("الكل", "All"),
+        "storeTools" to ae("أدوات", "Tools"),
+        "storeNews" to ae("أخبار", "News"),
+        "storeAddTitle" to ae("إضافة تطبيق من GitHub", "Add an app from GitHub"),
+        "storeAddNote" to ae("اكتب owner/name أو رابط المستودع. تُسحب المعلومات من المستودع وآخر إصدار فيه ملف apk. يظهر التطبيق بعد اعتماد المدير.", "Enter owner/name or the repository URL. Info is read from the repository and its latest release APK. The app appears after admin approval."),
+        "add" to ae("إضافة", "Add"),
+        "cancel" to ae("إلغاء", "Cancel"),
+        "ok" to ae("موافق", "OK"),
+        "download" to ae("تنزيل", "Download"),
+        "storePending" to ae("بانتظار الاعتماد", "Pending"),
+        "storeApproved" to ae("المعتمدة", "Approved"),
+        "storeRejected" to ae("المرفوضة", "Rejected"),
+        "storeEmpty" to ae("لا توجد تطبيقات هنا بعد", "No apps here yet"),
+        "approve" to ae("اعتماد", "Approve"),
+        "reject" to ae("رفض", "Reject"),
+        "unapprove" to ae("إلغاء الاعتماد", "Unapprove"),
+        "delete" to ae("حذف", "Delete"),
+        "changeCat" to ae("تغيير التصنيف", "Change category"),
+        "refreshApp" to ae("تحديث الإصدار", "Refresh release"),
+        "addedPending" to ae("أُضيف وينتظر اعتماد المدير", "Added; waiting for admin approval"),
+        "badRepo" to ae("صيغة المستودع غير صحيحة", "Invalid repository format"),
+        "noApkYet" to ae("بلا ملف apk", "No apk"),
+        "adminTitle" to ae("لوحة الإدارة — اعتماد التطبيقات", "Admin panel — app approvals"),
+        "adminLocalNote" to ae("القائمة محفوظة على هذا الجهاز فقط (بلا خادم) حاليًا.", "The list is stored on this device only (no server) for now."),
         "tagline" to e("A visual journey through the Holy Quran", "在古兰经中的视觉之旅", "पवित्र क़ुरआन की एक दृश्य यात्रा",
             "Un viaje visual por el Sagrado Corán", "رحلة بصرية في رحاب القرآن الكريم", "Un voyage visuel dans le Saint Coran", "পবিত্র কুরআনের এক দৃশ্যযাত্রা"),
         "continue" to e("Continue", "继续", "जारी रखें", "Continuar", "متابعة", "Continuer", "চালিয়ে যান"),

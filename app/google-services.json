@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "237443152900",
+    "firebase_url": "https://shabehk.firebaseio.com",
+    "project_id": "shabehk",
+    "storage_bucket": "shabehk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237443152900:android:99866f724a2285d4468951",
+        "android_client_info": {
+          "package_name": "app.quranichorizons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARVgqCNkwSS_REck_xmwozNHuYgzjghpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237443152900:android:8cdc33083e60f8a5468951",
+        "android_client_info": {
+          "package_name": "com.diskati.pcmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARVgqCNkwSS_REck_xmwozNHuYgzjghpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237443152900-5ks47nd2aejbsi02fk7mei7b2b6cese3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
