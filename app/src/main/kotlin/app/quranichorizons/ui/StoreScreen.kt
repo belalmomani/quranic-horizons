@@ -94,6 +94,8 @@ fun StoreScreen(prefs: Prefs, admin: Boolean, onBack: () -> Unit) {
             }
         }
         LazyColumn(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp), contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 10.dp)) {
+            // الإضافة من لوحة الإدارة فقط
+            if (admin) {
             item {
                 Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = QhColors.NavyCard)) {
                     Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -111,9 +113,9 @@ fun StoreScreen(prefs: Prefs, admin: Boolean, onBack: () -> Unit) {
                                     val rel = try { GitHubApi.latestRelease(p.first, p.second) } catch (_: Exception) { null }
                                     val old = repo.all().firstOrNull { it.id == "${p.first}/${p.second}" }
                                     repo.upsert(StoreApp(p.first, p.second, p.second, info.description, old?.category ?: "tools",
-                                        if (admin) (old?.status ?: "approved") else (old?.status ?: "pending"),
+                                        old?.status ?: "approved",
                                         rel?.tag ?: "", rel?.apkUrl ?: "", rel?.apkSize ?: 0L, info.iconUrl))
-                                    msg = if (admin) "" else s("addedPending"); input = ""; reload()
+                                    msg = ""; input = ""; reload()
                                 } catch (e: Exception) { msg = s("updError", e.message ?: e.javaClass.simpleName) }
                                 busy = false
                             }
@@ -121,6 +123,7 @@ fun StoreScreen(prefs: Prefs, admin: Boolean, onBack: () -> Unit) {
                         if (msg.isNotEmpty()) Text(msg, color = QhColors.GoldSoft, fontSize = 13.sp)
                     }
                 }
+            }
             }
             if (shown.isEmpty()) item { Text(s("storeEmpty"), color = QhColors.Muted, fontSize = 14.sp) }
             items(shown, key = { it.id }) { a ->

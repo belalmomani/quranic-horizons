@@ -41,7 +41,7 @@ object Strings {
         "storeTools" to ae("أدوات", "Tools"),
         "storeNews" to ae("أخبار", "News"),
         "storeAddTitle" to ae("إضافة تطبيق من GitHub", "Add an app from GitHub"),
-        "storeAddNote" to ae("اكتب owner/name أو رابط المستودع. تُسحب المعلومات من المستودع وآخر إصدار فيه ملف apk. يظهر التطبيق بعد اعتماد المدير.", "Enter owner/name or the repository URL. Info is read from the repository and its latest release APK. The app appears after admin approval."),
+        "storeAddNote" to ae("اكتب owner/name أو رابط المستودع. تُسحب المعلومات من المستودع وآخر إصدار فيه ملف apk. يُضاف مباشرة ويظهر للمستخدمين.", "Enter owner/name or the repository URL. Info is read from the repository and its latest release APK. It is added directly and shown to users."),
         "add" to ae("إضافة", "Add"),
         "cancel" to ae("إلغاء", "Cancel"),
         "ok" to ae("موافق", "OK"),
