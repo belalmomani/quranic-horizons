@@ -51,6 +51,8 @@ jobs:
           echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/qh.jks"
           echo "QH_KEYSTORE_FILE=$RUNNER_TEMP/qh.jks" >> "$GITHUB_ENV"
           echo "QH_VERSION_CODE=${{ github.run_number }}" >> "$GITHUB_ENV"
+          # بصمة شهادة التوقيع (معلومة عامة وليست سرًّا): للمطابقة مع SHA-1 المسجَّلة في Firebase
+          keytool -list -v -keystore "$RUNNER_TEMP/qh.jks" -alias "$QH_KEY_ALIAS" -storepass "$QH_KEYSTORE_PASSWORD" 2>/dev/null | grep -E "SHA1:|SHA256:" | sed 's/^ *//' | while read -r l; do echo "::notice title=بصمة مفتاح التوقيع::$l"; done
       - name: اختبارات الوحدة
         run: gradle --no-daemon :app:testDebugUnitTest
       - name: بناء APK (debug)
