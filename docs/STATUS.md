@@ -110,3 +110,11 @@
 
 ## v35 — طباعة بصمة مفتاح التوقيع في سجل البناء
 - خطوة في build.yml تطبع SHA1/SHA256 لمفتاح qh كإشعار (notice) لمطابقتها مع Firebase. لا تطبع كلمات مرور.
+
+## v36 — تسجيل الدخول: منتقي حسابات Google
+- «No credentials available» على الجهاز مع GetGoogleIdOption: تحويل إلى GetSignInWithGoogleOption (منتقي حسابات). إن استمر الخطأ فالسبب غالبًا عدم مطابقة SHA-1 لمفتاح التوقيع أو غياب حساب/خدمات Google Play.
+
+## v37 — تسجيل دخول رسمي بالبريد وكلمة المرور (Firebase Auth)
+- استُبدل Google Sign-In بنافذة بريد/كلمة مرور: دخول، إنشاء حساب (يرسل رابط توثيق)، نسيت كلمة المرور. أُزيلت تبعيات Credential Manager.
+- لوحة الإدارة تظهر لـbilalalmomani90@gmail.com فقط إذا كان بريده موثَّقًا (isEmailVerified) كي لا يستطيع غيره انتحاله.
+- لم يُبنَ هنا؛ مزوّد Email/Password مفعّل أصلًا في Firebase.

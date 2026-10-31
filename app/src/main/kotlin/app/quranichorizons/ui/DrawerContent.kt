@@ -40,11 +40,11 @@ fun DrawerContent(
     prefs: Prefs,
     langOverride: String, onLang: (String) -> Unit,
     onHome: () -> Unit, onSettings: () -> Unit, onUpdate: () -> Unit, onStore: () -> Unit, onAdmin: () -> Unit,
-    email: String, authMsg: String, onSignIn: () -> Unit, onSignOut: () -> Unit,
+    email: String, verified: Boolean, authMsg: String, onSignIn: () -> Unit, onSignOut: () -> Unit, onVerify: () -> Unit,
 ) {
     var reduce by remember { mutableStateOf(prefs.reduceMotion) }
     var langOpen by remember { mutableStateOf(false) }
-    val admin = isAdmin(email)
+    val admin = verified && isAdmin(email)
     Column(Modifier.verticalScroll(rememberScrollState()).padding(vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Text("الآفاق القرآنية", color = QhColors.Gold, fontSize = 22.sp, modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp))
         DrawerItem(tr("menuHome"), onHome)
@@ -66,6 +66,10 @@ fun DrawerContent(
         if (email.isEmpty()) DrawerItem(tr("menuSignIn"), onSignIn)
         else {
             Text(email, color = QhColors.Muted, fontSize = 12.sp, modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp))
+            if (!verified) {
+                Text("البريد غير موثَّق: افتح الرابط المرسل إلى بريدك ثم اضغط «تحقق».", color = QhColors.GoldSoft, fontSize = 12.sp, modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp))
+                DrawerItem("تحقق من التوثيق / إعادة إرسال الرابط", onVerify)
+            }
             DrawerItem(tr("menuSignOut"), onSignOut)
         }
         if (authMsg.isNotEmpty()) Text(authMsg, color = QhColors.GoldSoft, fontSize = 12.sp, modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp))

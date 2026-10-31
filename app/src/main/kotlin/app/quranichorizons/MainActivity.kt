@@ -80,7 +80,14 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
     val drawerState = androidx.compose.material3.rememberDrawerState(androidx.compose.material3.DrawerValue.Closed)
     val drawerScope = androidx.compose.runtime.rememberCoroutineScope()
     var email by remember { mutableStateOf(app.quranichorizons.auth.AuthManager.currentEmail()) }
+    var verified by remember { mutableStateOf(app.quranichorizons.auth.AuthManager.isVerified()) }
     var authMsg by remember { mutableStateOf("") }
+    var showAuth by remember { mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(Unit) { app.quranichorizons.auth.AuthManager.refresh(); email = app.quranichorizons.auth.AuthManager.currentEmail(); verified = app.quranichorizons.auth.AuthManager.isVerified() }
+    if (showAuth) app.quranichorizons.ui.AuthDialog(
+        onDismiss = { showAuth = false },
+        onDone = { showAuth = false; email = app.quranichorizons.auth.AuthManager.currentEmail(); verified = app.quranichorizons.auth.AuthManager.isVerified(); prefs.accountEmail = email },
+    )
     fun go(s: Int) { screen = s; drawerScope.launch { drawerState.close() } }
 
     // مغادرة شاشة التشغيل عمدًا (رجوع/قائمة السور) توقف التلاوة؛ أما إغلاق/إعادة إنشاء النشاط فلا
@@ -104,9 +111,10 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
                 DrawerContent(
                     prefs = prefs, langOverride = langOverride, onLang = { langOverride = it; prefs.langOverride = it },
                     onHome = { go(HOME) }, onSettings = { go(SETTINGS) }, onUpdate = { go(UPDATE) }, onStore = { go(STORE) }, onAdmin = { go(ADMIN) },
-                    email = email, authMsg = authMsg,
-                    onSignIn = { authMsg = "…"; drawerScope.launch { authMsg = try { email = app.quranichorizons.auth.AuthManager.signIn(actCtx); prefs.accountEmail = email; "" } catch (e: Exception) { e.message ?: e.javaClass.simpleName } } },
-                    onSignOut = { app.quranichorizons.auth.AuthManager.signOut(); email = ""; prefs.accountEmail = ""; authMsg = "" },
+                    email = email, verified = verified, authMsg = authMsg,
+                    onSignIn = { showAuth = true; drawerScope.launch { drawerState.close() } },
+                    onSignOut = { app.quranichorizons.auth.AuthManager.signOut(); email = ""; verified = false; prefs.accountEmail = ""; authMsg = "" },
+                    onVerify = { authMsg = "…"; drawerScope.launch { authMsg = try { app.quranichorizons.auth.AuthManager.sendVerification(); app.quranichorizons.auth.AuthManager.refresh(); verified = app.quranichorizons.auth.AuthManager.isVerified(); if (verified) "تم التوثيق" else "أُعيد إرسال الرابط؛ افتحه ثم اضغط مرة أخرى" } catch (e: Exception) { app.quranichorizons.auth.AuthManager.explain(e) } } },
                 )
             }
         },
@@ -137,7 +145,7 @@ private fun App(repo: ContentRepository, prefs: Prefs) {
             )
         }
         STORE -> StoreScreen(prefs = prefs, admin = false, onBack = { screen = HOME })
-        ADMIN -> StoreScreen(prefs = prefs, admin = isAdmin(email), onBack = { screen = HOME })
+        ADMIN -> StoreScreen(prefs = prefs, admin = verified && isAdmin(email), onBack = { screen = HOME })
         UPDATE -> UpdateScreen(prefs = prefs, onBack = { screen = HOME })
         SETTINGS -> SettingsScreen(
             repo = repo, prefs = prefs, surahs = surahs, catalog = catalog, onBack = { screen = HOME },
