@@ -30,7 +30,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "clouds,dust"
     },
     {
      "id": "img2",
@@ -39,7 +40,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "clouds,dust"
     },
     {
      "id": "img3",
@@ -48,7 +50,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "clouds,dust"
     },
     {
      "id": "img4",
@@ -57,7 +60,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "clouds,dust"
     },
     {
      "id": "img5",
@@ -66,7 +70,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "clouds,dust"
     }
    ],
    "beats": [

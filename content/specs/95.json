@@ -152,5 +152,18 @@
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
   "الآية 3 بلا لقطة صحيحة (مكة)؛ المطلوب لقطة للكعبة/مكة"
- ]
+ ],
+ "fx": {
+  "tin_01_tin": "sparkle,clouds",
+  "tin_02_tur": "clouds,dust",
+  "tin_03_hold": "clouds,dust",
+  "tin_04_taqwim": "clouds,dust",
+  "tin_05_asfal": "clouds,dust",
+  "tin_06_amanu": "clouds,dust",
+  "tin_06_salah": "clouds,dust",
+  "tin_06_sadaqa": "clouds,dust",
+  "tin_06_usra": "clouds,dust",
+  "tin_07_yukadhib": "clouds,dust",
+  "tin_08_hukm": "clouds,dust"
+ }
 }

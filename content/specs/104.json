@@ -155,5 +155,16 @@
  "previewImagesNote": "صور المعاينة مقصوصة من لوحة مجمَّعة أفقية بدقة أقل من 1080 لا 9:16؛ نص الآيات في اللوحة صحيح (9 آيات) ولم يُستخدم. لقطتا الآيتين 6 و8 مقصوصتان من لقطتين أخريين (إعادة استخدام)، ولقطة الأب والطفل مع المصحف لم تُستخدم لعدم وضوح ارتباطها بآية.",
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية ومشاهد نار وعذاب؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي"
- ]
+ ],
+ "fx": {
+  "humazah_01_humaza": "dust,clouds",
+  "humazah_02_jamaa": "crowd,dust",
+  "humazah_03_akhladah": "fire,mist",
+  "humazah_04_hutama": "fire,mist",
+  "humazah_05_adraka": "dust,flash",
+  "humazah_06_nar": "fire,mist",
+  "humazah_07_afida": "dust,clouds",
+  "humazah_08_mu_sada": "fire,mist",
+  "humazah_09_amad": "fire,mist"
+ }
 }

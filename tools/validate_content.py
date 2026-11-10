@@ -82,9 +82,9 @@ def check_scene_semantics(n, scene, tafsir, err):
                 for k in STRUCTURAL[a['kind']]:
                     if abs(state[i].get(k, 0) - before[i].get(k, 0)) >= 0.5:
                         changes.add((i, k))
-        if not changes:
+        if not changes and actors:   # مشهد نصي بلا عناصر (آيات غير مصوَّرة) مستثنى عمدًا
             err(f'{sid} آية {ay}: لا تغيّر دلاليًا (ظهور/حركة/تشكّل). تغيير الضوء أو الحركة الشكلية لا يكفي')
-        elif prev_changes is not None and changes == prev_changes and not b.get('continuity'):
+        elif actors and prev_changes is not None and changes == prev_changes and not b.get('continuity'):
             err(f'{sid} آية {ay}: نفس حدث الآية السابقة دون تبرير استمرار (continuity)')
         prev_changes = changes
         if not isinstance(b.get('symbolic'), bool) or not isinstance(b.get('symbolicNote', ''), str):

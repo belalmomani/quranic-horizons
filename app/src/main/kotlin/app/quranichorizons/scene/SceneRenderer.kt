@@ -369,25 +369,12 @@ private fun DrawScope.drawDimLights(a: ActorDef, st: Map<String, Float>, master:
     }
 }
 
-private fun DrawScope.drawImageActor(a: ActorDef, st: Map<String, Float>, master: Float, images: Map<String, ImageBitmap>) {
+private fun DrawScope.drawImageActor(a: ActorDef, st: Map<String, Float>, master: Float, images: Map<String, ImageBitmap>, t: Float) {
     val alpha = (st["a"] ?: 0f) * master
     if (alpha <= 0.01f) return
     val bmp = images[a.id] ?: return
-    val z = (st["z"] ?: 0f).coerceIn(0f, 1f)
-    // تُعرض الصورة بعرض الشاشة في منطقة المشهد العليا (دون قصّ جانبيها)، وتكبر ببطء شديد (حركة تجميلية فقط)
-    val w = size.width
-    val h0 = w * bmp.height / bmp.width
-    val k = 1f + 0.04f * z
-    val dw = w * k
-    val dh = h0 * k
-    val top = size.height * 0.07f
-    drawImage(
-        image = bmp,
-        dstOffset = IntOffset(((w - dw) / 2f).toInt(), (top - (dh - h0) / 2f).toInt()),
-        dstSize = IntSize(dw.toInt(), dh.toInt()),
-        alpha = alpha.coerceIn(0f, 1f),
-        filterQuality = FilterQuality.High,
-    )
+    // الصورة بعرض الشاشة في منطقة المشهد العليا؛ مع حركة مبرمجة (ImageMotion.kt) بوسوم a.fx
+    drawLivingImage(bmp, a.fx, alpha, st["z"] ?: 0f, t, kotlin.math.abs(a.id.hashCode()))
 }
 
 /** يذيب الحافة السفلية للصورة في خلفية الشاشة فلا يظهر حدّ قاطع فوق النص. */
@@ -419,7 +406,7 @@ fun DrawScope.drawActors(scene: SceneDef, state: SceneState, master: Float, t: F
             "dome" -> drawDome(a, st, master)
             "shade" -> drawShade(st, master, t)
             "dimlights" -> drawDimLights(a, st, master)
-            "image" -> drawImageActor(a, st, master, images)
+            "image" -> drawImageActor(a, st, master, images, t)
             "beam" -> drawBeam(a, st, master)
             "crowd" -> drawCrowd(a, st, master)
             "smoke" -> drawSmoke(a, st, master, t)

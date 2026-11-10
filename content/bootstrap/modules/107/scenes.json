@@ -32,7 +32,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "dust,clouds"
     },
     {
      "id": "img2",
@@ -41,7 +42,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "dust,clouds"
     },
     {
      "id": "img3",
@@ -50,7 +52,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "dust,clouds"
     },
     {
      "id": "img4",
@@ -59,7 +62,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "crowd,dust"
     },
     {
      "id": "img5",
@@ -68,7 +72,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "dust,clouds"
     },
     {
      "id": "img6",
@@ -77,7 +82,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "crowd,dust"
     },
     {
      "id": "img7",
@@ -86,7 +92,8 @@
      "init": {
       "a": 0.0,
       "z": 0.0
-     }
+     },
+     "fx": "dust,clouds"
     }
    ],
    "beats": [

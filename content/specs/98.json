@@ -144,5 +144,16 @@
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
   "الآية 2 بلا لقطة مخصصة"
- ]
+ ],
+ "fx": {
+  "bayyina_01_ahl": "dust,clouds",
+  "bayyina_02_hold": "dust,clouds",
+  "bayyina_03_kutub": "rays,dust",
+  "bayyina_04_tafarraq": "crowd,dust",
+  "bayyina_05_salat": "dust,clouds",
+  "bayyina_05_zakat": "dust,clouds",
+  "bayyina_06_nar": "fire,mist",
+  "bayyina_07_khayr": "dust,clouds",
+  "bayyina_08_jannat": "rays,sparkle"
+ }
 }

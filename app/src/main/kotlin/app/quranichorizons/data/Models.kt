@@ -129,6 +129,8 @@ data class ActorDef(
     val ty: Float = 0f,
     /** لعنصر الصورة: مسار الملف داخل الوحدة (يُتحقق من بصمته من الكتالوج) */
     val file: String = "",
+    /** وسوم الحركة المبرمجة للصورة (مفصولة بفواصل): water,crowd,clouds,rays,dust,rain,flash,fire,mist,sparkle */
+    val fx: String = "",
     val init: Map<String, Float> = emptyMap(),
 )
 

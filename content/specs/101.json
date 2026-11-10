@@ -189,5 +189,18 @@
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
   "مشاهد نار وعذاب؛ مراجعتك مطلوبة",
   "الآيتان 10 و11 بلا لقطتين مخصصتين"
- ]
+ ],
+ "fx": {
+  "qaria_01_qaria": "dust,flash",
+  "qaria_02_ma": "dust,flash",
+  "qaria_03_adraka": "dust,flash",
+  "qaria_04_farash": "dust,flash",
+  "qaria_05_ihn": "dust,flash",
+  "qaria_06_mawazin": "dust,flash",
+  "qaria_07_ishatin": "dust,flash",
+  "qaria_08_khaffat": "dust,flash",
+  "qaria_09_hawiya": "fire,mist",
+  "qaria_10_adraka": "dust,flash",
+  "qaria_11_hamiya": "fire,mist"
+ }
 }

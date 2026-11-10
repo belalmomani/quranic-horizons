@@ -187,5 +187,18 @@
  "previewImagesNote": "صور المعاينة مقصوصة من لوحة مجمَّعة بأبعاد غير 9:16 وبدقة أقل من 1080؛ والمطلوب ملفات منفصلة عمودية بلا إطار أو ترقيم أو نص. نصوص اللوحة صحيحة (11 آية).",
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي"
- ]
+ ],
+ "fx": {
+  "adiyat_01_dabha": "dust,clouds",
+  "adiyat_02_qadha": "dust,sparkle",
+  "adiyat_03_subha": "rays,dust",
+  "adiyat_04_naqa": "dust,clouds",
+  "adiyat_05_jam": "crowd,dust",
+  "adiyat_06_kanud": "dust,clouds",
+  "adiyat_07_shahid": "dust,clouds",
+  "adiyat_08_khayr": "dust,clouds",
+  "adiyat_09_qubur": "mist,dust",
+  "adiyat_10_sudur": "mist,dust",
+  "adiyat_11_khabir": "dust,clouds"
+ }
 }

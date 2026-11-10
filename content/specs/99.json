@@ -144,5 +144,16 @@
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
   "مشاهد نار وعذاب؛ مراجعتك مطلوبة"
- ]
+ ],
+ "fx": {
+  "zalzalah_01_zalzala": "dust,mist",
+  "zalzalah_02_athqal": "dust,mist",
+  "zalzalah_03_insan": "dust,mist",
+  "zalzalah_04_akhbar": "dust,mist",
+  "zalzalah_05_awha": "dust,mist",
+  "zalzalah_06_ashtat": "dust,mist",
+  "zalzalah_06_kitab": "dust,mist",
+  "zalzalah_07_khayr": "dust,mist",
+  "zalzalah_08_sharr": "dust,mist"
+ }
 }

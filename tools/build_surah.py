@@ -101,7 +101,7 @@ missing = [s for s, f in found.items() if not f]
 SHOTS = SHOTS_ALL
 if PUBLISH and PARTIAL:
     SHOTS = [(s, a) for s, a in SHOTS_ALL if found[s]]
-    if {a for _, a in SHOTS} != set(range(1, N + 1)):
+    if not spec.get('textOnlyRest') and {a for _, a in SHOTS} != set(range(1, N + 1)):
         sys.exit('--partial يتطلب لقطة واحدة على الأقل لكل آية')
 if PUBLISH and missing and not PARTIAL:
     sys.exit('لا نشر: صور ناقصة في %s: %s' % (IMG_DIR, '، '.join(missing)))
@@ -122,7 +122,9 @@ by_ayah = {}
 for s, a in SHOTS:
     by_ayah.setdefault(a, []).append(ids[s])
 beats, shown = [], []
-for a in range(1, N + 1):
+TEXT_ONLY = bool(spec.get('textOnlyRest'))
+PICT = sorted(by_ayah) if TEXT_ONLY else list(range(1, N + 1))
+for a in PICT:
     cur, keys = by_ayah[a], []
     if len(cur) == 1:
         keys.append(fade(shown, cur[0], 0.2)); shown = [cur[0]]
@@ -139,12 +141,40 @@ for a in range(1, N + 1):
                   'rationale': d['rationale'], 'symbolic': d['symbolic'], 'symbolicNote': d['symbolicNote'], 'gap': d['gap'], 'keys': keys})
 
 sid_ = f"{spec['scenePrefix']}-images"
-scene = {'id': sid_, 'ayahs': list(range(1, N + 1)), 'kind': 'image', 'title': f"سورة {ch['name']} — لقطة لكل آية",
-         'env': {'skyTop': '#050B1F', 'skyBottom': '#050B1F', 'stars': 0, 'twinkle': 0.0, 'ridges': [], 'mist': 0.0, 'drift': 0.0},
-         'actors': [{'id': ids[s], 'kind': 'image', 'file': found[s] or f'modules/{SURAH}/img/{s}.webp', 'init': {'a': 0.0, 'z': 0.0}} for s, _ in SHOTS],
+ENV = {'skyTop': '#050B1F', 'skyBottom': '#050B1F', 'stars': 0, 'twinkle': 0.0, 'ridges': [], 'mist': 0.0, 'drift': 0.0}
+scene = {'id': sid_, 'ayahs': PICT, 'kind': 'image', 'title': f"سورة {ch['name']} — لقطة لكل آية" if not TEXT_ONLY else f"سورة {ch['name']} — الآيات المصوَّرة المعتمدة",
+         'env': ENV,
+         'actors': [{'id': ids[s], 'kind': 'image', 'file': found[s] or f'modules/{SURAH}/img/{s}.webp', 'fx': spec.get('fx', {}).get(s, ''), 'init': {'a': 0.0, 'z': 0.0}} for s, _ in SHOTS],
          'beats': beats,
          'review': {'status': 'draft', 'note': spec.get('sceneNote', 'مسودة: الصور النهائية لم تصل بعد.')},
          'transition': {'type': 'crossfade', 'ms': 1600}}
+scenes_out, ayah_scene = [scene], {a: sid_ for a in PICT}
+if TEXT_ONLY:
+    # الآيات غير المصوَّرة: مشهد نصي (بلا صور) لكل مقطع متصل؛ يُعرض فيه تفسير الميسّر فقط
+    rest = [a for a in range(1, N + 1) if a not in by_ayah]
+    runs, cur_run = [], []
+    for a in rest:
+        if cur_run and a != cur_run[-1] + 1:
+            runs.append(cur_run); cur_run = []
+        cur_run.append(a)
+    if cur_run:
+        runs.append(cur_run)
+    for r in runs:
+        tid = f"{spec['scenePrefix']}-text-{r[0]}-{r[-1]}"
+        tb = []
+        for a in r:
+            body = rec[f'muyassar-{a}']['text']
+            tb.append({'ayah': a, 'tafsirRecord': f'muyassar-{a}', 'tafsirQuote': body[:60].strip(),
+                       'meaning': 'آية غير مصوَّرة بعد: يُعرض تفسيرها الميسَّر نصًّا فقط.',
+                       'visualEvent': 'لا صورة لهذه الآية: خلفية داكنة ساكنة مع نص التفسير.',
+                       'rationale': 'لا تُنشر صورة قبل مراجعة معناها وربطها بالآية الصحيحة.',
+                       'symbolic': False, 'symbolicNote': '', 'gap': 'لا لقطة بعد', 'keys': []})
+            ayah_scene[a] = tid
+        assert all(b['tafsirQuote'] in rec[b['tafsirRecord']]['text'] for b in tb)
+        scenes_out.append({'id': tid, 'ayahs': r, 'kind': 'procedural', 'title': f"سورة {ch['name']} — نص فقط ({r[0]}–{r[-1]})",
+                           'env': ENV, 'actors': [], 'beats': tb,
+                           'review': {'status': 'draft', 'note': 'آيات بلا صور: تفسير نصي حرفي.'},
+                           'transition': {'type': 'crossfade', 'ms': 1600}})
 
 blockers = [
     'الصور النهائية لم تصل بعد (بلا صور بديلة): ' + '، '.join(s for s, _ in SHOTS_ALL) + ' — المواصفات في docs/IMAGE_SPEC.md وdocs/image-briefs',
@@ -168,7 +198,7 @@ if PUBLISH:
         if w < MIN_W or not (0.55 <= w / h <= 0.58):
             blockers.append(f'دقة/نسبة صورة {stem} غير مطابقة ({w}x{h}): المطلوب عرض ≥ {MIN_W} px ونسبة 9:16')
 
-ayahs = [{'number': v['verse'], 'text': text_lines[v['verse'] - 1], 'sceneId': sid_,
+ayahs = [{'number': v['verse'], 'text': text_lines[v['verse'] - 1], 'sceneId': ayah_scene[v['verse']],
           'audio': {'url': '', 'durationMs': None, 'status': 'online_only'}} for v in verses]
 module = {'formatVersion': 1, 'surah': SURAH, 'moduleVersion': '0.1.0', 'nameAr': ch['name'], 'ayahCount': N,
           'review': {'status': 'draft', 'blockers': blockers}, 'basmala': BASMALA if pref else None,
@@ -176,7 +206,7 @@ module = {'formatVersion': 1, 'surah': SURAH, 'moduleVersion': '0.1.0', 'nameAr'
                    'note': 'سطر الآية 1 في المصدر يبدأ بالبسملة وقد فُصلت عرضًا فقط'},
           'ayahs': ayahs}
 out = {'module.json': module, 'tafsir.json': {'formatVersion': 1, 'surah': SURAH, 'records': records},
-       'scenes.json': {'formatVersion': 2, 'surah': SURAH, 'scenes': [scene]}}
+       'scenes.json': {'formatVersion': 2, 'surah': SURAH, 'scenes': scenes_out}}
 
 if not PUBLISH:
     d = os.path.join(ROOT, 'drafts', str(SURAH))

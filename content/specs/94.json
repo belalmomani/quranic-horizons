@@ -163,5 +163,21 @@
  "previewImagesNote": "صور المعاينة مقصوصة من لوحة مجمَّعة بدقة أقل من 1080 وليست 9:16؛ ونصوص اللوحة (الشعارات والآيات) لم تُستخدم. السورة خطاب للنبي ﷺ؛ والشخص في اللقطات إنسان عام لا يُقصد به النبي.",
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي"
- ]
+ ],
+ "fx": {
+  "sharh_01_sadr": "rays,dust",
+  "sharh_01_after": "dust,clouds",
+  "sharh_02_wizr": "dust,clouds",
+  "sharh_03_zahr": "dust,clouds",
+  "sharh_03_after": "dust,clouds",
+  "sharh_04_dhikr": "sparkle,clouds",
+  "sharh_04_after": "dust,clouds",
+  "sharh_05_usr": "dust,clouds",
+  "sharh_05_after": "dust,clouds",
+  "sharh_06_yusr": "dust,clouds",
+  "sharh_06_after": "dust,clouds",
+  "sharh_07_faraghta": "dust,clouds",
+  "sharh_08_raghab": "dust,clouds",
+  "sharh_08_after": "dust,clouds"
+ }
 }

@@ -140,5 +140,15 @@
  "extraBlockers": [
   "لقطات فيها أشخاص عامون بلا هوية؛ مراجعتك مطلوبة، والربط بين اللقطات والآيات اجتهادي",
   "مشاهد نار؛ مراجعتك مطلوبة"
- ]
+ ],
+ "fx": {
+  "takathur_01_alhakum": "crowd,dust",
+  "takathur_02_maqabir": "crowd,dust",
+  "takathur_03_kalla": "dust,flash",
+  "takathur_04_thumma": "dust,flash",
+  "takathur_05_yaqin": "dust,clouds",
+  "takathur_06_jahim": "fire,mist",
+  "takathur_07_ayn": "crowd,dust",
+  "takathur_08_naim": "dust,sparkle"
+ }
 }
